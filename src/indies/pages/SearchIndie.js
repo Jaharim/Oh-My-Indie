@@ -1,8 +1,12 @@
 import React, { useCallback, useState } from "react";
 
+import "./SearchIndie.css";
+
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 import { useHistory } from "react-router";
+import SearchedIndie from "../components/SearchedIndie";
+import Card from "../../shared/components/UIElements/Card";
 
 const SearchIndie = (props) => {
   const history = useHistory();
@@ -27,26 +31,37 @@ const SearchIndie = (props) => {
   };
 
   return (
-    <div>
-      <h1> Search Your Indie !</h1>
-      <form onSubmit={searchSubmitHandler}>
-        <Input
-          id="indieTitle"
-          element="input"
-          type="text"
-          label=""
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a valid name"
-          onInput={indieInputHandler}
-        />
-        <button type="submit" disabled={!formState.isValid}>
-          Search
-        </button>
-      </form>
-      <h1>Somebody's Indie</h1>
-      <h2>Random Indie's Name</h2>
-      <h3>Like</h3>
-      <h3>Bookmark</h3>
+    <div className="search__container">
+      <Card>
+        <div className="search__mine-container">
+          <div className="search__mine-header">
+            <h1> 당신의 Indie,</h1>
+            <form className="search__mine-form" onSubmit={searchSubmitHandler}>
+              <Input
+                id="indieTitle"
+                element="input"
+                type="text"
+                label=""
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText="Please enter a valid name"
+                onInput={indieInputHandler}
+              />
+              <button type="submit" disabled={!formState.isValid}>
+                Search
+              </button>
+            </form>
+          </div>
+          <SearchedIndie />
+        </div>
+      </Card>
+      <Card>
+        <div className="search__somebody-container">
+          <div className="search__somebody-header">
+            <h1>다른 누군가의 Indie,</h1>
+          </div>
+          <SearchedIndie />
+        </div>
+      </Card>
     </div>
   );
 };

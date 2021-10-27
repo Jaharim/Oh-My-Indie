@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 import { useHistory } from "react-router";
 
+import "./NavLinks.css";
+
 const NavLinks = (props) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
@@ -13,7 +15,7 @@ const NavLinks = (props) => {
   };
 
   return (
-    <ul>
+    <ul className="nav-links">
       <li>
         <NavLink to="/" exact>
           HOME

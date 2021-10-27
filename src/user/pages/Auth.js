@@ -6,6 +6,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import Card from "../../shared/components/UIElements/Card";
 
 const formReducer = (state, action) => {
   switch (action.type) {

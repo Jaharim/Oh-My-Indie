@@ -1,0 +1,54 @@
+.search__container {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  color: black;
+  font-size: 0.8em;
+}
+
+.search__mine-container {
+  width: 40rem;
+}
+
+.search__mine-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__mine-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__mine-header h1 {
+  margin-right: 25px;
+}
+
+.search__mine-header Input {
+  height: 40px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.2rem solid black;
+  margin-right: 10px;
+}
+
+.search__somebody-container {
+  width: 40rem;
+}
+
+.search__somebody-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
