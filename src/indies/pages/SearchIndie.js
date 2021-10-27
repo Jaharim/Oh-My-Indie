@@ -2,8 +2,11 @@ import React, { useCallback, useState } from "react";
 
 import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
+import { useHistory } from "react-router";
 
 const SearchIndie = (props) => {
+  const history = useHistory();
+
   const [formState, setFormState] = useState({
     value: "",
     isValid: false,
@@ -20,6 +23,7 @@ const SearchIndie = (props) => {
   const searchSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState);
+    history.replace(`/indie/${formState.value}`);
   };
 
   return (

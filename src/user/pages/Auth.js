@@ -1,10 +1,11 @@
-import React, { useCallback, useReducer } from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 
 import Input from "../../shared/components/FormElements/Input";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -32,6 +33,8 @@ const formReducer = (state, action) => {
 };
 
 const Auth = () => {
+  const auth = useContext(AuthContext);
+  const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       email: {
@@ -58,6 +61,7 @@ const Auth = () => {
   const authSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs);
+    auth.login();
   };
 
   return (
