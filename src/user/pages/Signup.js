@@ -7,8 +7,6 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
-import { AuthContext } from "../../shared/components/context/auth-context";
-import Card from "../../shared/components/UIElements/Card";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -35,11 +33,13 @@ const formReducer = (state, action) => {
   }
 };
 
-const Auth = () => {
-  const auth = useContext(AuthContext);
-  const [isLoginMode, setIsLoginMode] = useState(true);
+const Signup = () => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
+      nickname: {
+        value: "",
+        isValid: false,
+      },
       email: {
         value: "",
         isValid: false,
@@ -64,15 +64,23 @@ const Auth = () => {
   const authSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs);
-    auth.login();
   };
 
   return (
     <div className="login-form">
       <div className="login-form__container">
-        <h2>로그인</h2>
+        <h2>회원가입</h2>
 
         <form onSubmit={authSubmitHandler}>
+          <Input
+            element="input"
+            id="nickname"
+            type="nickname"
+            label="닉네임 : "
+            validators={[VALIDATOR_MINLENGTH(2)]}
+            errorText="Please enter a valid nickname."
+            onInput={inputHandler}
+          />
           <Input
             element="input"
             id="email"
@@ -92,7 +100,7 @@ const Auth = () => {
             onInput={inputHandler}
           />
           <button type="submit" disabled={!formState.isValid}>
-            Login
+            Sign Up
           </button>
         </form>
       </div>
@@ -100,4 +108,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Signup;

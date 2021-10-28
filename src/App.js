@@ -11,6 +11,7 @@ import Contact from "./contact/pages/Contact";
 import IndieSupport from "./indies/components/IndieSupport";
 import Auth from "./user/pages/Auth";
 import { AuthContext } from "./shared/components/context/auth-context";
+import Signup from "./user/pages/Signup";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -69,6 +70,9 @@ function App() {
         </Route>
         <Route path="/auth" exact>
           <Auth />
+        </Route>
+        <Route path="/signup" exact>
+          <Signup />
         </Route>
         <Redirect to="/" />
       </Switch>

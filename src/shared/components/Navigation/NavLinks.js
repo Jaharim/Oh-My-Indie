@@ -11,7 +11,7 @@ const NavLinks = (props) => {
   const logoutHandler = (event) => {
     event.preventDefault();
     auth.logout();
-    history.replace("/");
+    history.replace("/auth");
   };
 
   return (
@@ -34,7 +34,7 @@ const NavLinks = (props) => {
       )}
       {!auth.isLoggedIn && (
         <li>
-          <NavLink to="/contact">SIGN UP</NavLink>
+          <NavLink to="/signup">SIGN UP</NavLink>
         </li>
       )}
       {auth.isLoggedIn && (
