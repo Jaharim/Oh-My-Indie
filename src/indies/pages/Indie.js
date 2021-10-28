@@ -10,7 +10,7 @@ const Indie = () => {
     <div className="indie">
       <div className="indie__container">
         <h1 className="indie__header">My Indie, {params.indieId}</h1>
-        <IndieDetail name={params.indieId} />
+        <IndieDetail className="indie__body" name={params.indieId} />
       </div>
     </div>
   );

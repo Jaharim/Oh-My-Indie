@@ -7,6 +7,7 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
+import Button from "../../shared/components/UIElements/Button";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -99,9 +100,7 @@ const Signup = () => {
             errorText="Please enter a valid password, at least 5 characters."
             onInput={inputHandler}
           />
-          <button type="submit" disabled={!formState.isValid}>
-            Sign Up
-          </button>
+          <Button disabled={!formState.isValid}>Sign Up</Button>
         </form>
       </div>
     </div>

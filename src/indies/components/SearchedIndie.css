@@ -1,5 +1,5 @@
 .searched-container {
-  display: grid;
-  grid-template-columns: 2;
-  grid-template-rows: repeat(3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

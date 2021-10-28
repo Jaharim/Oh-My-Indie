@@ -5,23 +5,39 @@ import "./IndieDetail.css";
 
 const IndieDetail = (props) => {
   return (
-    <div className="detail-container">
-      <div className="detail-container__left"></div>
-      <div className="detail-img">Image</div>
-      <div className="detail-name">{props.name}</div>
-      <div className="detail-favorite">Like, Bookmark</div>
-      <span className="detail-desc">
-        국적대한민국활동유형여성, 솔로활동년대2010활동장르인디음악, 발라드,
-        댄스생일1994.05.23
-      </span>
-      <Link
-        className="detail-support"
-        to={`/indie/${props.name}/support`}
-        exact
-      >
-        {props.name} 에게,
-      </Link>
-      <div className="datail-sns">SNS</div>
+    <div className="detail">
+      <div className="detail-container__body">
+        <div className="detail-container__left">
+          <div className="detail-img" />
+          <div className="detail-favorite">
+            <div className="detail-like">Like</div>
+            <div className="detail-bookmark">Bookmark</div>
+          </div>
+        </div>
+        <div className="detail-container__right">
+          <span className="detail-desc">
+            국적 : 대한민국 <br />
+            <br />
+            활동유형 : 여성, 솔로 <br />
+            <br />
+            활동년대 : 2010 <br />
+            <br />
+            활동장르: 인디음악, 발라드, 댄스 <br />
+            <br />
+            생일 : 1994.05.23
+          </span>
+        </div>
+      </div>
+      <div className="detail-container__footer">
+        <Link
+          className="detail-support"
+          to={`/indie/${props.name}/support`}
+          exact
+        >
+          {props.name} 에게,
+        </Link>
+        <div className="detail-sns">SNS</div>
+      </div>
     </div>
   );
 };

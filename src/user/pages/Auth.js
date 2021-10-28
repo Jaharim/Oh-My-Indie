@@ -9,6 +9,7 @@ import {
 } from "../../shared/components/util/validators";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
+import Button from "../../shared/components/UIElements/Button";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -91,9 +92,7 @@ const Auth = () => {
             errorText="Please enter a valid password, at least 5 characters."
             onInput={inputHandler}
           />
-          <button type="submit" disabled={!formState.isValid}>
-            Login
-          </button>
+          <Button disabled={!formState.isValid}>Login</Button>
         </form>
       </div>
     </div>

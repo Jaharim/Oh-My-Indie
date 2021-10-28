@@ -1,0 +1,61 @@
+.support {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  top: 11%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.support-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+  height: 1000px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+
+  background: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+.support-header {
+  position: absolute;
+  border: 5px double black;
+  border-style: none none double none;
+  top: 9%;
+}
+
+.support-main {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  top: 10%;
+  overflow: auto;
+}
+
+.support-body {
+  display: grid;
+
+  grid-template-columns: repeat(3, 33%);
+  width: 100%;
+  top: 50px;
+  list-style: none;
+}
+
+.support-message {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.support-back {
+  position: relative;
+  top: 15%;
+}

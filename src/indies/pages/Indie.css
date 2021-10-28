@@ -1,8 +1,9 @@
 .indie {
   display: flex;
   position: absolute;
-  width: 100vw;
-  height: 80vh;
+  width: 100%;
+  height: 60%;
+  top: 15%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -10,10 +11,10 @@
 .indie__container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 60%;
-  height: 100%;
+  width: 700px;
+  height: 600px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 6px;
   padding: 1rem;
@@ -23,4 +24,8 @@
   margin-bottom: 1rem;
 }
 .indie__header {
+  position: absolute;
+  border: 5px double black;
+  border-style: none none double none;
+  top: 9%;
 }

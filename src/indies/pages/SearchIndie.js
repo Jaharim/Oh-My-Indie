@@ -7,6 +7,7 @@ import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 import { useHistory } from "react-router";
 import SearchedIndie from "../components/SearchedIndie";
 import Card from "../../shared/components/UIElements/Card";
+import Button from "../../shared/components/UIElements/Button";
 
 const SearchIndie = (props) => {
   const history = useHistory();
@@ -46,9 +47,9 @@ const SearchIndie = (props) => {
                 errorText="Please enter a valid name"
                 onInput={indieInputHandler}
               />
-              <button type="submit" disabled={!formState.isValid}>
-                Search
-              </button>
+              <Button className={"search"} disabled={!formState.isValid}>
+                🔍
+              </Button>
             </form>
           </div>
           <SearchedIndie />

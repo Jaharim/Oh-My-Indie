@@ -1,5 +1,61 @@
-.detail-container {
+.detail {
+  position: absolute;
+  width: 600px;
+  top: 33%;
+}
+
+.detail-container__body {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.detail-container__left {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+
+.detail-img {
+  width: 200px;
+  height: 200px;
+  background-image: url("../../media/choi_jeong_yoon.png");
+  background-repeat: no-repeat;
+  margin-bottom: 5%;
+}
+
+.detail-favorite {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
   justify-content: center;
+}
+
+.detail-like {
+  margin-right: 10px;
+}
+
+.detail-container__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.detail-container__footer {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+.detail-support {
+  text-align: center;
+  width: 50%;
+}
+
+.detail-sns {
+  text-align: center;
+
+  width: 50%;
 }
