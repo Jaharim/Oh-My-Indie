@@ -73,9 +73,16 @@ const IndieDetail = (props) => {
           </span>
           <div className="detail-container__footer">
             <div className="detail-container__sns">
-              <div className="detail-sns__youtube" />
-              <div className="detail-sns__instagram" />
               <div className="detail-sns__soundcloud" />
+              <a href="https://www.instagram.com/moodyoon_/" target="_blank">
+                <div className="detail-sns__instagram" />
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=JjPOEYwcd8Q"
+                target="_blank"
+              >
+                <div className="detail-sns__youtube" />
+              </a>
             </div>
           </div>
         </div>
