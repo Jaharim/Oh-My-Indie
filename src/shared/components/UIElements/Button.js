@@ -4,7 +4,12 @@ import "./Button.css";
 
 const Button = (props) => {
   return (
-    <button type="submit" className={`button ${props.className}`}>
+    <button
+      type="submit"
+      className={`button ${props.className}`}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
     </button>
   );

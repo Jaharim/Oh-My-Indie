@@ -22,26 +22,29 @@
   width: 200px;
   height: 200px;
   background-image: url("../../media/choi_jeong_yoon.png");
+  border-radius: 10px;
   background-repeat: no-repeat;
   margin-bottom: 5%;
 }
 
 .detail-favorite {
   display: flex;
-  width: 100%;
+  width: 80%;
   flex-direction: row;
   justify-content: center;
-}
-
-.detail-like {
-  margin-right: 10px;
+  align-items: center;
 }
 
 .detail-container__right {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 50%;
+  padding-bottom: 5px;
+}
+
+.detail-desc {
+  font-size: smaller;
 }
 
 .detail-container__footer {
@@ -49,13 +52,111 @@
   width: 100%;
   flex-direction: row;
 }
-.detail-support {
-  text-align: center;
-  width: 50%;
+.detail-container__support {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 100%;
+  width: 45%;
 }
 
-.detail-sns {
-  text-align: center;
+.detail-support {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: smaller;
+}
 
-  width: 50%;
+.detail-support:visited {
+  color: black;
+}
+
+.detail-like__container {
+  display: flex;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 15px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 5px;
+  font-size: smaller;
+  width: 40%;
+  height: 100%;
+}
+
+.detail-like__number-active {
+  font-weight: bold;
+}
+
+.detail-like__image {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../media/heart.png");
+}
+
+.detail-like__image-active {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../media/heart_active.png");
+}
+
+.detail-like__image:hover,
+.detail-like__image-active:hover {
+  cursor: pointer;
+}
+
+.detail-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+.detail-desc__contents {
+  display: flex;
+  height: 1em;
+  flex-direction: row;
+  align-items: center;
+}
+
+.detail-desc__contents p {
+  font-weight: bold;
+}
+
+.detail-container__sns {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 40px;
+  padding-bottom: 3px;
+  width: 100%;
+}
+
+.detail-sns__youtube {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../media/youtube.png");
+  margin-right: 10px;
+}
+
+.detail-sns__instagram {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../media/instagram.png");
+  margin-right: 10px;
+}
+
+.detail-sns__soundcloud {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../media/soundcloud.png");
+  margin-right: 10px;
 }

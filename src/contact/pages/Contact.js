@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router";
+import { AuthContext } from "../../shared/components/context/auth-context";
+import Backdrop from "../../shared/components/UIElements/Backdrop";
+import Button from "../../shared/components/UIElements/Button";
+import AskAuth from "../components/AskAuth";
+import ContactForm from "../components/ContactForm";
 
 import "./Contact.css";
 
 const Contact = (props) => {
+  const history = useHistory();
+  const auth = useContext(AuthContext);
+  const [contactFormOpen, setContactFormOpen] = useState(false);
+
+  const contactModalOpenHandler = (event) => {
+    setContactFormOpen(true);
+  };
+
+  const contactModalCloseHandler = (event) => {
+    setContactFormOpen(false);
+    if (!auth.isLoggedIn) history.replace("/auth");
+  };
+
   return (
     <div className="contact">
       <div className="contact__container">
@@ -33,6 +52,20 @@ const Contact = (props) => {
             </p>
           </div>
         </div>
+
+        <Button className="button" onClick={contactModalOpenHandler}>
+          contact
+        </Button>
+        {!auth.isLoggedIn && contactFormOpen && (
+          <Backdrop onClick={contactModalCloseHandler} />
+        )}
+        {!auth.isLoggedIn && contactFormOpen && <AskAuth />}
+        {auth.isLoggedIn && contactFormOpen && (
+          <Backdrop onClick={contactModalCloseHandler} />
+        )}
+        {auth.isLoggedIn && contactFormOpen && (
+          <ContactForm onSubmit={contactModalCloseHandler} />
+        )}
       </div>
     </div>
   );

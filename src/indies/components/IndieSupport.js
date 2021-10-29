@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Message from "./Message";
 
 import "./IndieSupport.css";
+import Button from "../../shared/components/UIElements/Button";
 
 const DUMMY_SUPPORT = [
   { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
@@ -50,9 +51,11 @@ const IndieSupport = (props) => {
             })}
           </ul>
         </div>
-        <div className="support-back">
-          <Link to={`/indie/${params.indieId}`}>Back</Link>
-        </div>
+        <Button className="support-back button">
+          <Link to={`/indie/${params.indieId}`} className="support-back__btn">
+            Back
+          </Link>
+        </Button>
       </div>
     </div>
   );
