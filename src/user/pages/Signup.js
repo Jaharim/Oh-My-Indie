@@ -74,27 +74,30 @@ const Signup = () => {
     try {
       setIsLoading(true);
 
-      await setTimeout(() => {
-        const response = fetch("http://localhost:5000/auth/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
-            nickname: formState.inputs.nickname.value,
-          }),
-        });
-        //const responseData = await response.json();
-        //console.log(responseData);
-      }, 2000);
+      const response = await fetch("http://localhost:5000/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+          nickname: formState.inputs.nickname.value,
+        }),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      console.log(responseData);
     } catch (err) {
       console.log(err);
       setError(err.message || "Something went wrong, please try again");
     }
     setIsLoading(false);
-    //history.replace(`/`);
+    history.replace("/auth");
   };
 
   return (

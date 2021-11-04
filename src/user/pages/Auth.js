@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useReducer, useState } from "react";
+import { useHistory } from "react-router";
 
 import "./Auth.css";
 
@@ -37,6 +38,9 @@ const formReducer = (state, action) => {
 };
 
 const Auth = () => {
+  const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, dispatch] = useReducer(formReducer, {
@@ -62,9 +66,37 @@ const Auth = () => {
     });
   }, []);
 
-  const authSubmitHandler = (event) => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
     console.log(formState.inputs);
+
+    try {
+      setIsLoading(true);
+
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value,
+        }),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      console.log(responseData);
+    } catch (err) {
+      console.log(err);
+      setError(err.message || "Something went wrong, please try again");
+    }
+    setIsLoading(false);
+    history.replace("/");
+
     auth.login();
   };
 

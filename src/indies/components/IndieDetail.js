@@ -1,10 +1,74 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./IndieDetail.css";
 
 const IndieDetail = (props) => {
+  const [error, setError] = useState();
   const [isClicked, setIsClicked] = useState(false);
+  const [indieDetail, setIndieDetail] = useState({
+    name: "",
+    imageUrl: "",
+    description: {
+      company: "",
+      song: "",
+      birth: "",
+      content: "",
+    },
+    sns: {
+      youtube: "",
+      instagram: "",
+      soundcloud: "",
+    },
+    like: 0,
+  });
+
+  useEffect(() => {
+    const getSearchedIndieInformation = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/indie/${props.name}`
+          /* ,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: "61827b5439d7cd188c3f8dd2",
+            }),
+          } */
+        );
+
+        const responseData = await response.json();
+
+        setIndieDetail({
+          name: responseData.name,
+          imageUrl: responseData.imageUrl,
+          description: {
+            company: responseData.company,
+            song: responseData.song,
+            birth: responseData.birth,
+            content: responseData.content,
+          },
+          sns: {
+            youtube: responseData.youtube,
+            instagram: responseData.instagram,
+            soundcloud: responseData.soundcloud,
+          },
+          like: responseData.like,
+        });
+
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+      } catch (err) {
+        console.log(err);
+        setError(err.message || "Something went wrong, please try again");
+      }
+    };
+    getSearchedIndieInformation();
+  }, []);
 
   const heartClickHandler = () => {
     if (!isClicked) setIsClicked(true);
@@ -33,7 +97,7 @@ const IndieDetail = (props) => {
                     : "detail-like__number-active"
                 }`}
               >
-                1234
+                {indieDetail.like}
               </div>
             </div>
             <div className="detail-container__support">
@@ -50,37 +114,31 @@ const IndieDetail = (props) => {
         <div className="detail-container__right">
           <span className="detail-desc">
             <div className="detail-desc__contents">
-              <p>소속사 : </p>매직 스트로베리 사운드
+              <p>소속사 : &nbsp;</p>
+              {indieDetail.description.company}
             </div>
             <br />
             <div className="detail-desc__contents">
-              <p>대표곡 : </p>사라져
+              <p>대표곡 : &nbsp;</p>
+              {indieDetail.description.song}
             </div>
             <br />
             <div className="detail-desc__contents">
-              <p>생일 : </p>1994.05.23
+              <p>생일 : &nbsp;</p>
+              {indieDetail.description.birth}
             </div>
             <br />
-            가나다라 마바사 아자차카 타파하
-            <br />
-            내란애라냉라내라냉라내알대ㅏ래 발배답
-            <br />
-            Shining Star~ 밤 하늘의 Pearl~~~
-            <br />
-            너의 루이비똥~ 루이비 또오옹
-            <br />
-            똥똥또로동
+            {indieDetail.description.content}
           </span>
           <div className="detail-container__footer">
             <div className="detail-container__sns">
-              <div className="detail-sns__soundcloud" />
-              <a href="https://www.instagram.com/moodyoon_/" target="_blank">
+              <a href={`${indieDetail.sns.soundcloud}`} target="_blank">
+                <div className="detail-sns__soundcloud" />
+              </a>
+              <a href={`${indieDetail.sns.instagram}`} target="_blank">
                 <div className="detail-sns__instagram" />
               </a>
-              <a
-                href="https://www.youtube.com/watch?v=JjPOEYwcd8Q"
-                target="_blank"
-              >
+              <a href={`${indieDetail.sns.youtube}`} target="_blank">
                 <div className="detail-sns__youtube" />
               </a>
             </div>

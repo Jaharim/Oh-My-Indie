@@ -10,6 +10,7 @@ import Button from "../../shared/components/UIElements/Button";
 
 import "./ContactForm.css";
 const ContactForm = (props) => {
+  const [error, setError] = useState();
   const [titleFormState, setFormState] = useState({
     value: "",
     isValid: false,
@@ -35,8 +36,29 @@ const ContactForm = (props) => {
     });
   }, []);
 
-  const contactSubmitHandler = (event) => {
+  const contactSubmitHandler = async (event) => {
     event.preventDefault();
+
+    try {
+      const response = await fetch(`http://localhost:5000/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: titleFormState.value,
+          content: textareaFormState.value,
+          // userId 넘겨주는 것 구현하기.
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("response is not ok");
+      }
+    } catch (err) {
+      console.log(err);
+      setError(err.message || "Something went wrong, please try again");
+    }
 
     props.onSubmit();
   };

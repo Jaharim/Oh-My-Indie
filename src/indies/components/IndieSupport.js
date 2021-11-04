@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Message from "./Message";
@@ -6,39 +6,43 @@ import Message from "./Message";
 import "./IndieSupport.css";
 import Button from "../../shared/components/UIElements/Button";
 
-const DUMMY_SUPPORT = [
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  ,
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-  { title: "가나다라", body: "마바사 아자차카타파하!!!!!", creator: "유재석" },
-];
-
 const IndieSupport = (props) => {
+  const [error, setError] = useState();
+  const [supportArr, setSupportArr] = useState([]);
+  const supportMessage = [];
   const params = useParams();
+
+  useEffect(() => {
+    const getSupportMessage = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/indie/${params.indieId}/support`
+        );
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+        await responseData.supportMessageJson.map((el) => {
+          supportMessage.push(el);
+        });
+
+        await setSupportArr(supportMessage);
+      } catch (err) {
+        console.log(err);
+        setError(err.message || "Something went wrong, please try again");
+      }
+    };
+    getSupportMessage();
+  }, []);
   return (
     <div className="support">
       <div className="support-container">
         <h1 className="support-header"> {params.indieId} 에게, </h1>
         <div className="support-main">
           <ul className="support-body">
-            {DUMMY_SUPPORT.map((el) => {
+            {supportArr.map((el) => {
               return (
                 <li className="support-message">
                   <Message
