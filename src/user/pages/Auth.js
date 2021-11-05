@@ -68,7 +68,6 @@ const Auth = () => {
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
 
     try {
       setIsLoading(true);
@@ -89,15 +88,15 @@ const Auth = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
-      console.log(responseData);
     } catch (err) {
       console.log(err);
       setError(err.message || "Something went wrong, please try again");
     }
     setIsLoading(false);
-    history.replace("/");
-
+    if (formState.inputs.email.value === "admin@admin.com") auth.adminLogin();
     auth.login();
+
+    history.replace("/");
   };
 
   return (

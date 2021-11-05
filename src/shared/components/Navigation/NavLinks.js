@@ -10,6 +10,7 @@ const NavLinks = (props) => {
   const history = useHistory();
   const logoutHandler = (event) => {
     event.preventDefault();
+    if (auth.isAdmin) auth.adminLogout();
     auth.logout();
     history.replace("/auth");
   };
@@ -35,6 +36,11 @@ const NavLinks = (props) => {
       {!auth.isLoggedIn && (
         <li>
           <NavLink to="/signup">SIGN UP</NavLink>
+        </li>
+      )}
+      {auth.isAdmin && (
+        <li>
+          <NavLink to="/admin">ADMIN</NavLink>
         </li>
       )}
       {auth.isLoggedIn && (

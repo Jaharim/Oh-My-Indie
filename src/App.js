@@ -12,9 +12,11 @@ import IndieSupport from "./indies/components/IndieSupport";
 import Auth from "./user/pages/Auth";
 import { AuthContext } from "./shared/components/context/auth-context";
 import Signup from "./user/pages/Signup";
+import Admin from "./admin/pages/Admin";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const login = useCallback(() => {
     setIsLoggedIn(true);
@@ -22,6 +24,14 @@ function App() {
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+  }, []);
+
+  const adminLogin = useCallback(() => {
+    setIsAdmin(true);
+  }, []);
+
+  const adminLogout = useCallback(() => {
+    setIsAdmin(false);
   }, []);
 
   let routes;
@@ -47,6 +57,11 @@ function App() {
         <Route path="/logout" exact>
           <Auth />
         </Route>
+        {isAdmin && (
+          <Route path="/admin" exact>
+            <Admin />
+          </Route>
+        )}
         <Redirect to="/" />
       </Switch>
     );
@@ -81,7 +96,14 @@ function App() {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+      value={{
+        isLoggedIn: isLoggedIn,
+        login: login,
+        logout: logout,
+        isAdmin: isAdmin,
+        adminLogin: adminLogin,
+        adminLogout: adminLogout,
+      }}
     >
       <Router>
         <MainNavigation />
