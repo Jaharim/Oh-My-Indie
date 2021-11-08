@@ -17,6 +17,7 @@ import Admin from "./admin/pages/Admin";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [errorSubmit, setErrorSubmit] = useState(false);
 
   const login = useCallback(() => {
     setIsLoggedIn(true);
@@ -33,6 +34,10 @@ function App() {
   const adminLogout = useCallback(() => {
     setIsAdmin(false);
   }, []);
+
+  const errorRedirectHandler = () => {
+    setErrorSubmit(true);
+  };
 
   let routes;
 
@@ -75,7 +80,8 @@ function App() {
           <SearchIndie />
         </Route>
         <Route path="/indie/:indieId" exact>
-          <Indie />
+          <Indie onErrorSubmit={errorRedirectHandler} />
+          {errorSubmit && <Redirect to="/" />}
         </Route>
         <Route path="/contact" exact>
           <Contact />

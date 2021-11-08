@@ -9,17 +9,13 @@ const IndieDetail = (props) => {
   const [indieDetail, setIndieDetail] = useState({
     name: "",
     imageUrl: "",
-    description: {
-      company: "",
-      song: "",
-      birth: "",
-      content: "",
-    },
-    sns: {
-      youtube: "",
-      instagram: "",
-      soundcloud: "",
-    },
+    company: "",
+    song: "",
+    birth: "",
+    description: "",
+    youtube: "",
+    instagram: "",
+    soundcloud: "",
     like: 0,
   });
 
@@ -45,17 +41,13 @@ const IndieDetail = (props) => {
         setIndieDetail({
           name: responseData.name,
           imageUrl: responseData.imageUrl,
-          description: {
-            company: responseData.company,
-            song: responseData.song,
-            birth: responseData.birth,
-            content: responseData.content,
-          },
-          sns: {
-            youtube: responseData.youtube,
-            instagram: responseData.instagram,
-            soundcloud: responseData.soundcloud,
-          },
+          company: responseData.company,
+          song: responseData.song,
+          birth: responseData.birth,
+          description: responseData.description,
+          youtube: responseData.youtube,
+          instagram: responseData.instagram,
+          soundcloud: responseData.soundcloud,
           like: responseData.like,
         });
 
@@ -115,30 +107,30 @@ const IndieDetail = (props) => {
           <span className="detail-desc">
             <div className="detail-desc__contents">
               <p>소속사 : &nbsp;</p>
-              {indieDetail.description.company}
+              {indieDetail.company}
             </div>
             <br />
             <div className="detail-desc__contents">
               <p>대표곡 : &nbsp;</p>
-              {indieDetail.description.song}
+              {indieDetail.song}
             </div>
             <br />
             <div className="detail-desc__contents">
               <p>생일 : &nbsp;</p>
-              {indieDetail.description.birth}
+              {indieDetail.birth}
             </div>
             <br />
-            {indieDetail.description.content}
+            {indieDetail.description}
           </span>
           <div className="detail-container__footer">
             <div className="detail-container__sns">
-              <a href={`${indieDetail.sns.soundcloud}`} target="_blank">
+              <a href={`${indieDetail.soundcloud}`} target="_blank">
                 <div className="detail-sns__soundcloud" />
               </a>
-              <a href={`${indieDetail.sns.instagram}`} target="_blank">
+              <a href={`${indieDetail.instagram}`} target="_blank">
                 <div className="detail-sns__instagram" />
               </a>
-              <a href={`${indieDetail.sns.youtube}`} target="_blank">
+              <a href={`${indieDetail.youtube}`} target="_blank">
                 <div className="detail-sns__youtube" />
               </a>
             </div>
