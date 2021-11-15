@@ -1,34 +1,32 @@
-import React, { useRef, useState } from "react";
-import Backdrop from "../../shared/components/UIElements/Backdrop";
-import EditIndie from "./EditIndie";
+import React, { useState } from "react";
+import Button from "../../shared/components/UIElements/Button";
+
+import "./DeleteIndie.css";
 
 const DeleteIndie = (props) => {
-  const [editBackdropStatus, setEditBackdropStatus] = useState(false);
-  const [searchedData, setSearchedData] = useState();
+  const [deleteBackdropStatus, setdeleteBackdropStatus] = useState(false);
   const [error, setError] = useState();
-  const enteredIndieName = useRef();
-
-  const editIndieMoalCloseHandler = (event) => {
-    setEditBackdropStatus(false);
+  const deleteIndieModalCloseHandler = (event) => {
+    event.preventDefault();
+    props.onClick();
   };
 
-  const searchEditHandler = async (event) => {
+  const deleteIndieHandler = async (event) => {
     event.preventDefault();
 
     try {
       const response = await fetch(
-        `http://localhost:5000/indie/${enteredIndieName.current.value}`
+        `http://localhost:5000/admin/${props.indieName}/deleteIndie`,
+        {
+          method: "DELETE",
+        }
       );
-
-      const responseData = await response.json();
-
-      setSearchedData(responseData);
 
       if (!response.ok) {
         throw new Error("response is not ok");
       }
 
-      setEditBackdropStatus(true);
+      setdeleteBackdropStatus(true);
     } catch (err) {
       console.log(err);
       setError(err.message || "Something went wrong, please try again");
@@ -36,14 +34,20 @@ const DeleteIndie = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={searchEditHandler}>
-        <label for="indieName">삭제할 인디의 이름 : </label>
-        <input type="text" name="indieName" ref={enteredIndieName} />
-        <button>🔍</button>
-      </form>
-      {deleteBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
-      {deleteBackdropStatus}
+    <div className="z-index_test">
+      {!deleteBackdropStatus && (
+        <div>
+          <div>정말로 {props.indieName}의 데이터를 삭제하시겠습니까?</div>
+          <Button onClick={deleteIndieHandler}>Yes</Button>
+          <Button onClick={deleteIndieModalCloseHandler}>No</Button>
+        </div>
+      )}
+      {deleteBackdropStatus && (
+        <div>
+          <div>{props.indieName}의 데이터를 삭제하였습니다.</div>
+          <Button onClick={deleteIndieModalCloseHandler}>OK</Button>
+        </div>
+      )}
     </div>
   );
 };

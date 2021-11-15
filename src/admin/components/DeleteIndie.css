@@ -1,0 +1,13 @@
+.z-index_test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 40%;
+  height: 70%;
+  top: 15%;
+  left: 30%;
+  padding: 3rem;
+  background-color: white;
+  z-index: 100;
+}

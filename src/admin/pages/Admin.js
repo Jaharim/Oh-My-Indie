@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import AddIndie from "../components/AddIndie";
+import SearchForDelete from "../components/SearchForDelete";
 import SearchForEdit from "../components/SearchForEdit";
 
 const Admin = (props) => {
@@ -19,6 +20,7 @@ const Admin = (props) => {
 
   const addIndieHandler = (event) => {
     console.log("good");
+    setAddBackdropStatus(false);
   };
 
   const editIndieHandler = (event) => {};
@@ -35,7 +37,9 @@ const Admin = (props) => {
       <div>
         <SearchForEdit onSubmit={editIndieHandler} />
       </div>
-      <div>여기는 Delete Indie</div>
+      <div>
+        <SearchForDelete />
+      </div>
     </div>
   );
 };

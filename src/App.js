@@ -81,7 +81,7 @@ function App() {
         </Route>
         <Route path="/indie/:indieId" exact>
           <Indie onErrorSubmit={errorRedirectHandler} />
-          {errorSubmit && <Redirect to="/" />}
+          {errorSubmit && <Redirect to="/indie" />}
         </Route>
         <Route path="/contact" exact>
           <Contact />
