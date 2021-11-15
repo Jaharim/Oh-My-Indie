@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import EditIndie from "./EditIndie";
 
-const DeleteIndie = (props) => {
+const SearchForEdit = (props) => {
   const [editBackdropStatus, setEditBackdropStatus] = useState(false);
   const [searchedData, setSearchedData] = useState();
   const [error, setError] = useState();
@@ -38,14 +38,19 @@ const DeleteIndie = (props) => {
   return (
     <div>
       <form onSubmit={searchEditHandler}>
-        <label for="indieName">삭제할 인디의 이름 : </label>
+        <label for="indieName">정보를 수정할 인디의 이름 : </label>
         <input type="text" name="indieName" ref={enteredIndieName} />
         <button>🔍</button>
       </form>
-      {deleteBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
-      {deleteBackdropStatus}
+      {editBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
+      {editBackdropStatus && (
+        <EditIndie
+          indieName={enteredIndieName.current.value}
+          indieInformForEdit={searchedData}
+        />
+      )}
     </div>
   );
 };
 
-export default DeleteIndie;
+export default SearchForEdit;

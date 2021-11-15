@@ -229,7 +229,6 @@ const AddIndie = (props) => {
         </div>
         <Button disabled={!formState.isValid}>Add</Button>
       </form>
-      {/* </div> */}
     </div>
   );
 };

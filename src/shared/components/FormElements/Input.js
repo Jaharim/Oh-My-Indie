@@ -17,15 +17,20 @@ const inputReducer = (state, action) => {
         isTouched: true,
       };
     default:
-      return state;
+      return {
+        ...state,
+        isValid: validate(action.val, action.validators),
+      };
   }
 };
 
 const Input = (props) => {
+  const inputVal = props.value ? props.value : "";
+  const preValid = inputVal !== "" ? true : false;
   const [inputState, dispatch] = useReducer(inputReducer, {
-    value: "",
+    value: inputVal,
     isTouched: false,
-    isValid: false,
+    isValid: preValid,
   });
 
   const { id, onInput } = props;

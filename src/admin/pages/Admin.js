@@ -1,34 +1,40 @@
 import React, { useState } from "react";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import AddIndie from "../components/AddIndie";
+import SearchForEdit from "../components/SearchForEdit";
 
 const Admin = (props) => {
-  const [backdropStatus, setBackdropStatus] = useState(false);
+  const [addBackdropStatus, setAddBackdropStatus] = useState(false);
+  const [deleteBackdropStatus, setDeleteBackdropStatus] = useState(false);
 
   const addIndieModalOpenHandler = (event) => {
     event.preventDefault();
-    setBackdropStatus(true);
+    setAddBackdropStatus(true);
   };
 
   const addIndieModalCloseHandler = (event) => {
     event.preventDefault();
-    setBackdropStatus(false);
+    setAddBackdropStatus(false);
   };
 
   const addIndieHandler = (event) => {
     console.log("good");
   };
 
+  const editIndieHandler = (event) => {};
+
   return (
     <div>
       <div>
         <div onClick={addIndieModalOpenHandler}>Add Indie</div>
-        {backdropStatus && <Backdrop onClick={addIndieModalCloseHandler} />}
-        {backdropStatus && (
+        {addBackdropStatus && <Backdrop onClick={addIndieModalCloseHandler} />}
+        {addBackdropStatus && (
           <AddIndie className="addIndie-modal" onSubmit={addIndieHandler} />
         )}
       </div>
-      <div>여기는 Edit Indie</div>
+      <div>
+        <SearchForEdit onSubmit={editIndieHandler} />
+      </div>
       <div>여기는 Delete Indie</div>
     </div>
   );
