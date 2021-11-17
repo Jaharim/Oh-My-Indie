@@ -34,16 +34,18 @@ const DeleteIndie = (props) => {
   };
 
   return (
-    <div className="z-index_test">
+    <div className="deleteIndie-modal__container">
       {!deleteBackdropStatus && (
-        <div>
+        <div className="deleteIndie-modal__confirm">
           <div>정말로 {props.indieName}의 데이터를 삭제하시겠습니까?</div>
-          <Button onClick={deleteIndieHandler}>Yes</Button>
-          <Button onClick={deleteIndieModalCloseHandler}>No</Button>
+          <div className="deleteIndie-modal__confirm-button__container">
+            <Button onClick={deleteIndieHandler}>Yes</Button>
+            <Button onClick={deleteIndieModalCloseHandler}>No</Button>
+          </div>
         </div>
       )}
       {deleteBackdropStatus && (
-        <div>
+        <div className="deleteIndie-modal__ok">
           <div>{props.indieName}의 데이터를 삭제하였습니다.</div>
           <Button onClick={deleteIndieModalCloseHandler}>OK</Button>
         </div>

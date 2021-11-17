@@ -59,7 +59,6 @@ const SearchIndie = (props) => {
   }, []);
 
   const searchSubmitHandler = async (event) => {
-    const controller = new AbortController();
     event.preventDefault();
     console.log(formState);
     try {
@@ -68,11 +67,9 @@ const SearchIndie = (props) => {
       );
 
       if (!response.ok) {
-        controller.abort();
         console.log(`Could not find ${formState.value}`);
         history.replace(`/indie/`);
       } else {
-        controller.abort();
         history.replace(`/indie/${formState.value}`);
       }
     } catch (err) {

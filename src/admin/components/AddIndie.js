@@ -33,6 +33,7 @@ const formReducer = (state, action) => {
 
 const AddIndie = (props) => {
   const [error, setError] = useState();
+  const [addIndieOkModalStatus, setAddIndieOkModalStatus] = useState(false);
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       numberString: {
@@ -119,116 +120,136 @@ const AddIndie = (props) => {
       setError(err.message || "Something went wrong, please try again");
     }
 
+    setAddIndieOkModalStatus(true);
+  };
+
+  const addIndieOkBtnHandler = (event) => {
+    event.preventDefault();
     props.onSubmit();
   };
 
   //number, name, imageUrl, description, sns
   return (
-    <div className="addIndie-modal">
-      {/* <div className="addIndie-modal-form"> */}
-      <form className="addIndie-modal-form" onSubmit={addIndieSubmitHandler}>
-        <div className="addIndie-modal-form__input">
-          <span>Number : </span>
-          <Input
-            element="input"
-            id="numberString"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
+    <div>
+      {!addIndieOkModalStatus && (
+        <div className="addIndie-modal">
+          {/* <div className="addIndie-modal-form"> */}
+          <form
+            className="addIndie-modal-form"
+            onSubmit={addIndieSubmitHandler}
+          >
+            <div className="addIndie-modal-form__input">
+              <span>Number : </span>
+              <Input
+                element="input"
+                id="numberString"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Name : </span>
+              <Input
+                element="input"
+                id="name"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>ImageUrl : </span>
+              <Input
+                element="input"
+                id="imageUrl"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Company : </span>
+              <Input
+                element="input"
+                id="company"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Song : </span>
+              <Input
+                element="input"
+                id="song"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Birth : </span>
+              <Input
+                element="input"
+                id="birth"
+                type="input"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Description : </span>
+              <Input
+                element="textarea"
+                id="description"
+                type="textarea"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Soundcloud : </span>
+              <Input
+                element="input"
+                id="soundcloud"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Instagram : </span>
+              <Input
+                element="input"
+                id="instagram"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="addIndie-modal-form__input">
+              <span>Youtube : </span>
+              <Input
+                element="input"
+                id="youtube"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <Button disabled={!formState.isValid}>Add</Button>
+          </form>
         </div>
-        <div className="addIndie-modal-form__input">
-          <span>Name : </span>
-          <Input
-            element="input"
-            id="name"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
+      )}
+      {addIndieOkModalStatus && (
+        <div className="addIndie-Ok-modal">
+          <div className="addIndie-Ok-modal-form">
+            <div>{formState.inputs.name.value}의 등록이 완료되었습니다.</div>
+            <Button onClick={addIndieOkBtnHandler}>OK</Button>
+          </div>
         </div>
-        <div className="addIndie-modal-form__input">
-          <span>ImageUrl : </span>
-          <Input
-            element="input"
-            id="imageUrl"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Company : </span>
-          <Input
-            element="input"
-            id="company"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Song : </span>
-          <Input
-            element="input"
-            id="song"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Birth : </span>
-          <Input
-            element="input"
-            id="birth"
-            type="input"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Description : </span>
-          <Input
-            element="textarea"
-            id="description"
-            type="textarea"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Soundcloud : </span>
-          <Input
-            element="input"
-            id="soundcloud"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Instagram : </span>
-          <Input
-            element="input"
-            id="instagram"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <div className="addIndie-modal-form__input">
-          <span>Youtube : </span>
-          <Input
-            element="input"
-            id="youtube"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          />
-        </div>
-        <Button disabled={!formState.isValid}>Add</Button>
-      </form>
+      )}
     </div>
   );
 };

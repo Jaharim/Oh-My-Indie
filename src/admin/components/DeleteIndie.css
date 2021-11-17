@@ -1,13 +1,37 @@
-.z-index_test {
+.deleteIndie-modal__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   width: 40%;
-  height: 70%;
-  top: 15%;
+  height: 20%;
+  top: 32%;
   left: 30%;
   padding: 3rem;
   background-color: white;
+  border-radius: 10px;
   z-index: 100;
+}
+
+.deleteIndie-modal__confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.deleteIndie-modal__confirm-button__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.deleteIndie-modal__ok {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
 }

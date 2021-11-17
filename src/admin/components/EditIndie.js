@@ -32,6 +32,7 @@ const formReducer = (state, action) => {
 };
 
 const EditIndie = (props) => {
+  const [editIndieOKModalStatus, setEditIndieOKModalStatus] = useState(false);
   const [error, setError] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
@@ -120,126 +121,145 @@ const EditIndie = (props) => {
       setError(err.message || "Something went wrong, please try again");
     }
 
-    //props.onSubmit();
-
+    setEditIndieOKModalStatus(true);
     console.log(formState);
   };
 
+  const editIndieOkBtnHandler = (event) => {
+    event.preventDefault();
+    props.onClick();
+  };
+
   return (
-    <div className="editIndie-modal">
-      <form className="editIndie-modal-form" onSubmit={editIndieSubmitHandler}>
-        <div className="editIndie-modal-form__input">
-          <span>Number : </span>
-          <Input
-            element="input"
-            id="numberString"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.number}`}
-          />
+    <div>
+      {!editIndieOKModalStatus && (
+        <div className="editIndie-modal">
+          <form
+            className="editIndie-modal-form"
+            onSubmit={editIndieSubmitHandler}
+          >
+            <div className="editIndie-modal-form__input">
+              <span>Number : </span>
+              <Input
+                element="input"
+                id="numberString"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.number}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Name : </span>
+              <Input
+                element="input"
+                id="name"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.name}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>ImageUrl : </span>
+              <Input
+                element="input"
+                id="imageUrl"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.imageUrl}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Company : </span>
+              <Input
+                element="input"
+                id="company"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.company}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Song : </span>
+              <Input
+                element="input"
+                id="song"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.song}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Birth : </span>
+              <Input
+                element="input"
+                id="birth"
+                type="input"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.birth}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Description : </span>
+              <Input
+                element="textarea"
+                id="description"
+                type="textarea"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.description}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Soundcloud : </span>
+              <Input
+                element="input"
+                id="soundcloud"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.soundcloud}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Instagram : </span>
+              <Input
+                element="input"
+                id="instagram"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.instagram}`}
+              />
+            </div>
+            <div className="editIndie-modal-form__input">
+              <span>Youtube : </span>
+              <Input
+                element="input"
+                id="youtube"
+                type="text"
+                validators={[VALIDATOR_REQUIRE()]}
+                onInput={inputHandler}
+                value={`${props.indieInformForEdit.youtube}`}
+              />
+            </div>
+            <Button disabled={!formState.isValid}>Edit</Button>
+          </form>
         </div>
-        <div className="editIndie-modal-form__input">
-          <span>Name : </span>
-          <Input
-            element="input"
-            id="name"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.name}`}
-          />
+      )}
+      {editIndieOKModalStatus && (
+        <div className="editIndie-Ok-modal">
+          <div className="editIndie-Ok-modal-form">
+            <div>{formState.inputs.name.value}의 정보가 수정되었습니다.</div>
+            <Button onClick={editIndieOkBtnHandler}>OK</Button>
+          </div>
         </div>
-        <div className="editIndie-modal-form__input">
-          <span>ImageUrl : </span>
-          <Input
-            element="input"
-            id="imageUrl"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.imageUrl}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Company : </span>
-          <Input
-            element="input"
-            id="company"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.company}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Song : </span>
-          <Input
-            element="input"
-            id="song"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.song}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Birth : </span>
-          <Input
-            element="input"
-            id="birth"
-            type="input"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.birth}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Description : </span>
-          <Input
-            element="textarea"
-            id="description"
-            type="textarea"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.description}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Soundcloud : </span>
-          <Input
-            element="input"
-            id="soundcloud"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.soundcloud}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Instagram : </span>
-          <Input
-            element="input"
-            id="instagram"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.instagram}`}
-          />
-        </div>
-        <div className="editIndie-modal-form__input">
-          <span>Youtube : </span>
-          <Input
-            element="input"
-            id="youtube"
-            type="text"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-            value={`${props.indieInformForEdit.youtube}`}
-          />
-        </div>
-        <Button disabled={!formState.isValid}>Edit</Button>
-      </form>
+      )}
     </div>
   );
 };

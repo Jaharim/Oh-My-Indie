@@ -5,6 +5,7 @@
   padding: 0.3rem;
   overflow: hidden;
   background: white;
+  cursor: pointer;
 }
 
 .search {

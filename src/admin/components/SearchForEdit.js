@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import EditIndie from "./EditIndie";
 
+import "./SearchForEdit.css";
+
 const SearchForEdit = (props) => {
   const [editBackdropStatus, setEditBackdropStatus] = useState(false);
   const [searchedData, setSearchedData] = useState();
@@ -10,43 +12,48 @@ const SearchForEdit = (props) => {
 
   const editIndieMoalCloseHandler = (event) => {
     setEditBackdropStatus(false);
+    enteredIndieName.current.value = "";
   };
 
   const searchEditHandler = async (event) => {
     event.preventDefault();
+    if (enteredIndieName.current.value !== "") {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/indie/${enteredIndieName.current.value}`
+        );
 
-    try {
-      const response = await fetch(
-        `http://localhost:5000/indie/${enteredIndieName.current.value}`
-      );
+        const responseData = await response.json();
 
-      const responseData = await response.json();
+        setSearchedData(responseData);
 
-      setSearchedData(responseData);
+        if (!response.ok) {
+          throw new Error("response is not ok");
+        }
 
-      if (!response.ok) {
-        throw new Error("response is not ok");
+        setEditBackdropStatus(true);
+      } catch (err) {
+        console.log(err);
+        setError(err.message || "Something went wrong, please try again");
       }
-
-      setEditBackdropStatus(true);
-    } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
     }
   };
 
   return (
-    <div>
-      <form onSubmit={searchEditHandler}>
-        <label for="indieName">정보를 수정할 인디의 이름 : </label>
-        <input type="text" name="indieName" ref={enteredIndieName} />
-        <button>🔍</button>
+    <div className="search-edit__container">
+      <form className="search-edit__form" onSubmit={searchEditHandler}>
+        <label for="indieName">수정할 Indie</label>
+        <div className="search-edit-input__container">
+          <input type="text" name="indieName" ref={enteredIndieName} />
+          <button>🔍</button>
+        </div>
       </form>
       {editBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
       {editBackdropStatus && (
         <EditIndie
           indieName={enteredIndieName.current.value}
           indieInformForEdit={searchedData}
+          onClick={editIndieMoalCloseHandler}
         />
       )}
     </div>
