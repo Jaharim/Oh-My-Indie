@@ -21,9 +21,7 @@
 .detail-img {
   width: 200px;
   height: 200px;
-  background-image: url("../../media/choi_jeong_yoon.png");
   border-radius: 10px;
-  background-repeat: no-repeat;
   margin-bottom: 5%;
 }
 

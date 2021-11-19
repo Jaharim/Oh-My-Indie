@@ -8,7 +8,7 @@ const IndieDetail = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [indieDetail, setIndieDetail] = useState({
     name: "",
-    imageUrl: "",
+    image: "",
     company: "",
     song: "",
     birth: "",
@@ -40,7 +40,7 @@ const IndieDetail = (props) => {
 
         setIndieDetail({
           name: responseData.name,
-          imageUrl: responseData.imageUrl,
+          image: responseData.image,
           company: responseData.company,
           song: responseData.song,
           birth: responseData.birth,
@@ -71,7 +71,12 @@ const IndieDetail = (props) => {
     <div className="detail">
       <div className="detail-container__body">
         <div className="detail-container__left">
-          <div className="detail-img" />
+          <div className="detail-img">
+            <img
+              src={`http://localhost:5000/${indieDetail.image}`}
+              alt={indieDetail.name}
+            />
+          </div>
           <div className="detail-favorite">
             <div className="detail-like__container">
               <div

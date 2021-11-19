@@ -95,23 +95,20 @@ const AddIndie = (props) => {
 
     console.log(formState.inputs);
     try {
+      const formData = new FormData();
+      formData.append("numberString", formState.inputs.numberString.value);
+      formData.append("name", formState.inputs.name.value);
+      formData.append("company", formState.inputs.company.value);
+      formData.append("song", formState.inputs.song.value);
+      formData.append("birth", formState.inputs.birth.value);
+      formData.append("description", formState.inputs.description.value);
+      formData.append("soundcloud", formState.inputs.soundcloud.value);
+      formData.append("instagram", formState.inputs.instagram.value);
+      formData.append("youtube", formState.inputs.youtube.value);
+      formData.append("image", formState.inputs.image.value);
       const response = await fetch(`http://localhost:5000/admin/addIndie`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          numberString: formState.inputs.numberString.value,
-          name: formState.inputs.name.value,
-          company: formState.inputs.company.value,
-          song: formState.inputs.song.value,
-          birth: formState.inputs.birth.value,
-          description: formState.inputs.description.value,
-          soundcloud: formState.inputs.soundcloud.value,
-          instagram: formState.inputs.instagram.value,
-          youtube: formState.inputs.youtube.value,
-          image: formState.inputs.image.value,
-        }),
+        body: formData,
       });
 
       if (!response.ok) {
