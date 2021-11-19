@@ -3,6 +3,7 @@ import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
+import ImageUpload from "./ImageUpload";
 
 import "./AddIndie.css";
 
@@ -44,8 +45,8 @@ const AddIndie = (props) => {
         value: "",
         isValid: false,
       },
-      imageUrl: {
-        value: "",
+      image: {
+        value: null,
         isValid: false,
       },
       company: {
@@ -92,6 +93,7 @@ const AddIndie = (props) => {
   const addIndieSubmitHandler = async (event) => {
     event.preventDefault();
 
+    console.log(formState.inputs);
     try {
       const response = await fetch(`http://localhost:5000/admin/addIndie`, {
         method: "POST",
@@ -101,7 +103,6 @@ const AddIndie = (props) => {
         body: JSON.stringify({
           numberString: formState.inputs.numberString.value,
           name: formState.inputs.name.value,
-          imageUrl: formState.inputs.imageUrl.value,
           company: formState.inputs.company.value,
           song: formState.inputs.song.value,
           birth: formState.inputs.birth.value,
@@ -109,6 +110,7 @@ const AddIndie = (props) => {
           soundcloud: formState.inputs.soundcloud.value,
           instagram: formState.inputs.instagram.value,
           youtube: formState.inputs.youtube.value,
+          image: formState.inputs.image.value,
         }),
       });
 
@@ -158,7 +160,7 @@ const AddIndie = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <div className="addIndie-modal-form__input">
+            {/* <div className="addIndie-modal-form__input">
               <span>ImageUrl : </span>
               <Input
                 element="input"
@@ -167,7 +169,12 @@ const AddIndie = (props) => {
                 validators={[VALIDATOR_REQUIRE()]}
                 onInput={inputHandler}
               />
-            </div>
+            </div> */}
+            <ImageUpload
+              className="addIndie-modal-form__input"
+              id="image"
+              onInput={inputHandler}
+            />
             <div className="addIndie-modal-form__input">
               <span>Company : </span>
               <Input
