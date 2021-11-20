@@ -4,3 +4,21 @@
   justify-content: space-evenly;
   width: 100%;
 }
+
+.image-input__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.image-input__form-button {
+  width: 100%;
+}
+
+.image-input__form-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

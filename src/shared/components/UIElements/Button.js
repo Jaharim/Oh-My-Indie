@@ -5,7 +5,7 @@ import "./Button.css";
 const Button = (props) => {
   return (
     <button
-      type="submit"
+      type={props.type ? props.type : "submit"}
       className={`button ${props.className}`}
       onClick={props.onClick}
       disabled={props.disabled}

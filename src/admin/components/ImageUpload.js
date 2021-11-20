@@ -23,6 +23,7 @@ const ImageUpload = (props) => {
   }, [file]);
 
   const pickedHandler = (event) => {
+    event.preventDefault();
     let pickedFile;
     let fileIsValid = isValid;
     if (event.target.files || event.target.files.length === 1) {
@@ -51,11 +52,15 @@ const ImageUpload = (props) => {
         accept=".jpg,.png,.jpeg"
         onChange={pickedHandler}
       />
-      <div>
-        <div>
-          <img src={previewUrl} alt="Preview" />
+      <div className="image-input__form">
+        <div className="image-input__form-img">
+          <img src={previewUrl} alt="Preview" onClick="return false;" />
         </div>
-        <Button type="button" onClick={pickImageHandler}>
+        <Button
+          className="image-input__form-button"
+          type="button"
+          onClick={pickImageHandler}
+        >
           PICK IMAGE
         </Button>
       </div>

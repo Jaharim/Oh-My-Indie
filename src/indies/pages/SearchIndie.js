@@ -15,7 +15,7 @@ const SearchIndie = (props) => {
   const history = useHistory();
   const [randomIndie, setRandomIndie] = useState({
     name: "",
-    imageUrl: "",
+    image: "",
     like: 0,
   });
   const [formState, setFormState] = useState({
@@ -41,7 +41,7 @@ const SearchIndie = (props) => {
 
         setRandomIndie({
           name: responseData.name,
-          imageUrl: responseData.imageUrl,
+          image: responseData.image,
           like: responseData.like,
         });
 
@@ -112,7 +112,7 @@ const SearchIndie = (props) => {
           </div>
           <RandomIndie
             name={randomIndie.name}
-            imageUrl={randomIndie.imageUrl}
+            image={randomIndie.image}
             likeNumber={randomIndie.like}
             onClick={randomIndieClickHandler}
           />

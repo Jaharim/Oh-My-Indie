@@ -3,6 +3,7 @@ import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
+import ImageUpload from "./ImageUpload";
 
 import "./EditIndie.css";
 
@@ -32,6 +33,7 @@ const formReducer = (state, action) => {
 };
 
 const EditIndie = (props) => {
+  const [submitCheck, setSubmitCheck] = useState(false);
   const [editIndieOKModalStatus, setEditIndieOKModalStatus] = useState(false);
   const [error, setError] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
@@ -44,8 +46,8 @@ const EditIndie = (props) => {
         value: `${props.indieInformForEdit.name}`,
         isValid: true,
       },
-      imageUrl: {
-        value: `${props.indieInformForEdit.imageUrl}`,
+      image: {
+        value: `${props.indieInformForEdit.image}`,
         isValid: true,
       },
       company: {
@@ -91,25 +93,22 @@ const EditIndie = (props) => {
   const editIndieSubmitHandler = async (event) => {
     event.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("numberString", formState.inputs.numberString.value);
+      formData.append("name", formState.inputs.name.value);
+      formData.append("company", formState.inputs.company.value);
+      formData.append("song", formState.inputs.song.value);
+      formData.append("birth", formState.inputs.birth.value);
+      formData.append("description", formState.inputs.description.value);
+      formData.append("soundcloud", formState.inputs.soundcloud.value);
+      formData.append("instagram", formState.inputs.instagram.value);
+      formData.append("youtube", formState.inputs.youtube.value);
+      formData.append("image", formState.inputs.image.value);
       const response = await fetch(
         `http://localhost:5000/admin/${props.indieName}/editIndie`,
         {
           method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            numberString: formState.inputs.numberString.value,
-            name: formState.inputs.name.value,
-            imageUrl: formState.inputs.imageUrl.value,
-            company: formState.inputs.company.value,
-            song: formState.inputs.song.value,
-            birth: formState.inputs.birth.value,
-            description: formState.inputs.description.value,
-            soundcloud: formState.inputs.soundcloud.value,
-            instagram: formState.inputs.instagram.value,
-            youtube: formState.inputs.youtube.value,
-          }),
+          body: formData,
         }
       );
 
@@ -134,10 +133,7 @@ const EditIndie = (props) => {
     <div>
       {!editIndieOKModalStatus && (
         <div className="editIndie-modal">
-          <form
-            className="editIndie-modal-form"
-            onSubmit={editIndieSubmitHandler}
-          >
+          <form className="editIndie-modal-form" onSubmit="return check()">
             <div className="editIndie-modal-form__input">
               <span>Number : </span>
               <Input
@@ -160,17 +156,14 @@ const EditIndie = (props) => {
                 value={`${props.indieInformForEdit.name}`}
               />
             </div>
-            <div className="editIndie-modal-form__input">
-              <span>ImageUrl : </span>
-              <Input
-                element="input"
-                id="imageUrl"
-                type="text"
-                validators={[VALIDATOR_REQUIRE()]}
-                onInput={inputHandler}
-                value={`${props.indieInformForEdit.imageUrl}`}
-              />
-            </div>
+            {/* <div className="editIndie-modal-form__input">
+              <span>ImageUrl : </span> */}
+            <ImageUpload
+              className="editIndie-modal-form__input"
+              id="image"
+              onInput={inputHandler}
+            />
+            {/* </div> */}
             <div className="editIndie-modal-form__input">
               <span>Company : </span>
               <Input
@@ -245,10 +238,16 @@ const EditIndie = (props) => {
                 type="text"
                 validators={[VALIDATOR_REQUIRE()]}
                 onInput={inputHandler}
-                value={`${props.indieInformForEdit.youtube}`}
+                value={`${formState.inputs.youtube.value}`}
               />
             </div>
-            <Button disabled={!formState.isValid}>Edit</Button>
+            <Button
+              type="button"
+              onClick={editIndieSubmitHandler}
+              disabled={!formState.isValid}
+            >
+              Edit
+            </Button>
           </form>
         </div>
       )}

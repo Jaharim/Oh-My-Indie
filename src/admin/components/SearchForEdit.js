@@ -24,9 +24,9 @@ const SearchForEdit = (props) => {
         );
 
         const responseData = await response.json();
-
+        const responseImg = `http://localhost:5000/${responseData.image}`;
+        responseData.image = responseImg;
         setSearchedData(responseData);
-
         if (!response.ok) {
           throw new Error("response is not ok");
         }
@@ -38,7 +38,7 @@ const SearchForEdit = (props) => {
       }
     }
   };
-
+  console.log(searchedData);
   return (
     <div className="search-edit__container">
       <form className="search-edit__form" onSubmit={searchEditHandler}>
