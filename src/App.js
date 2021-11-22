@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect, Switch } from "react-router";
 import { Link } from "react-router-dom";
@@ -13,27 +13,11 @@ import Auth from "./user/pages/Auth";
 import { AuthContext } from "./shared/components/context/auth-context";
 import Signup from "./user/pages/Signup";
 import Admin from "./admin/pages/Admin";
+import { useAuth } from "./shared/components/context/auth-hook";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const { token, login, logout, userId, isAdmin } = useAuth();
   const [errorSubmit, setErrorSubmit] = useState(false);
-
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
-  }, []);
-
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-  }, []);
-
-  const adminLogin = useCallback(() => {
-    setIsAdmin(true);
-  }, []);
-
-  const adminLogout = useCallback(() => {
-    setIsAdmin(false);
-  }, []);
 
   const errorRedirectHandler = () => {
     setErrorSubmit(true);
@@ -41,7 +25,7 @@ function App() {
 
   let routes;
 
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -103,12 +87,11 @@ function App() {
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn: isLoggedIn,
+        isLoggedIn: !!token,
+        token: token,
         login: login,
         logout: logout,
         isAdmin: isAdmin,
-        adminLogin: adminLogin,
-        adminLogout: adminLogout,
       }}
     >
       <Router>

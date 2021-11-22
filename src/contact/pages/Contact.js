@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { AuthContext } from "../../shared/components/context/auth-context";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import Button from "../../shared/components/UIElements/Button";
 import AskAuth from "../components/AskAuth";
 import ContactForm from "../components/ContactForm";
+
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./Contact.css";
 

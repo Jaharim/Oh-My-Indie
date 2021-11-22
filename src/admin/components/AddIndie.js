@@ -1,9 +1,10 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
 import ImageUpload from "./ImageUpload";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./AddIndie.css";
 
@@ -33,6 +34,7 @@ const formReducer = (state, action) => {
 };
 
 const AddIndie = (props) => {
+  const auth = useContext(AuthContext);
   const [error, setError] = useState();
   const [addIndieOkModalStatus, setAddIndieOkModalStatus] = useState(false);
   const [formState, dispatch] = useReducer(formReducer, {
@@ -109,6 +111,9 @@ const AddIndie = (props) => {
       const response = await fetch(`http://localhost:5000/admin/addIndie`, {
         method: "POST",
         body: formData,
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
       });
 
       if (!response.ok) {

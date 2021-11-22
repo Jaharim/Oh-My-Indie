@@ -88,13 +88,16 @@ const Auth = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
+      if (response.ok) {
+        if (formState.inputs.email.value === "admin@admin.com")
+          auth.login(responseData.userId, responseData.token, "admin");
+        else auth.login(responseData.userId, responseData.token, "user");
+      }
     } catch (err) {
       console.log(err);
       setError(err.message || "Something went wrong, please try again");
     }
     setIsLoading(false);
-    if (formState.inputs.email.value === "admin@admin.com") auth.adminLogin();
-    auth.login();
 
     history.replace("/");
   };

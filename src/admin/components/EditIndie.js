@@ -1,9 +1,10 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
 import ImageUpload from "./ImageUpload";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./EditIndie.css";
 
@@ -33,7 +34,9 @@ const formReducer = (state, action) => {
 };
 
 const EditIndie = (props) => {
+  const auth = useContext(AuthContext);
   const [submitCheck, setSubmitCheck] = useState(false);
+  const [checkEditImg, setCheckEditImg] = useState(false);
   const [editIndieOKModalStatus, setEditIndieOKModalStatus] = useState(false);
   const [error, setError] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
@@ -104,11 +107,15 @@ const EditIndie = (props) => {
       formData.append("instagram", formState.inputs.instagram.value);
       formData.append("youtube", formState.inputs.youtube.value);
       formData.append("image", formState.inputs.image.value);
+      formData.append("checkEditImg", checkEditImg);
       const response = await fetch(
         `http://localhost:5000/admin/${props.indieName}/editIndie`,
         {
           method: "PATCH",
           body: formData,
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
         }
       );
 
@@ -127,6 +134,10 @@ const EditIndie = (props) => {
   const editIndieOkBtnHandler = (event) => {
     event.preventDefault();
     props.onClick();
+  };
+
+  const checkEditImgHandler = (event) => {
+    setCheckEditImg(true);
   };
 
   return (
@@ -162,6 +173,7 @@ const EditIndie = (props) => {
               className="editIndie-modal-form__input"
               id="image"
               onInput={inputHandler}
+              checkEditImg={checkEditImgHandler}
             />
             {/* </div> */}
             <div className="editIndie-modal-form__input">

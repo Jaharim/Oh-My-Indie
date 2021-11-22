@@ -31,6 +31,7 @@ const ImageUpload = (props) => {
       setFile(pickedFile);
       setIsValid(true);
       fileIsValid = true;
+      props.checkEditImg();
     } else {
       setIsValid(false);
       fileIsValid = false;
@@ -54,7 +55,7 @@ const ImageUpload = (props) => {
       />
       <div className="image-input__form">
         <div className="image-input__form-img">
-          <img src={previewUrl} alt="Preview" onClick="return false;" />
+          <img src={previewUrl} alt="Preview" />
         </div>
         <Button
           className="image-input__form-button"

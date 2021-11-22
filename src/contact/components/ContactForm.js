@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
+
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
@@ -11,6 +13,7 @@ import Button from "../../shared/components/UIElements/Button";
 import "./ContactForm.css";
 const ContactForm = (props) => {
   const [error, setError] = useState();
+  const auth = useContext(AuthContext);
   const [titleFormState, setFormState] = useState({
     value: "",
     isValid: false,
@@ -44,6 +47,7 @@ const ContactForm = (props) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           title: titleFormState.value,

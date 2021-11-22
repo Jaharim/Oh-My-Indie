@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../../shared/components/UIElements/Button";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./DeleteIndie.css";
 
 const DeleteIndie = (props) => {
+  const auth = useContext(AuthContext);
   const [deleteBackdropStatus, setdeleteBackdropStatus] = useState(false);
   const [error, setError] = useState();
   const deleteIndieModalCloseHandler = (event) => {
@@ -19,6 +21,9 @@ const DeleteIndie = (props) => {
         `http://localhost:5000/admin/${props.indieName}/deleteIndie`,
         {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
         }
       );
 
