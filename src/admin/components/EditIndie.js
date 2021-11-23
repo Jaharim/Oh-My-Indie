@@ -173,6 +173,7 @@ const EditIndie = (props) => {
               className="editIndie-modal-form__input"
               id="image"
               onInput={inputHandler}
+              mode={true}
               checkEditImg={checkEditImgHandler}
             />
             {/* </div> */}

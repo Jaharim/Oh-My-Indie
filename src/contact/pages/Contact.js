@@ -12,6 +12,7 @@ import "./Contact.css";
 const Contact = (props) => {
   const history = useHistory();
   const auth = useContext(AuthContext);
+  const [okModalStatus, setOkModalStatus] = useState(false);
   const [contactFormOpen, setContactFormOpen] = useState(false);
 
   const contactModalOpenHandler = (event) => {
@@ -21,6 +22,10 @@ const Contact = (props) => {
   const contactModalCloseHandler = (event) => {
     setContactFormOpen(false);
     if (!auth.isLoggedIn) history.replace("/auth");
+  };
+
+  const contactOkBtnHandler = () => {
+    setOkModalStatus(true);
   };
 
   return (

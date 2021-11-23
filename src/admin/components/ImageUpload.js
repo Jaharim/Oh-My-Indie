@@ -31,10 +31,13 @@ const ImageUpload = (props) => {
       setFile(pickedFile);
       setIsValid(true);
       fileIsValid = true;
-      props.checkEditImg();
     } else {
       setIsValid(false);
       fileIsValid = false;
+    }
+
+    if (props.mode) {
+      props.checkEditImg();
     }
     props.onInput(props.id, pickedFile, fileIsValid);
   };

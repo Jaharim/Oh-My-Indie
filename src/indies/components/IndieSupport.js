@@ -1,16 +1,33 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Message from "./Message";
 
 import "./IndieSupport.css";
 import Button from "../../shared/components/UIElements/Button";
+import AddSupportMsgModal from "./AddSupportMsg";
+import Backdrop from "../../shared/components/UIElements/Backdrop";
 
 const IndieSupport = (props) => {
   const [error, setError] = useState();
+  const [addSupportMsgModalStatus, setAddSupportMsgModalStatus] =
+    useState(false);
+  const history = useHistory();
   const [supportArr, setSupportArr] = useState([]);
   const supportMessage = [];
   const params = useParams();
+
+  const openAddSupportMsgModalHandler = () => {
+    setAddSupportMsgModalStatus(true);
+  };
+
+  const closeAddSupportMsgModalHandler = () => {
+    setAddSupportMsgModalStatus(false);
+  };
+
+  const goToBackPageHandler = () => {
+    history.replace(`/indie/${params.indieId}`);
+  };
 
   useEffect(() => {
     const getSupportMessage = async () => {
@@ -35,7 +52,9 @@ const IndieSupport = (props) => {
       }
     };
     getSupportMessage();
-  }, []);
+  }, [addSupportMsgModalStatus]);
+  //<Link to={`/indie/${params.indieId}`} className="support-back__btn"></Link>
+
   return (
     <div className="support">
       <div className="support-container">
@@ -55,12 +74,24 @@ const IndieSupport = (props) => {
             })}
           </ul>
         </div>
-        <Button className="support-back button">
-          <Link to={`/indie/${params.indieId}`} className="support-back__btn">
+        <div className="support-button__container">
+          <Button
+            className="add-support-message"
+            onClick={openAddSupportMsgModalHandler}
+          >
+            Add
+          </Button>
+          <Button className="support-back" onClick={goToBackPageHandler}>
             Back
-          </Link>
-        </Button>
+          </Button>
+        </div>
       </div>
+      {addSupportMsgModalStatus && (
+        <Backdrop onClick={closeAddSupportMsgModalHandler} />
+      )}
+      {addSupportMsgModalStatus && (
+        <AddSupportMsgModal onSubmit={closeAddSupportMsgModalHandler} />
+      )}
     </div>
   );
 };

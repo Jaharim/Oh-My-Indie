@@ -29,3 +29,8 @@
   border-style: none none double none;
   top: 9%;
 }
+
+.indie__backBtn {
+  position: relative;
+  top: 45%;
+}

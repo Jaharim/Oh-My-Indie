@@ -1,10 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
+import Button from "../../shared/components/UIElements/Button";
 import IndieDetail from "../components/IndieDetail";
 
 import "./Indie.css";
 
 const Indie = (props) => {
+  const history = useHistory();
+  const params = useParams();
+
   useEffect(() => {
     const indieExistChecker = async () => {
       try {
@@ -25,12 +29,18 @@ const Indie = (props) => {
     indieExistChecker();
   }, []);
 
-  const params = useParams();
+  const goToBackPageHandler = () => {
+    history.replace(`/indie`);
+  };
+
   return (
     <div className="indie">
       <div className="indie__container">
         <h1 className="indie__header">My Indie, {params.indieId}</h1>
         <IndieDetail className="indie__body" name={params.indieId} />
+        <Button className="indie__backBtn" onClick={goToBackPageHandler}>
+          Back
+        </Button>
       </div>
     </div>
   );
