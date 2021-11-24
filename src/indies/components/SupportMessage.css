@@ -1,0 +1,56 @@
+.message {
+  width: 90%;
+  height: 250px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+  background-color: white;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+}
+
+.message-title__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.message-title {
+  font-weight: bold;
+  text-align: left;
+}
+/* .message-body {
+} */
+
+.message-button__container {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.message-button__edit {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../media/pen.png");
+  background-size: cover;
+  margin-right: 2px;
+}
+.message-button__delete {
+  width: 25px;
+  height: 25px;
+  background-image: url("../../media/delete.png");
+  background-size: cover;
+}
+
+.message-creator {
+  font-size: 0.9em;
+  color: #808080;
+  font-weight: bold;
+  text-align: right;
+}

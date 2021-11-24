@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import Message from "./Message";
+import SupportMessage from "./SupportMessage";
 
 import "./IndieSupport.css";
 import Button from "../../shared/components/UIElements/Button";
@@ -64,7 +64,7 @@ const IndieSupport = (props) => {
             {supportArr.map((el) => {
               return (
                 <li className="support-message">
-                  <Message
+                  <SupportMessage
                     title={el.title}
                     body={el.body}
                     creator={el.creator}
