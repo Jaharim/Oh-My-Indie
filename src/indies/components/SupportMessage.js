@@ -10,11 +10,7 @@ const SupportMessage = (props) => {
   const [deleteBtnStatus, setDeleteBtnStatus] = useState(false);
 
   const messageEditBtnHandler = async () => {
-    try {
-      //여기서 fetch 해서 backend에서 data 넘겨준거 props로 EditSupportMsg component에 넘겨주기
-      //EditSupportMsg component에서는 data 받아서 fetch로 modal 에 미리 입력되어있게끔 해주고
-      //submit하면 patch 되게 해주기
-    } catch (err) {}
+    console.log(props.id);
     setEditBtnStatus(true);
   };
 
@@ -24,6 +20,10 @@ const SupportMessage = (props) => {
 
   const editModalCloseHandler = () => {
     setEditBtnStatus(false);
+  };
+
+  const changeCheckHandler = (props) => {
+    props.onEdit();
   };
 
   return (
@@ -46,7 +46,13 @@ const SupportMessage = (props) => {
         <div className="message-creator">{props.creator}</div>
       </div>
       {editBtnStatus && <Backdrop onClick={editModalCloseHandler} />}
-      {editBtnStatus && <EditSupportMsg onSubmit={editModalCloseHandler} />}
+      {editBtnStatus && (
+        <EditSupportMsg
+          onSubmit={editModalCloseHandler}
+          props={props}
+          onEdit={changeCheckHandler}
+        />
+      )}
       {deleteBtnStatus && <Backdrop />}
       {deleteBtnStatus && <DeleteSupportMsg />}
     </div>

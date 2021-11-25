@@ -49,40 +49,18 @@ const EditSupportMsg = (props) => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       supportMsgTitle: {
-        value: "",
-        isValid: false,
+        value: `${props.props.title}`,
+        isValid: true,
       },
       supportMsgContent: {
-        value: "",
-        isValid: false,
+        value: `${props.props.body}`,
+        isValid: true,
       },
     },
-    isValid: false,
+    isValid: true,
   });
 
-  useEffect(() => {
-    const getSupportMsgData = async () => {
-      /* try {
-              const response = await fetch(
-                `http://localhost:5000/indie/${enteredIndieName.current.value}`
-              );
-
-              const responseData = await response.json();
-              const responseImg = `http://localhost:5000/${responseData.image}`;
-              responseData.image = responseImg;
-              setSearchedData(responseData);
-              if (!response.ok) {
-                throw new Error("response is not ok");
-              }
-
-              setEditBackdropStatus(true);
-            } catch (err) {
-              console.log(err);
-              setError(err.message || "Something went wrong, please try again");
-            } */
-    };
-    getSupportMsgData();
-  }, []);
+  //changeCheckHandler context로 해주기. redux로 해줘도 좋을듯.
 
   const inputHandler = useCallback((id, value, isValid) => {
     dispatch({
@@ -97,9 +75,34 @@ const EditSupportMsg = (props) => {
     event.preventDefault();
 
     try {
-    } catch (err) {}
+      try {
+        const response = await fetch(
+          `http://localhost:5000/indie/${params.indieId}/support`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.token}`,
+            },
+            body: JSON.stringify({
+              title: formState.inputs.supportMsgTitle.value,
+              body: formState.inputs.supportMsgContent.value,
+              id: props.props.id,
+            }),
+          }
+        );
 
-    setOkModalStatus(true);
+        if (!response.ok) {
+          throw new Error("response is not ok");
+        }
+
+        setOkModalStatus(true);
+        props.onEdit();
+      } catch (err) {
+        console.log(err);
+        setError(err.message || "Something went wrong, please try again");
+      }
+    } catch (err) {}
   };
   const editOkBtnHandler = () => {
     props.onSubmit();
@@ -120,7 +123,7 @@ const EditSupportMsg = (props) => {
                 element="input"
                 type="text"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-                errorText="제목을 5글자 이상 입력해주세요."
+                value={`${props.props.title}`}
                 onInput={inputHandler}
               />
             </div>
@@ -131,7 +134,7 @@ const EditSupportMsg = (props) => {
                 element="textarea"
                 rows="10"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-                errorText="내용을 입력해주세요."
+                value={`${props.props.body}`}
                 onInput={inputHandler}
               />
             </div>

@@ -10,6 +10,7 @@ import Backdrop from "../../shared/components/UIElements/Backdrop";
 
 const IndieSupport = (props) => {
   const [error, setError] = useState();
+  const [changeCheckStatus, setChangeCheckStatus] = useState(false);
   const [addSupportMsgModalStatus, setAddSupportMsgModalStatus] =
     useState(false);
   const history = useHistory();
@@ -17,6 +18,9 @@ const IndieSupport = (props) => {
   const supportMessage = [];
   const params = useParams();
 
+  const changeCheckHandler = () => {
+    setChangeCheckStatus(true);
+  };
   const openAddSupportMsgModalHandler = () => {
     setAddSupportMsgModalStatus(true);
   };
@@ -52,7 +56,7 @@ const IndieSupport = (props) => {
       }
     };
     getSupportMessage();
-  }, [addSupportMsgModalStatus]);
+  }, [addSupportMsgModalStatus, changeCheckStatus]);
   //<Link to={`/indie/${params.indieId}`} className="support-back__btn"></Link>
 
   return (
@@ -68,6 +72,8 @@ const IndieSupport = (props) => {
                     title={el.title}
                     body={el.body}
                     creator={el.creator}
+                    id={el.id}
+                    onEdit={changeCheckHandler}
                   />
                 </li>
               );
