@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import SupportMessage from "./SupportMessage";
@@ -11,6 +11,7 @@ import Backdrop from "../../shared/components/UIElements/Backdrop";
 const IndieSupport = (props) => {
   const [error, setError] = useState();
   const [changeCheckStatus, setChangeCheckStatus] = useState(false);
+  const [deleteCheckStatus, setDeleteCheckStatus] = useState(false);
   const [addSupportMsgModalStatus, setAddSupportMsgModalStatus] =
     useState(false);
   const history = useHistory();
@@ -21,6 +22,11 @@ const IndieSupport = (props) => {
   const changeCheckHandler = () => {
     setChangeCheckStatus(true);
   };
+
+  const deleteCheckHandler = () => {
+    setDeleteCheckStatus(true);
+  };
+
   const openAddSupportMsgModalHandler = () => {
     setAddSupportMsgModalStatus(true);
   };
@@ -56,7 +62,9 @@ const IndieSupport = (props) => {
       }
     };
     getSupportMessage();
-  }, [addSupportMsgModalStatus, changeCheckStatus]);
+    setChangeCheckStatus(false);
+    setDeleteCheckStatus(false);
+  }, [addSupportMsgModalStatus, changeCheckStatus, deleteCheckStatus]);
   //<Link to={`/indie/${params.indieId}`} className="support-back__btn"></Link>
 
   return (
@@ -71,9 +79,11 @@ const IndieSupport = (props) => {
                   <SupportMessage
                     title={el.title}
                     body={el.body}
+                    nickname={el.nickname}
                     creator={el.creator}
                     id={el.id}
                     onEdit={changeCheckHandler}
+                    onDelete={deleteCheckHandler}
                   />
                 </li>
               );

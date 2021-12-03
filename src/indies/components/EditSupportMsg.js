@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import Input from "../../shared/components/FormElements/Input";
@@ -12,6 +6,7 @@ import Button from "../../shared/components/UIElements/Button";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
+  VALIDATOR_MAXLENGTH,
 } from "../../shared/components/util/validators";
 
 import "./AddSupportMsg.css";
@@ -97,7 +92,6 @@ const EditSupportMsg = (props) => {
         }
 
         setOkModalStatus(true);
-        props.onEdit();
       } catch (err) {
         console.log(err);
         setError(err.message || "Something went wrong, please try again");
@@ -122,7 +116,11 @@ const EditSupportMsg = (props) => {
                 id="supportMsgTitle"
                 element="input"
                 type="text"
-                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MINLENGTH(5),
+                  VALIDATOR_MAXLENGTH(10),
+                ]}
                 value={`${props.props.title}`}
                 onInput={inputHandler}
               />
@@ -133,7 +131,11 @@ const EditSupportMsg = (props) => {
                 id="supportMsgContent"
                 element="textarea"
                 rows="10"
-                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MINLENGTH(5),
+                  VALIDATOR_MAXLENGTH(150),
+                ]}
                 value={`${props.props.body}`}
                 onInput={inputHandler}
               />

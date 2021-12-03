@@ -38,7 +38,6 @@ const SearchForEdit = (props) => {
       }
     }
   };
-  console.log(searchedData);
   return (
     <div className="search-edit__container">
       <form className="search-edit__form" onSubmit={searchEditHandler}>

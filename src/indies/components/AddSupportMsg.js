@@ -6,6 +6,7 @@ import Button from "../../shared/components/UIElements/Button";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
+  VALIDATOR_MAXLENGTH,
 } from "../../shared/components/util/validators";
 
 import "./AddSupportMsg.css";
@@ -113,7 +114,11 @@ const AddSupportMsgModal = (props) => {
                 id="supportMsgTitle"
                 element="input"
                 type="text"
-                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MINLENGTH(5),
+                  VALIDATOR_MAXLENGTH(10),
+                ]}
                 errorText="제목을 5글자 이상 입력해주세요."
                 onInput={inputHandler}
               />
@@ -124,7 +129,11 @@ const AddSupportMsgModal = (props) => {
                 id="supportMsgContent"
                 element="textarea"
                 rows="10"
-                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MINLENGTH(5),
+                  VALIDATOR_MAXLENGTH(150),
+                ]}
                 errorText="내용을 입력해주세요."
                 onInput={inputHandler}
               />

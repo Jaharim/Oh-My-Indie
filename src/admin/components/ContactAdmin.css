@@ -1,4 +1,4 @@
-.support {
+.contact-admin {
   display: flex;
   position: absolute;
   width: 100%;
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
 }
-.support-container {
+.contact-admin-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,14 +25,14 @@
   overflow: auto;
 }
 
-.support-header {
+.contact-admin-header {
   position: absolute;
   border: 5px double black;
   border-style: none none double none;
   top: 9%;
 }
 
-.support-main {
+.contact-admin-main {
   position: relative;
   width: 100%;
   height: 60%;
@@ -40,23 +40,15 @@
   overflow: auto;
 }
 
-.support-body {
+.contact-admin-body {
   display: grid;
-
   grid-template-columns: repeat(3, 33%);
   width: 100%;
   top: 50px;
   list-style: none;
 }
 
-.support-message {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 50px;
-  width: 100%;
-}
-
-.support-button__container {
+.contact-admin-button__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,12 +56,4 @@
   width: 50%;
   position: relative;
   top: 14%;
-}
-
-.add-support-message {
-  margin-right: 20px;
-}
-
-.support-back {
-  width: 100%;
 }

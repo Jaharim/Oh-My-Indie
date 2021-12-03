@@ -14,6 +14,7 @@ import { AuthContext } from "./shared/components/context/auth-context";
 import Signup from "./user/pages/Signup";
 import Admin from "./admin/pages/Admin";
 import { useAuth } from "./shared/components/context/auth-hook";
+import ContactAdmin from "./admin/components/ContactAdmin";
 
 function App() {
   const { token, login, logout, userId, isAdmin } = useAuth();
@@ -49,6 +50,11 @@ function App() {
         {isAdmin && (
           <Route path="/admin" exact>
             <Admin />
+          </Route>
+        )}
+        {isAdmin && (
+          <Route path="/admin/contact" exact>
+            <ContactAdmin />
           </Route>
         )}
         <Redirect to="/" />
