@@ -3,12 +3,20 @@ import React, { useContext, useEffect, useState } from "react";
 import Button from "../../shared/components/UIElements/Button";
 import "./ContactAdmin.css";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ContactMessage from "./ContactMessage";
+import { useHistory } from "react-router";
 
 const ContactAdmin = (props) => {
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const contactMessage = [];
   const [error, setError] = useState();
   const [contactArr, setContactArr] = useState([]);
+
+  const backToAdminPageHandler = (event) => {
+    event.preventDefault();
+    history.replace("/admin");
+  };
 
   useEffect(() => {
     const getContactMessage = async () => {
@@ -46,16 +54,23 @@ const ContactAdmin = (props) => {
             {contactArr.map((el) => {
               return (
                 <li className="contact-admin-message">
-                  <div>{el.title}</div>
-                  <div>{el.content}</div>
-                  <div>{el.nickname}</div>
+                  <ContactMessage
+                    title={el.title}
+                    content={el.content}
+                    nickname={el.nickname}
+                  />
                 </li>
               );
             })}
           </ul>
         </div>
         <div className="contact-admin-button__container">
-          <Button className="contact-admin-back">Back</Button>
+          <Button
+            className="contact-admin-back"
+            onClick={backToAdminPageHandler}
+          >
+            Back
+          </Button>
         </div>
       </div>
     </div>
