@@ -11,7 +11,6 @@ const Admin = (props) => {
   let adminContent;
   const history = useHistory();
   const [adminMode, setAdminMode] = useState("indie");
-  const [modeButton, setModeButton] = useState(false);
   const [addBackdropStatus, setAddBackdropStatus] = useState(false);
   const [deleteBackdropStatus, setDeleteBackdropStatus] = useState(false);
 
@@ -34,12 +33,10 @@ const Admin = (props) => {
 
   const changeUserModeHandler = () => {
     setAdminMode("user");
-    setModeButton(true);
   };
 
   const changeIndieModeHandler = () => {
     setAdminMode("indie");
-    setModeButton(false);
   };
 
   const openContactAdminModeHandler = () => {
@@ -91,22 +88,20 @@ const Admin = (props) => {
       <div className="admin__container">
         <div className="admin-menu__container">{adminContent}</div>
       </div>
-      {!modeButton && (
+      <div className="adminMode__container">
         <div
           className="adminMode-indie__button"
-          onClick={changeUserModeHandler}
-        >
-          User
-        </div>
-      )}
-      {modeButton && (
-        <div
-          className="adminMode-user__button"
           onClick={changeIndieModeHandler}
         >
           Indie
         </div>
-      )}
+        <div
+          className="adminMode-contact__button"
+          onClick={changeUserModeHandler}
+        >
+          Contact
+        </div>
+      </div>
     </React.Fragment>
   );
 };

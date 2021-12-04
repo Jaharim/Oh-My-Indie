@@ -1,4 +1,4 @@
-.admin-menu__container {
+.myPage-menu__container {
   display: flex;
   position: absolute;
   flex-direction: row;
@@ -16,7 +16,7 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.admin-menu-addIndie__container {
+.myPage-menu-addIndie__container {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -25,14 +25,15 @@
   height: 60%;
 }
 
-.admin-menu-addIndie__text:hover {
+.myPage-menu-addIndie__text:hover {
   transform: scale(1.01);
 }
 
-.admin-menu-addIndie__text {
+.myPage-menu-addIndie__text {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
   border: 1px solid #7e7e7e;
   border-radius: 10px;
   width: 70%;
@@ -41,7 +42,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 
-.admin-menu-editIndie__container {
+.myPage-menu-editIndie__container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -50,7 +51,7 @@
   width: 30%;
   height: 60%;
 }
-.admin-menu-deleteIndie__container {
+.myPage-menu-deleteIndie__container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -58,37 +59,4 @@
   align-content: center;
   width: 30%;
   height: 60%;
-}
-
-.adminMode__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  position: absolute;
-  width: 30%;
-  height: 4%;
-  top: 15%;
-  left: 35%;
-}
-
-.adminMode-contact__button,
-.adminMode-indie__button {
-  background-color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 6px;
-  width: 20%;
-  height: 100%;
-}
-
-.adminMode-contact__button:hover,
-.adminMode-indie__button:hover {
-  font-weight: bold;
-}
-
-button {
-  cursor: pointer;
 }

@@ -1,27 +1,16 @@
-import React, {
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
-import SupportMessage from "./SupportMessage";
+import SupportMessage from "../../indies/components/SupportMessage";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
-import "./IndieSupport.css";
+import "./MySupportMsg.css";
 import Button from "../../shared/components/UIElements/Button";
-import AddSupportMsgModal from "./AddSupportMsg";
-import Backdrop from "../../shared/components/UIElements/Backdrop";
 
-const IndieSupport = (props) => {
+const MySupportMsg = (props) => {
   const auth = useContext(AuthContext);
   const [error, setError] = useState();
   const [changeCheckStatus, setChangeCheckStatus] = useState(false);
   const [deleteCheckStatus, setDeleteCheckStatus] = useState(false);
-  const [addSupportMsgModalStatus, setAddSupportMsgModalStatus] =
-    useState(false);
   const history = useHistory();
   const [supportArr, setSupportArr] = useState([]);
   const supportMessage = [];
@@ -35,36 +24,25 @@ const IndieSupport = (props) => {
     setDeleteCheckStatus(true);
   };
 
-  const openAddSupportMsgModalHandler = () => {
-    setAddSupportMsgModalStatus(true);
-  };
-
-  const closeAddSupportMsgModalHandler = () => {
-    setAddSupportMsgModalStatus(false);
-  };
-
   const goToBackPageHandler = () => {
-    history.replace(`/indie/${params.indieId}`);
+    history.replace(`/mypage`);
   };
 
   useEffect(() => {
     const getSupportMessage = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:5000/indie/${params.indieId}/support`,
-          {
-            headers: {
-              Authorization: `Bearer ${auth.token}`,
-            },
-          }
-        );
+        const response = await fetch(`http://localhost:5000/mypage/support`, {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
 
         const responseData = await response.json();
 
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.supportMessageJson.map((el) => {
+        await responseData.mySupportMessageJson.map((el) => {
           supportMessage.push(el);
         });
 
@@ -77,13 +55,12 @@ const IndieSupport = (props) => {
     getSupportMessage();
     setChangeCheckStatus(false);
     setDeleteCheckStatus(false);
-  }, [addSupportMsgModalStatus, changeCheckStatus, deleteCheckStatus]);
-  //<Link to={`/indie/${params.indieId}`} className="support-back__btn"></Link>
+  }, [changeCheckStatus, deleteCheckStatus]);
 
   return (
     <div className="support">
       <div className="support-container">
-        <h1 className="support-header"> {params.indieId} 에게, </h1>
+        <h1 className="support-header"> 나의 모든 Support Message </h1>
         <div className="support-main">
           <ul className="support-body">
             {supportArr.map((el) => {
@@ -104,25 +81,13 @@ const IndieSupport = (props) => {
           </ul>
         </div>
         <div className="support-button__container">
-          <Button
-            className="add-support-message"
-            onClick={openAddSupportMsgModalHandler}
-          >
-            Add
-          </Button>
           <Button className="support-back" onClick={goToBackPageHandler}>
             Back
           </Button>
         </div>
       </div>
-      {addSupportMsgModalStatus && (
-        <Backdrop onClick={closeAddSupportMsgModalHandler} />
-      )}
-      {addSupportMsgModalStatus && (
-        <AddSupportMsgModal onSubmit={closeAddSupportMsgModalHandler} />
-      )}
     </div>
   );
 };
 
-export default IndieSupport;
+export default MySupportMsg;

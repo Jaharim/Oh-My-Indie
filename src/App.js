@@ -15,6 +15,9 @@ import Signup from "./user/pages/Signup";
 import Admin from "./admin/pages/Admin";
 import { useAuth } from "./shared/components/context/auth-hook";
 import ContactAdmin from "./admin/components/ContactAdmin";
+import MyPage from "./mypage/pages/MyPage";
+import MySupportMsg from "./mypage/components/MySupportMsg";
+import MyContactMsg from "./mypage/components/MyContactMsg";
 
 function App() {
   const { token, login, logout, userId, isAdmin } = useAuth();
@@ -46,6 +49,15 @@ function App() {
         </Route>
         <Route path="/logout" exact>
           <Auth />
+        </Route>
+        <Route path="/mypage" exact>
+          <MyPage />
+        </Route>
+        <Route path="/mypage/support">
+          <MySupportMsg />
+        </Route>
+        <Route path="/mypage/contact">
+          <MyContactMsg />
         </Route>
         {isAdmin && (
           <Route path="/admin" exact>
