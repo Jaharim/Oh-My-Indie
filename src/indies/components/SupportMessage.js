@@ -8,6 +8,7 @@ import "./SupportMessage.css";
 
 const SupportMessage = (props) => {
   let customBtn;
+  let name;
   const { userId, isAdmin } = useAuth();
   const [editBtnStatus, setEditBtnStatus] = useState(false);
   const [deleteBtnStatus, setDeleteBtnStatus] = useState(false);
@@ -51,6 +52,12 @@ const SupportMessage = (props) => {
     );
   }
 
+  if (props.indieName) {
+    name = `To.${props.indieName}`;
+  } else {
+    name = props.nickname;
+  }
+
   return (
     <div className="message">
       <div className="message-container">
@@ -59,7 +66,7 @@ const SupportMessage = (props) => {
           {customBtn}
         </div>
         <div className="message-body">{props.body}</div>
-        <div className="message-nickname">{props.nickname}</div>
+        <div className="message-nickname">{name}</div>
       </div>
       {editBtnStatus && <Backdrop onClick={editModalCloseHandler} />}
       {editBtnStatus && (

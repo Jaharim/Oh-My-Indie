@@ -47,6 +47,7 @@ const MySupportMsg = (props) => {
         });
 
         await setSupportArr(supportMessage);
+        console.log(responseData.indieNames);
       } catch (err) {
         console.log(err);
         setError(err.message || "Something went wrong, please try again");
@@ -72,6 +73,7 @@ const MySupportMsg = (props) => {
                     nickname={el.nickname}
                     creator={el.creator}
                     id={el.id}
+                    indieName={el.indieName}
                     onEdit={changeCheckHandler}
                     onDelete={deleteCheckHandler}
                   />
