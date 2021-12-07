@@ -42,7 +42,7 @@ const NavLinks = (props) => {
           <NavLink to="/admin">ADMIN</NavLink>
         </li>
       )}
-      {auth.isLoggedIn && (
+      {auth.isLoggedIn && !auth.isAdmin && (
         <li>
           <NavLink to="/mypage">MY PAGE</NavLink>
         </li>

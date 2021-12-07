@@ -50,15 +50,21 @@ function App() {
         <Route path="/logout" exact>
           <Auth />
         </Route>
-        <Route path="/mypage" exact>
-          <MyPage />
-        </Route>
-        <Route path="/mypage/support">
-          <MySupportMsg />
-        </Route>
-        <Route path="/mypage/contact">
-          <MyContactMsg />
-        </Route>
+        {!isAdmin && (
+          <Route path="/mypage" exact>
+            <MyPage />
+          </Route>
+        )}
+        {!isAdmin && (
+          <Route path="/mypage/support">
+            <MySupportMsg />
+          </Route>
+        )}
+        {!isAdmin && (
+          <Route path="/mypage/contact">
+            <MyContactMsg />
+          </Route>
+        )}
         {isAdmin && (
           <Route path="/admin" exact>
             <Admin />
