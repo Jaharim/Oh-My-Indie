@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "../../shared/components/UIElements/Button";
 
-import { AuthContext } from "../../shared/components/context/auth-context";
 import ContactMessage from "../../admin/components/ContactMessage";
 import { useHistory } from "react-router";
-
+import { AuthContext } from "../../shared/components/context/auth-context";
 import "./MyContactMsg.css";
 
 const MyContactMsg = (props) => {
@@ -13,12 +12,10 @@ const MyContactMsg = (props) => {
   const contactMessage = [];
   const [error, setError] = useState();
   const [contactArr, setContactArr] = useState([]);
-
   const backToMyPageHandler = (event) => {
     event.preventDefault();
     history.replace("/mypage");
   };
-
   useEffect(() => {
     const getContactMessage = async () => {
       try {
@@ -58,7 +55,7 @@ const MyContactMsg = (props) => {
                   <ContactMessage
                     title={el.title}
                     content={el.content}
-                    nickname={el.nickname}
+                    replyStatus={el.replyStatus}
                   />
                 </li>
               );

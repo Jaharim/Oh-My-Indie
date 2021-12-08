@@ -43,6 +43,10 @@ const Admin = (props) => {
     history.push("/admin/contact");
   };
 
+  const openSupportMsgAdminModeHandler = () => {
+    history.push("/admin/support");
+  };
+
   if (adminMode === "indie") {
     adminContent = (
       <React.Fragment>
@@ -74,9 +78,25 @@ const Admin = (props) => {
         <div className="admin-menu-addIndie__container">
           <div
             className="admin-menu-addIndie__text"
+            onClick={openSupportMsgAdminModeHandler}
+          >
+            Support Message 관리
+          </div>
+        </div>
+        <div className="admin-menu-addIndie__container">
+          <div
+            className="admin-menu-addIndie__text"
             onClick={openContactAdminModeHandler}
           >
-            Contact 관리
+            답변대기 Contact
+          </div>
+        </div>
+        <div className="admin-menu-addIndie__container">
+          <div
+            className="admin-menu-addIndie__text"
+            onClick={openContactAdminModeHandler}
+          >
+            답변완료 Contact
           </div>
         </div>
       </React.Fragment>
@@ -99,7 +119,7 @@ const Admin = (props) => {
           className="adminMode-contact__button"
           onClick={changeUserModeHandler}
         >
-          Contact
+          User
         </div>
       </div>
     </React.Fragment>

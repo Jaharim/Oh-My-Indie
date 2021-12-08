@@ -26,6 +26,13 @@
   font-weight: bold;
   text-align: left;
 }
+.message-delete__btn {
+  width: 22px;
+  height: 22px;
+  background-image: url("../../media/delete.png");
+  background-size: cover;
+  cursor: pointer;
+}
 .message-body {
   display: flex;
   flex-direction: column;
@@ -35,7 +42,7 @@
   overflow: auto;
 }
 
-.message-nickname {
+.message-replyStatus {
   font-size: 0.9em;
   color: #808080;
   font-weight: bold;

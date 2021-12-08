@@ -18,6 +18,7 @@ import ContactAdmin from "./admin/components/ContactAdmin";
 import MyPage from "./mypage/pages/MyPage";
 import MySupportMsg from "./mypage/components/MySupportMsg";
 import MyContactMsg from "./mypage/components/MyContactMsg";
+import SupportMsgAdmin from "./admin/components/SupportMsgAdmin";
 
 function App() {
   const { token, login, logout, userId, isAdmin } = useAuth();
@@ -73,6 +74,11 @@ function App() {
         {isAdmin && (
           <Route path="/admin/contact" exact>
             <ContactAdmin />
+          </Route>
+        )}
+        {isAdmin && (
+          <Route path="/admin/support" exact>
+            <SupportMsgAdmin />
           </Route>
         )}
         <Redirect to="/" />

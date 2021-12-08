@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import EditSupportMsg from "./EditSupportMsg";
 import DeleteSupportMsg from "./DeleteSupportMsg";
@@ -52,10 +52,12 @@ const SupportMessage = (props) => {
     );
   }
 
-  if (props.indieName) {
+  if (!isAdmin && props.indieName) {
     name = `To.${props.indieName}`;
+  } else if (isAdmin && props.status) {
+    name = `To.${props.indieName} by ${props.nickname}`;
   } else {
-    name = props.nickname;
+    name = `${props.nickname}`;
   }
 
   return (
