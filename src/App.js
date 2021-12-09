@@ -19,6 +19,7 @@ import MyPage from "./mypage/pages/MyPage";
 import MySupportMsg from "./mypage/components/MySupportMsg";
 import MyContactMsg from "./mypage/components/MyContactMsg";
 import SupportMsgAdmin from "./admin/components/SupportMsgAdmin";
+import CompleteContactMsg from "./admin/components/CompleteContactMsg";
 
 function App() {
   const { token, login, logout, userId, isAdmin } = useAuth();
@@ -74,6 +75,11 @@ function App() {
         {isAdmin && (
           <Route path="/admin/contact" exact>
             <ContactAdmin />
+          </Route>
+        )}
+        {isAdmin && (
+          <Route path="/admin/contact/complete">
+            <CompleteContactMsg />
           </Route>
         )}
         {isAdmin && (

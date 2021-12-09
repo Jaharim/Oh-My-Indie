@@ -47,6 +47,10 @@ const Admin = (props) => {
     history.push("/admin/support");
   };
 
+  const openRepliedContactAdminModeHandler = () => {
+    history.push("/admin/contact/complete");
+  };
+
   if (adminMode === "indie") {
     adminContent = (
       <React.Fragment>
@@ -94,7 +98,7 @@ const Admin = (props) => {
         <div className="admin-menu-addIndie__container">
           <div
             className="admin-menu-addIndie__text"
-            onClick={openContactAdminModeHandler}
+            onClick={openRepliedContactAdminModeHandler}
           >
             답변완료 Contact
           </div>

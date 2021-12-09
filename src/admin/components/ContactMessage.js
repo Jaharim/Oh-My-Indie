@@ -7,9 +7,23 @@ import Backdrop from "../../shared/components/UIElements/Backdrop";
 
 const ContactMessage = (props) => {
   const { isAdmin } = useAuth();
+  const [replyModalStatus, setReplyModalStatus] = useState(false);
+  const [addReplyModalStatus, setAddReplyModalStatus] = useState(false);
   const [deleteModalStatus, setDeleteModalStatus] = useState(false);
 
   let replyStatus;
+
+  const addReplyBtnHandler = () => {
+    setAddReplyModalStatus(true);
+  };
+
+  const closeAddReplyBtnHandler = () => {
+    setAddReplyModalStatus(false);
+  };
+
+  const replyModalCloseHandler = () => {
+    setReplyModalStatus(false);
+  };
 
   const deleteContactMessageHandler = () => {
     setDeleteModalStatus(true);
@@ -24,8 +38,12 @@ const ContactMessage = (props) => {
     setDeleteModalStatus(false);
   };
 
+  const openReplyModalHandler = () => {
+    setReplyModalStatus(true);
+  };
+
   if (!isAdmin && props.replyStatus) {
-    replyStatus = "답변완료";
+    replyStatus = <div onClick={openReplyModalHandler}>답변완료</div>;
   } else if (!isAdmin) {
     replyStatus = "답변대기";
   } else {
@@ -36,10 +54,18 @@ const ContactMessage = (props) => {
       <div className="message-container">
         <div className="message-title__container">
           <div className="message-title">{props.title}</div>
-          <div
-            className="message-delete__btn"
-            onClick={deleteContactMessageHandler}
-          />
+          <div className="message-button__container">
+            {isAdmin && (
+              <div
+                className="message-button__reply"
+                onClick={addReplyBtnHandler}
+              />
+            )}
+            <div
+              className="message-button__delete"
+              onClick={deleteContactMessageHandler}
+            />
+          </div>
         </div>
         <div className="message-body">{props.content}</div>
         <div className="message-replyStatus">{replyStatus}</div>
@@ -52,6 +78,8 @@ const ContactMessage = (props) => {
           onCancel={deleteModalCloseHandler}
         />
       )}
+      {replyModalStatus && <Backdrop onClick={replyModalCloseHandler} />}
+      {addReplyModalStatus && <Backdrop onClick={closeAddReplyBtnHandler} />}
     </div>
   );
 };

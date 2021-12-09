@@ -25,7 +25,7 @@ const SupportMsgAdmin = (props) => {
   };
 
   const goToBackPageHandler = () => {
-    history.replace(`/indie/${params.indieId}`);
+    history.replace(`/admin`);
   };
 
   useEffect(() => {
