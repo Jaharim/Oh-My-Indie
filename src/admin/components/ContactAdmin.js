@@ -12,11 +12,16 @@ const ContactAdmin = (props) => {
   const contactMessage = [];
   const [error, setError] = useState();
   const [contactArr, setContactArr] = useState([]);
+  const [addReplyStatus, setAddReplyStatus] = useState(false);
   const [deleteContactStatus, setDeleteContactStatus] = useState(false);
 
   const backToAdminPageHandler = (event) => {
     event.preventDefault();
     history.replace("/admin");
+  };
+
+  const addReplyHandler = (props) => {
+    setAddReplyStatus(true);
   };
 
   const deleteContactMsgHandler = (props) => {
@@ -49,7 +54,8 @@ const ContactAdmin = (props) => {
     };
     getContactMessage();
     setDeleteContactStatus(false);
-  }, [deleteContactStatus]);
+    setAddReplyStatus(false);
+  }, [deleteContactStatus, addReplyStatus]);
 
   return (
     <div className="contact-admin">
@@ -66,6 +72,7 @@ const ContactAdmin = (props) => {
                     nickname={el.nickname}
                     id={el.id}
                     onDelete={deleteContactMsgHandler}
+                    onReplied={addReplyHandler}
                   />
                 </li>
               );

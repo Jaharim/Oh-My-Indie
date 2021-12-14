@@ -58,3 +58,8 @@
   font-weight: bold;
   text-align: right;
 }
+
+.message-replied {
+  font-weight: bold;
+  color: blue;
+}
