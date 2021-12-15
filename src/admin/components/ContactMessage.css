@@ -30,9 +30,9 @@
 .message-button__reply {
   width: 18px;
   height: 18px;
-  background-image: url("../../media/pen.png");
+  background-image: url("../../media/plus.png");
   background-size: cover;
-  margin-right: 2px;
+  margin-right: 4px;
   cursor: pointer;
 }
 

@@ -94,7 +94,7 @@ const ContactMessage = (props) => {
         <AddReply
           props={props}
           onSubmit={replyCompleteHandler}
-          onCanel={closeAddReplyBtnHandler}
+          onCancel={closeAddReplyBtnHandler}
         />
       )}
     </div>
