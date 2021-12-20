@@ -5,6 +5,7 @@ import { useAuth } from "../../shared/components/context/auth-hook";
 import DeleteContactMsg from "./DeleteContactMsg";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import AddReply from "./AddReply";
+import Reply from "./Reply";
 
 const ContactMessage = (props) => {
   const { isAdmin } = useAuth();
@@ -48,14 +49,25 @@ const ContactMessage = (props) => {
     setReplyModalStatus(false);
   };
 
+  let replyBtnRef;
+  if (props.addReply) {
+    replyBtnRef = true;
+  }
+
   if (!isAdmin && props.replyStatus) {
     replyStatus = (
-      <div className="message-replied" onClick={openReplyModalHandler}>
+      <div className="message-replied__user" onClick={openReplyModalHandler}>
         답변완료
       </div>
     );
   } else if (!isAdmin) {
     replyStatus = "답변대기";
+  } else if (isAdmin && !replyBtnRef) {
+    replyStatus = (
+      <div className="message-replied__admin" onClick={openReplyModalHandler}>
+        {props.nickname} ( 답변보기 )
+      </div>
+    );
   } else {
     replyStatus = props.nickname;
   }
@@ -65,7 +77,7 @@ const ContactMessage = (props) => {
         <div className="message-title__container">
           <div className="message-title">{props.title}</div>
           <div className="message-button__container">
-            {isAdmin && (
+            {isAdmin && replyBtnRef && (
               <div
                 className="message-button__reply"
                 onClick={addReplyBtnHandler}
@@ -88,7 +100,12 @@ const ContactMessage = (props) => {
           onCancel={deleteModalCloseHandler}
         />
       )}
+
       {replyModalStatus && <Backdrop onClick={replyModalCloseHandler} />}
+      {replyModalStatus && (
+        <Reply props={props} onClose={replyModalCloseHandler} />
+      )}
+
       {addReplyModalStatus && <Backdrop onClick={closeAddReplyBtnHandler} />}
       {addReplyModalStatus && (
         <AddReply

@@ -14,7 +14,6 @@ const SupportMessage = (props) => {
   const [deleteBtnStatus, setDeleteBtnStatus] = useState(false);
 
   const messageEditBtnHandler = () => {
-    console.log(props.id);
     setEditBtnStatus(true);
   };
 

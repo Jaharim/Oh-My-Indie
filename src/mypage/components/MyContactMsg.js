@@ -55,6 +55,8 @@ const MyContactMsg = (props) => {
                   <ContactMessage
                     title={el.title}
                     content={el.content}
+                    nickname={el.nickname}
+                    id={el.id}
                     replyStatus={el.replyStatus}
                   />
                 </li>

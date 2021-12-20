@@ -213,6 +213,7 @@ const AddIndie = (props) => {
                 element="textarea"
                 id="description"
                 type="textarea"
+                cols="22"
                 validators={[VALIDATOR_REQUIRE()]}
                 onInput={inputHandler}
               />

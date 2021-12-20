@@ -95,6 +95,7 @@ const ContactForm = (props) => {
                 id="contactTitle"
                 element="textarea"
                 rows="10"
+                cols="22"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
                 errorText="내용을 입력해주세요."
                 onInput={textareaInputHandler}

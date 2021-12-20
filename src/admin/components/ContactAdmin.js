@@ -71,6 +71,7 @@ const ContactAdmin = (props) => {
                     content={el.content}
                     nickname={el.nickname}
                     id={el.id}
+                    addReply={true}
                     onDelete={deleteContactMsgHandler}
                     onReplied={addReplyHandler}
                   />

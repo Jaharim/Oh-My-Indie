@@ -59,7 +59,14 @@
   text-align: right;
 }
 
-.message-replied {
+.message-replied__user {
   font-weight: bold;
   color: blue;
+  cursor: pointer;
+}
+
+.message-replied__admin {
+  font-weight: bold;
+  color: #808080;
+  cursor: pointer;
 }
