@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Redirect, useParams, useHistory } from "react-router-dom";
+import { AuthContext } from "../../shared/components/context/auth-context";
 import Button from "../../shared/components/UIElements/Button";
 import IndieDetail from "../components/IndieDetail";
 
 import "./Indie.css";
 
 const Indie = (props) => {
+  const auth = useContext(AuthContext);
   const history = useHistory();
   const params = useParams();
 
@@ -13,7 +15,12 @@ const Indie = (props) => {
     const indieExistChecker = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${params.indieId}`
+          `http://localhost:5000/indie/${params.indieId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
         );
 
         const responseData = await response.json();

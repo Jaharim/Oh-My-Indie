@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./IndieDetail.css";
 
 const IndieDetail = (props) => {
+  const auth = useContext(AuthContext);
   const [error, setError] = useState();
-  const [isClicked, setIsClicked] = useState(false);
+  const [likeClicked, setLikeClicked] = useState(false);
   const [indieDetail, setIndieDetail] = useState({
     name: "",
     image: "",
@@ -17,23 +19,19 @@ const IndieDetail = (props) => {
     instagram: "",
     soundcloud: "",
     like: 0,
+    likeClicked: false,
   });
 
   useEffect(() => {
     const getSearchedIndieInformation = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${props.name}`
-          /* ,
+          `http://localhost:5000/indie/${props.name}`,
           {
-            method: "GET",
             headers: {
-              "Content-Type": "application/json",
+              Authorization: `Bearer ${auth.token}`,
             },
-            body: JSON.stringify({
-              userId: "61827b5439d7cd188c3f8dd2",
-            }),
-          } */
+          }
         );
 
         const responseData = await response.json();
@@ -49,6 +47,7 @@ const IndieDetail = (props) => {
           instagram: responseData.instagram,
           soundcloud: responseData.soundcloud,
           like: responseData.like,
+          likeClicked: responseData.likeClicked,
         });
 
         if (!response.ok) {
@@ -60,11 +59,30 @@ const IndieDetail = (props) => {
       }
     };
     getSearchedIndieInformation();
-  }, []);
+    setLikeClicked(false);
+  }, [likeClicked]);
 
-  const heartClickHandler = () => {
-    if (!isClicked) setIsClicked(true);
-    else setIsClicked(false);
+  const heartClickHandler = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/indie/${props.name}/like`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
+      setLikeClicked(true);
+    } catch (err) {
+      console.log(err);
+      setError(err.message || "Something went wrong, please try again");
+    }
   };
 
   return (
@@ -78,18 +96,17 @@ const IndieDetail = (props) => {
             />
           </div>
           <div className="detail-favorite">
-            <div className="detail-like__container">
+            <div className="detail-like__container" onClick={heartClickHandler}>
               <div
                 className={`${
-                  !isClicked
+                  !indieDetail.likeClicked
                     ? "detail-like__image"
                     : "detail-like__image-active"
                 }`}
-                onClick={heartClickHandler}
               />
               <div
                 className={`${
-                  !isClicked
+                  !indieDetail.likeClicked
                     ? "detail-like__number"
                     : "detail-like__number-active"
                 }`}

@@ -95,8 +95,8 @@ const AddReply = (props) => {
         </div>
       )}
       {okModalStatus && (
-        <div className="support-message-post-Ok-modal">
-          <div className="support-message-post-Ok-modal-form">
+        <div className="add-reply-Ok-modal">
+          <div className="add-reply-Ok-modal-form">
             <div>등록이 완료되었습니다.</div>
             <Button onClick={replyOkBtnHandler}>OK</Button>
           </div>

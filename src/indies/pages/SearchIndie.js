@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import "./SearchIndie.css";
 
@@ -8,8 +8,10 @@ import { useHistory } from "react-router";
 import RandomIndie from "../components/RandomIndie";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/UIElements/Button";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 const SearchIndie = (props) => {
+  const auth = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const history = useHistory();
@@ -63,7 +65,12 @@ const SearchIndie = (props) => {
     console.log(formState);
     try {
       const response = await fetch(
-        `http://localhost:5000/indie/${formState.value}`
+        `http://localhost:5000/indie/${formState.value}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
       );
 
       if (!response.ok) {
