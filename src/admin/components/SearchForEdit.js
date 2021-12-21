@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { AuthContext } from "../../shared/components/context/auth-context";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import EditIndie from "./EditIndie";
 
 import "./SearchForEdit.css";
 
 const SearchForEdit = (props) => {
+  const auth = useContext(AuthContext);
   const [editBackdropStatus, setEditBackdropStatus] = useState(false);
   const [searchedData, setSearchedData] = useState();
   const [error, setError] = useState();
@@ -20,7 +22,12 @@ const SearchForEdit = (props) => {
     if (enteredIndieName.current.value !== "") {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${enteredIndieName.current.value}`
+          `http://localhost:5000/indie/${enteredIndieName.current.value}`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
         );
 
         const responseData = await response.json();

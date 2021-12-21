@@ -45,8 +45,8 @@ const Indie = (props) => {
       <div className="indie__container">
         <h1 className="indie__header">My Indie, {params.indieId}</h1>
         <IndieDetail className="indie__body" name={params.indieId} />
-        <Button className="indie__backBtn" onClick={goToBackPageHandler}>
-          Back
+        <Button className="back-Btn__indie" onClick={goToBackPageHandler}>
+          뒤로가기
         </Button>
       </div>
     </div>

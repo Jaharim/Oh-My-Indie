@@ -57,10 +57,18 @@ const DeleteSupportMsg = (props) => {
           <div className="support-message-delete-modal-form">
             <div>정말 삭제하시겠습니까?</div>
             <div className="support-message-delete-modal-confirmBtn">
-              <Button className="leftBtn" onClick={deleteConfirmBtnHandler}>
-                YES
+              <Button
+                className="support-message-delete-modal-confirmBtn__button"
+                onClick={deleteConfirmBtnHandler}
+              >
+                예
               </Button>
-              <Button onClick={deleteCancelBtnHandler}>NO</Button>
+              <Button
+                className="support-message-delete-modal-confirmBtn__button"
+                onClick={deleteCancelBtnHandler}
+              >
+                아니오
+              </Button>
             </div>
           </div>
         </div>
@@ -69,7 +77,7 @@ const DeleteSupportMsg = (props) => {
         <div className="support-message-delete-modal">
           <div className="support-message-delete-modal-form">
             <div>메세지가 삭제되었습니다.</div>
-            <Button onClick={deleteOkBtnHandler}>OK</Button>
+            <Button onClick={deleteOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}

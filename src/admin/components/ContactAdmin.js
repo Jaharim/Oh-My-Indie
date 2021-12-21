@@ -82,10 +82,10 @@ const ContactAdmin = (props) => {
         </div>
         <div className="contact-admin-button__container">
           <Button
-            className="contact-admin-back"
+            className="back-Btn__contact-admin"
             onClick={backToAdminPageHandler}
           >
-            Back
+            뒤로가기
           </Button>
         </div>
       </div>

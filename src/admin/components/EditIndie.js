@@ -146,7 +146,7 @@ const EditIndie = (props) => {
         <div className="editIndie-modal">
           <form className="editIndie-modal-form" onSubmit="return check()">
             <div className="editIndie-modal-form__input">
-              <span>Number : </span>
+              <span>등록번호 : </span>
               <Input
                 element="input"
                 id="numberString"
@@ -157,7 +157,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Name : </span>
+              <span>이름 : </span>
               <Input
                 element="input"
                 id="name"
@@ -178,7 +178,7 @@ const EditIndie = (props) => {
             />
             {/* </div> */}
             <div className="editIndie-modal-form__input">
-              <span>Company : </span>
+              <span>소속사 : </span>
               <Input
                 element="input"
                 id="company"
@@ -189,7 +189,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Song : </span>
+              <span>대표곡 : </span>
               <Input
                 element="input"
                 id="song"
@@ -200,7 +200,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Birth : </span>
+              <span>생년월일 : </span>
               <Input
                 element="input"
                 id="birth"
@@ -211,7 +211,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Description : </span>
+              <span>설명 : </span>
               <Input
                 element="textarea"
                 id="description"
@@ -260,7 +260,7 @@ const EditIndie = (props) => {
               onClick={editIndieSubmitHandler}
               disabled={!formState.isValid}
             >
-              Edit
+              수정
             </Button>
           </form>
         </div>
@@ -269,7 +269,7 @@ const EditIndie = (props) => {
         <div className="editIndie-Ok-modal">
           <div className="editIndie-Ok-modal-form">
             <div>{formState.inputs.name.value}의 정보가 수정되었습니다.</div>
-            <Button onClick={editIndieOkBtnHandler}>OK</Button>
+            <Button onClick={editIndieOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}

@@ -83,8 +83,11 @@ const SupportMsgAdmin = (props) => {
           </ul>
         </div>
         <div className="support-button__container">
-          <Button className="support-back" onClick={goToBackPageHandler}>
-            Back
+          <Button
+            className="back-Btn__support-admin"
+            onClick={goToBackPageHandler}
+          >
+            뒤로가기
           </Button>
         </div>
       </div>

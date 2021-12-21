@@ -107,34 +107,42 @@ const Signup = () => {
         <h2>회원가입</h2>
 
         <form onSubmit={authSubmitHandler}>
-          <Input
-            element="input"
-            id="nickname"
-            type="nickname"
-            label="닉네임 : "
-            validators={[VALIDATOR_MINLENGTH(2)]}
-            errorText="Please enter a valid nickname."
-            onInput={inputHandler}
-          />
-          <Input
-            element="input"
-            id="email"
-            type="email"
-            label="E-mail : "
-            validators={[VALIDATOR_EMAIL()]}
-            errorText="Please enter a valid email address."
-            onInput={inputHandler}
-          />
-          <Input
-            element="input"
-            id="password"
-            type="password"
-            label="password : "
-            validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="Please enter a valid password, at least 5 characters."
-            onInput={inputHandler}
-          />
-          <Button disabled={!formState.isValid}>Sign Up</Button>
+          <div className="signup-form-input__container">
+            <span>닉네임 : </span>
+            <Input
+              element="input"
+              id="nickname"
+              type="nickname"
+              validators={[VALIDATOR_MINLENGTH(2)]}
+              errorText="Please enter a valid nickname."
+              onInput={inputHandler}
+            />
+          </div>
+          <div className="signup-form-input__container">
+            <span>이메일 : </span>
+            <Input
+              element="input"
+              id="email"
+              type="email"
+              validators={[VALIDATOR_EMAIL()]}
+              errorText="Please enter a valid email address."
+              onInput={inputHandler}
+            />
+          </div>
+          <div className="signup-form-input__container">
+            <span>비밀번호 : </span>
+            <Input
+              element="input"
+              id="password"
+              type="password"
+              validators={[VALIDATOR_MINLENGTH(5)]}
+              errorText="Please enter a valid password, at least 5 characters."
+              onInput={inputHandler}
+            />
+          </div>
+          <Button className="signup-Btn" disabled={!formState.isValid}>
+            가입
+          </Button>
         </form>
       </div>
     </div>

@@ -65,8 +65,11 @@ const MyContactMsg = (props) => {
           </ul>
         </div>
         <div className="contact-mypage-button__container">
-          <Button className="contact-mypage-back" onClick={backToMyPageHandler}>
-            Back
+          <Button
+            className="back-Btn__mypage-contact"
+            onClick={backToMyPageHandler}
+          >
+            뒤로가기
           </Button>
         </div>
       </div>

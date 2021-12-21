@@ -140,7 +140,7 @@ const EditSupportMsg = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <Button disabled={!formState.isValid}>등록</Button>
+            <Button disabled={!formState.isValid}>수정</Button>
           </form>
         </div>
       )}
@@ -148,7 +148,7 @@ const EditSupportMsg = (props) => {
         <div className="support-message-post-Ok-modal">
           <div className="support-message-post-Ok-modal-form">
             <div>수정이 완료되었습니다.</div>
-            <Button onClick={editOkBtnHandler}>OK</Button>
+            <Button onClick={editOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}

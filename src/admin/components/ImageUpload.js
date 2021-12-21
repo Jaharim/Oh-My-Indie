@@ -58,14 +58,14 @@ const ImageUpload = (props) => {
       />
       <div className="image-input__form">
         <div className="image-input__form-img">
-          <img src={previewUrl} alt="Preview" />
+          <img src={previewUrl} alt="미리보기" />
         </div>
         <Button
           className="image-input__form-button"
           type="button"
           onClick={pickImageHandler}
         >
-          PICK IMAGE
+          이미지 선택
         </Button>
       </div>
     </div>

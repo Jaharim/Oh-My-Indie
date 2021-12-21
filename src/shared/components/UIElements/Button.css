@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 
-.search {
+.search-Btn {
   margin: 0;
   padding: 0.5rem;
   border-radius: 50px;
@@ -16,4 +16,42 @@
 
 .button:hover {
   transform: scale(1.04);
+}
+
+.signup-Btn,
+.login-Btn {
+  text-align: center;
+  width: 20%;
+  margin-top: 15px;
+}
+
+.contact-Btn,
+.back-Btn__support,
+.back-Btn__support-admin,
+.back-Btn__contact-admin,
+.back-Btn__mypage-support,
+.back-Btn__mypage-contact {
+  text-align: center;
+  width: 15%;
+}
+
+.back-Btn__indie {
+  text-align: center;
+  width: 20%;
+  position: relative;
+  top: 45%;
+}
+
+.add-support-message-Btn {
+  text-align: center;
+  margin-right: 20px;
+  width: 15%;
+}
+
+.support-message-delete-modal-confirmBtn__button,
+.contact-message-delete-modal-confirmBtn__button,
+.image-input__form-button,
+.indie-delete-modal-confirmBtn {
+  text-align: center;
+  width: 20%;
 }

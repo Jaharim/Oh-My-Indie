@@ -143,7 +143,7 @@ const AddIndie = (props) => {
             onSubmit={addIndieSubmitHandler}
           >
             <div className="addIndie-modal-form__input">
-              <span>Number : </span>
+              <span>등록번호 : </span>
               <Input
                 element="input"
                 id="numberString"
@@ -153,7 +153,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Name : </span>
+              <span>이름 : </span>
               <Input
                 element="input"
                 id="name"
@@ -178,7 +178,7 @@ const AddIndie = (props) => {
               onInput={inputHandler}
             />
             <div className="addIndie-modal-form__input">
-              <span>Company : </span>
+              <span>소속사 : </span>
               <Input
                 element="input"
                 id="company"
@@ -188,7 +188,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Song : </span>
+              <span>대표곡 : </span>
               <Input
                 element="input"
                 id="song"
@@ -198,7 +198,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Birth : </span>
+              <span>생년월일 : </span>
               <Input
                 element="input"
                 id="birth"
@@ -208,7 +208,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Description : </span>
+              <span>설명 : </span>
               <Input
                 element="textarea"
                 id="description"
@@ -248,7 +248,7 @@ const AddIndie = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <Button disabled={!formState.isValid}>Add</Button>
+            <Button disabled={!formState.isValid}>추가</Button>
           </form>
         </div>
       )}
@@ -256,7 +256,7 @@ const AddIndie = (props) => {
         <div className="addIndie-Ok-modal">
           <div className="addIndie-Ok-modal-form">
             <div>{formState.inputs.name.value}의 등록이 완료되었습니다.</div>
-            <Button onClick={addIndieOkBtnHandler}>OK</Button>
+            <Button onClick={addIndieOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}

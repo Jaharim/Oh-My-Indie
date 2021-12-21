@@ -59,8 +59,8 @@ const Contact = (props) => {
           </div>
         </div>
 
-        <Button className="button" onClick={contactModalOpenHandler}>
-          contact
+        <Button className="contact-Btn" onClick={contactModalOpenHandler}>
+          Contact 작성
         </Button>
         {!auth.isLoggedIn && contactFormOpen && (
           <Backdrop onClick={contactModalCloseHandler} />

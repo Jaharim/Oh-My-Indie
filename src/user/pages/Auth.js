@@ -108,25 +108,29 @@ const Auth = () => {
         <h2>로그인</h2>
 
         <form onSubmit={authSubmitHandler}>
-          <Input
-            element="input"
-            id="email"
-            type="email"
-            label="E-mail : "
-            validators={[VALIDATOR_EMAIL()]}
-            errorText="Please enter a valid email address."
-            onInput={inputHandler}
-          />
-          <Input
-            element="input"
-            id="password"
-            type="password"
-            label="password : "
-            validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="Please enter a valid password, at least 5 characters."
-            onInput={inputHandler}
-          />
-          <Button disabled={!formState.isValid}>Login</Button>
+          <div className="login-form-input__container">
+            <span>이메일 : </span>
+            <Input
+              element="input"
+              id="email"
+              type="email"
+              validators={[VALIDATOR_EMAIL()]}
+              onInput={inputHandler}
+            />
+          </div>
+          <div className="login-form-input__container">
+            <span>비밀번호 : </span>
+            <Input
+              element="input"
+              id="password"
+              type="password"
+              validators={[VALIDATOR_MINLENGTH(5)]}
+              onInput={inputHandler}
+            />
+          </div>
+          <Button className="login-Btn" disabled={!formState.isValid}>
+            로그인
+          </Button>
         </form>
       </div>
     </div>

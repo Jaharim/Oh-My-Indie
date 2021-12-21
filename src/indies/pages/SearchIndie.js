@@ -105,7 +105,7 @@ const SearchIndie = (props) => {
                 errorText="Please enter a valid name"
                 onInput={indieInputHandler}
               />
-              <Button className={"search"} disabled={!formState.isValid}>
+              <Button className={"search-Btn"} disabled={!formState.isValid}>
                 🔍
               </Button>
             </form>

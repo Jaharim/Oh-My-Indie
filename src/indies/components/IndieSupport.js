@@ -105,13 +105,13 @@ const IndieSupport = (props) => {
         </div>
         <div className="support-button__container">
           <Button
-            className="add-support-message"
+            className="add-support-message-Btn"
             onClick={openAddSupportMsgModalHandler}
           >
-            Add
+            추가하기
           </Button>
-          <Button className="support-back" onClick={goToBackPageHandler}>
-            Back
+          <Button className="back-Btn__support" onClick={goToBackPageHandler}>
+            뒤로가기
           </Button>
         </div>
       </div>
