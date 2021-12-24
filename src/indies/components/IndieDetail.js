@@ -61,10 +61,8 @@ const IndieDetail = (props) => {
         }
       } catch (err) {
         console.log(err.message);
-
-        props.onError(err.message);
-        /* setErrrorMsg(err.message);
-        setError(true); */
+        setErrrorMsg(err.message);
+        setError(true);
       }
     };
     getSearchedIndieInformation();
@@ -90,7 +88,8 @@ const IndieDetail = (props) => {
       setLikeClicked(true);
     } catch (err) {
       console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrrorMsg(err.message);
+      setError(true);
     }
   };
 
