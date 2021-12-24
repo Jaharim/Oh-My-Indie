@@ -11,6 +11,7 @@ import {
 import Button from "../../shared/components/UIElements/Button";
 import ErroModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -40,7 +41,8 @@ const formReducer = (state, action) => {
 const Signup = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       nickname: {
@@ -68,6 +70,10 @@ const Signup = () => {
     });
   }, []);
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     console.log(formState.inputs);
@@ -91,61 +97,64 @@ const Signup = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
-      console.log(responseData);
+      history.replace("/auth");
     } catch (err) {
       console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
-    setIsLoading(false);
-    history.replace("/auth");
   };
 
   return (
-    <div className="login-form">
-      {isLoading && <LoadingSpinner asOverlay />}
-      <div className="login-form__container">
-        <h2>회원가입</h2>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="login-form">
+        <div className="login-form__container">
+          <h2>회원가입</h2>
 
-        <form onSubmit={authSubmitHandler}>
-          <div className="signup-form-input__container">
-            <span>닉네임 : </span>
-            <Input
-              element="input"
-              id="nickname"
-              type="nickname"
-              validators={[VALIDATOR_MINLENGTH(2)]}
-              errorText="Please enter a valid nickname."
-              onInput={inputHandler}
-            />
-          </div>
-          <div className="signup-form-input__container">
-            <span>이메일 : </span>
-            <Input
-              element="input"
-              id="email"
-              type="email"
-              validators={[VALIDATOR_EMAIL()]}
-              errorText="Please enter a valid email address."
-              onInput={inputHandler}
-            />
-          </div>
-          <div className="signup-form-input__container">
-            <span>비밀번호 : </span>
-            <Input
-              element="input"
-              id="password"
-              type="password"
-              validators={[VALIDATOR_MINLENGTH(5)]}
-              errorText="Please enter a valid password, at least 5 characters."
-              onInput={inputHandler}
-            />
-          </div>
-          <Button className="signup-Btn" disabled={!formState.isValid}>
-            가입
-          </Button>
-        </form>
+          <form onSubmit={authSubmitHandler}>
+            <div className="signup-form-input__container">
+              <span>닉네임 : </span>
+              <Input
+                element="input"
+                id="nickname"
+                type="nickname"
+                validators={[VALIDATOR_MINLENGTH(2)]}
+                errorText="Please enter a valid nickname."
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="signup-form-input__container">
+              <span>이메일 : </span>
+              <Input
+                element="input"
+                id="email"
+                type="email"
+                validators={[VALIDATOR_EMAIL()]}
+                errorText="Please enter a valid email address."
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="signup-form-input__container">
+              <span>비밀번호 : </span>
+              <Input
+                element="input"
+                id="password"
+                type="password"
+                validators={[VALIDATOR_MINLENGTH(5)]}
+                errorText="Please enter a valid password, at least 5 characters."
+                onInput={inputHandler}
+              />
+            </div>
+            <Button className="signup-Btn" disabled={!formState.isValid}>
+              가입
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -11,6 +11,7 @@ import {
 import { AuthContext } from "../../shared/components/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/UIElements/Button";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -40,7 +41,8 @@ const formReducer = (state, action) => {
 const Auth = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, dispatch] = useReducer(formReducer, {
@@ -66,12 +68,14 @@ const Auth = () => {
     });
   }, []);
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   const authSubmitHandler = async (event) => {
     event.preventDefault();
 
     try {
-      setIsLoading(true);
-
       const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
@@ -93,47 +97,52 @@ const Auth = () => {
           auth.login(responseData.userId, responseData.token, "admin");
         else auth.login(responseData.userId, responseData.token, "user");
       }
+
+      history.replace("/");
     } catch (err) {
       console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
-    setIsLoading(false);
-
-    history.replace("/");
   };
 
   return (
-    <div className="login-form">
-      <div className="login-form__container">
-        <h2>로그인</h2>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="login-form">
+        <div className="login-form__container">
+          <h2>로그인</h2>
 
-        <form onSubmit={authSubmitHandler}>
-          <div className="login-form-input__container">
-            <span>이메일 : </span>
-            <Input
-              element="input"
-              id="email"
-              type="email"
-              validators={[VALIDATOR_EMAIL()]}
-              onInput={inputHandler}
-            />
-          </div>
-          <div className="login-form-input__container">
-            <span>비밀번호 : </span>
-            <Input
-              element="input"
-              id="password"
-              type="password"
-              validators={[VALIDATOR_MINLENGTH(5)]}
-              onInput={inputHandler}
-            />
-          </div>
-          <Button className="login-Btn" disabled={!formState.isValid}>
-            로그인
-          </Button>
-        </form>
+          <form onSubmit={authSubmitHandler}>
+            <div className="login-form-input__container">
+              <span>이메일 : </span>
+              <Input
+                element="input"
+                id="email"
+                type="email"
+                validators={[VALIDATOR_EMAIL()]}
+                onInput={inputHandler}
+              />
+            </div>
+            <div className="login-form-input__container">
+              <span>비밀번호 : </span>
+              <Input
+                element="input"
+                id="password"
+                type="password"
+                validators={[VALIDATOR_MINLENGTH(5)]}
+                onInput={inputHandler}
+              />
+            </div>
+            <Button className="login-Btn" disabled={!formState.isValid}>
+              로그인
+            </Button>
+          </form>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

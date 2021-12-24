@@ -132,12 +132,10 @@ const AddIndie = (props) => {
     props.onSubmit();
   };
 
-  //number, name, imageUrl, description, sns
   return (
     <div>
       {!addIndieOkModalStatus && (
         <div className="addIndie-modal">
-          {/* <div className="addIndie-modal-form"> */}
           <form
             className="addIndie-modal-form"
             onSubmit={addIndieSubmitHandler}
@@ -162,16 +160,6 @@ const AddIndie = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            {/* <div className="addIndie-modal-form__input">
-              <span>ImageUrl : </span>
-              <Input
-                element="input"
-                id="imageUrl"
-                type="text"
-                validators={[VALIDATOR_REQUIRE()]}
-                onInput={inputHandler}
-              />
-            </div> */}
             <ImageUpload
               className="addIndie-modal-form__input"
               id="image"

@@ -1,12 +1,14 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 import "./IndieDetail.css";
 
 const IndieDetail = (props) => {
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrrorMsg] = useState();
   const [likeClicked, setLikeClicked] = useState(false);
   const [indieDetail, setIndieDetail] = useState({
     name: "",
@@ -21,6 +23,10 @@ const IndieDetail = (props) => {
     like: 0,
     likeClicked: false,
   });
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
 
   useEffect(() => {
     const getSearchedIndieInformation = async () => {
@@ -54,8 +60,11 @@ const IndieDetail = (props) => {
           throw new Error(responseData.message);
         }
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        console.log(err.message);
+
+        props.onError(err.message);
+        /* setErrrorMsg(err.message);
+        setError(true); */
       }
     };
     getSearchedIndieInformation();
@@ -87,6 +96,9 @@ const IndieDetail = (props) => {
 
   return (
     <div className="detail">
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       <div className="detail-container__body">
         <div className="detail-container__left">
           <div className="detail-img">

@@ -65,7 +65,9 @@ const Contact = (props) => {
         {!auth.isLoggedIn && contactFormOpen && (
           <Backdrop onClick={contactModalCloseHandler} />
         )}
-        {!auth.isLoggedIn && contactFormOpen && <AskAuth />}
+        {!auth.isLoggedIn && contactFormOpen && (
+          <AskAuth onClick={contactModalCloseHandler} />
+        )}
         {auth.isLoggedIn && contactFormOpen && (
           <Backdrop onClick={contactModalCloseHandler} />
         )}
