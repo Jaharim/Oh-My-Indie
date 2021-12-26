@@ -4,12 +4,18 @@ import { AuthContext } from "../../shared/components/context/auth-context";
 import { useParams } from "react-router";
 
 import "./DeleteSupportMsg.css";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const DeleteSupportMsg = (props) => {
   const [deleteConfirmStatus, setDeleteConfirmStatus] = useState(false);
   const auth = useContext(AuthContext);
   const params = useParams();
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
 
   const deleteConfirmBtnHandler = async (event) => {
     event.preventDefault();
@@ -35,8 +41,8 @@ const DeleteSupportMsg = (props) => {
 
       setDeleteConfirmStatus(true);
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
   };
 
@@ -52,6 +58,9 @@ const DeleteSupportMsg = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!deleteConfirmStatus && (
         <div className="support-message-delete-modal">
           <div className="support-message-delete-modal-form">

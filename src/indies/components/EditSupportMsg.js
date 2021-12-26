@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useReducer, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
 import {
@@ -39,7 +40,8 @@ const formReducer = (state, action) => {
 const EditSupportMsg = (props) => {
   const auth = useContext(AuthContext);
   const [okModalStatus, setOkModalStatus] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const params = useParams();
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
@@ -65,6 +67,10 @@ const EditSupportMsg = (props) => {
       inputId: id,
     });
   }, []);
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
 
   const editSubmitHandler = async (event) => {
     event.preventDefault();
@@ -93,8 +99,8 @@ const EditSupportMsg = (props) => {
 
         setOkModalStatus(true);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     } catch (err) {}
   };
@@ -104,6 +110,9 @@ const EditSupportMsg = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!okModalStatus && (
         <div className="support-message-modal">
           <form className="support-message-form" onSubmit={editSubmitHandler}>

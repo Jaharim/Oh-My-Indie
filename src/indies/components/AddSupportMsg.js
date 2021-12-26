@@ -93,7 +93,6 @@ const AddSupportMsgModal = (props) => {
         throw new Error("response is not ok");
       }
     } catch (err) {
-      console.log(err);
       setErrorMsg(err.message);
       setError(true);
     }

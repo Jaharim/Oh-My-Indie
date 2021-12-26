@@ -14,10 +14,12 @@ import "./IndieSupport.css";
 import Button from "../../shared/components/UIElements/Button";
 import AddSupportMsgModal from "./AddSupportMsg";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const IndieSupport = (props) => {
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [changeCheckStatus, setChangeCheckStatus] = useState(false);
   const [deleteCheckStatus, setDeleteCheckStatus] = useState(false);
   const [addSupportMsgModalStatus, setAddSupportMsgModalStatus] =
@@ -47,6 +49,10 @@ const IndieSupport = (props) => {
     history.replace(`/indie/${params.indieId}`);
   };
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   useEffect(() => {
     const getSupportMessage = async () => {
       try {
@@ -70,58 +76,62 @@ const IndieSupport = (props) => {
 
         await setSupportArr(supportMessage);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     };
     getSupportMessage();
     setChangeCheckStatus(false);
     setDeleteCheckStatus(false);
   }, [addSupportMsgModalStatus, changeCheckStatus, deleteCheckStatus]);
-  //<Link to={`/indie/${params.indieId}`} className="support-back__btn"></Link>
 
   return (
-    <div className="support">
-      <div className="support-container">
-        <h1 className="support-header"> {params.indieId} 에게, </h1>
-        <div className="support-main">
-          <ul className="support-body">
-            {supportArr.map((el) => {
-              return (
-                <li className="support-message">
-                  <SupportMessage
-                    title={el.title}
-                    body={el.body}
-                    nickname={el.nickname}
-                    creator={el.creator}
-                    id={el.id}
-                    onEdit={changeCheckHandler}
-                    onDelete={deleteCheckHandler}
-                  />
-                </li>
-              );
-            })}
-          </ul>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="support">
+        <div className="support-container">
+          <h1 className="support-header"> {params.indieId} 에게, </h1>
+          <div className="support-main">
+            <ul className="support-body">
+              {supportArr.map((el) => {
+                return (
+                  <li className="support-message">
+                    <SupportMessage
+                      title={el.title}
+                      body={el.body}
+                      nickname={el.nickname}
+                      creator={el.creator}
+                      id={el.id}
+                      onEdit={changeCheckHandler}
+                      onDelete={deleteCheckHandler}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="support-button__container">
+            <Button
+              className="add-support-message-Btn"
+              onClick={openAddSupportMsgModalHandler}
+            >
+              추가하기
+            </Button>
+            <Button className="back-Btn__support" onClick={goToBackPageHandler}>
+              뒤로가기
+            </Button>
+          </div>
         </div>
-        <div className="support-button__container">
-          <Button
-            className="add-support-message-Btn"
-            onClick={openAddSupportMsgModalHandler}
-          >
-            추가하기
-          </Button>
-          <Button className="back-Btn__support" onClick={goToBackPageHandler}>
-            뒤로가기
-          </Button>
-        </div>
+        {addSupportMsgModalStatus && (
+          <Backdrop onClick={closeAddSupportMsgModalHandler} />
+        )}
+        {addSupportMsgModalStatus && (
+          <AddSupportMsgModal onSubmit={closeAddSupportMsgModalHandler} />
+        )}
       </div>
-      {addSupportMsgModalStatus && (
-        <Backdrop onClick={closeAddSupportMsgModalHandler} />
-      )}
-      {addSupportMsgModalStatus && (
-        <AddSupportMsgModal onSubmit={closeAddSupportMsgModalHandler} />
-      )}
-    </div>
+    </React.Fragment>
   );
 };
 

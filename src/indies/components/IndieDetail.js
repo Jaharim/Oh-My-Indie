@@ -87,7 +87,6 @@ const IndieDetail = (props) => {
       }
       setLikeClicked(true);
     } catch (err) {
-      console.log(err);
       setErrrorMsg(err.message);
       setError(true);
     }

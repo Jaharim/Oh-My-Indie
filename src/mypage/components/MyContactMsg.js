@@ -5,17 +5,25 @@ import ContactMessage from "../../admin/components/ContactMessage";
 import { useHistory } from "react-router";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import "./MyContactMsg.css";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const MyContactMsg = (props) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const contactMessage = [];
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [contactArr, setContactArr] = useState([]);
+
   const backToMyPageHandler = (event) => {
     event.preventDefault();
     history.replace("/mypage");
   };
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   useEffect(() => {
     const getContactMessage = async () => {
       try {
@@ -36,44 +44,49 @@ const MyContactMsg = (props) => {
 
         await setContactArr(contactMessage);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     };
     getContactMessage();
   }, []);
 
   return (
-    <div className="contact-mypage">
-      <div className="contact-mypage-container">
-        <h1 className="contact-mypage-header"> Contact Messages </h1>
-        <div className="contact-mypage-main">
-          <ul className="contact-mypage-body">
-            {contactArr.map((el) => {
-              return (
-                <li className="contact-mypage-message">
-                  <ContactMessage
-                    title={el.title}
-                    content={el.content}
-                    nickname={el.nickname}
-                    id={el.id}
-                    replyStatus={el.replyStatus}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="contact-mypage-button__container">
-          <Button
-            className="back-Btn__mypage-contact"
-            onClick={backToMyPageHandler}
-          >
-            뒤로가기
-          </Button>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="contact-mypage">
+        <div className="contact-mypage-container">
+          <h1 className="contact-mypage-header"> Contact Messages </h1>
+          <div className="contact-mypage-main">
+            <ul className="contact-mypage-body">
+              {contactArr.map((el) => {
+                return (
+                  <li className="contact-mypage-message">
+                    <ContactMessage
+                      title={el.title}
+                      content={el.content}
+                      nickname={el.nickname}
+                      id={el.id}
+                      replyStatus={el.replyStatus}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="contact-mypage-button__container">
+            <Button
+              className="back-Btn__mypage-contact"
+              onClick={backToMyPageHandler}
+            >
+              뒤로가기
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

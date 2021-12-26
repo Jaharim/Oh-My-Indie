@@ -1,5 +1,5 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import { Redirect, useParams, useHistory } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import ErrorModal from "../../shared/components/error/ErrorModal";
 import Button from "../../shared/components/UIElements/Button";

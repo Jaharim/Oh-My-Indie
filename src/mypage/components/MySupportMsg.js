@@ -5,10 +5,12 @@ import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./MySupportMsg.css";
 import Button from "../../shared/components/UIElements/Button";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const MySupportMsg = (props) => {
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [changeCheckStatus, setChangeCheckStatus] = useState(false);
   const [deleteCheckStatus, setDeleteCheckStatus] = useState(false);
   const history = useHistory();
@@ -26,6 +28,10 @@ const MySupportMsg = (props) => {
 
   const goToBackPageHandler = () => {
     history.replace(`/mypage`);
+  };
+
+  const errorModalCloseHandler = () => {
+    setError(false);
   };
 
   useEffect(() => {
@@ -49,8 +55,8 @@ const MySupportMsg = (props) => {
         await setSupportArr(supportMessage);
         console.log(responseData.indieNames);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     };
     getSupportMessage();
@@ -59,39 +65,44 @@ const MySupportMsg = (props) => {
   }, [changeCheckStatus, deleteCheckStatus]);
 
   return (
-    <div className="support">
-      <div className="support-container">
-        <h1 className="support-header"> 나의 모든 Support Message </h1>
-        <div className="support-main">
-          <ul className="support-body">
-            {supportArr.map((el) => {
-              return (
-                <li className="support-message">
-                  <SupportMessage
-                    title={el.title}
-                    body={el.body}
-                    nickname={el.nickname}
-                    creator={el.creator}
-                    id={el.id}
-                    indieName={el.indieName}
-                    onEdit={changeCheckHandler}
-                    onDelete={deleteCheckHandler}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="support-button__container">
-          <Button
-            className="back-Btn__mypage-support"
-            onClick={goToBackPageHandler}
-          >
-            뒤로가기
-          </Button>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="support">
+        <div className="support-container">
+          <h1 className="support-header"> 나의 모든 Support Message </h1>
+          <div className="support-main">
+            <ul className="support-body">
+              {supportArr.map((el) => {
+                return (
+                  <li className="support-message">
+                    <SupportMessage
+                      title={el.title}
+                      body={el.body}
+                      nickname={el.nickname}
+                      creator={el.creator}
+                      id={el.id}
+                      indieName={el.indieName}
+                      onEdit={changeCheckHandler}
+                      onDelete={deleteCheckHandler}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="support-button__container">
+            <Button
+              className="back-Btn__mypage-support"
+              onClick={goToBackPageHandler}
+            >
+              뒤로가기
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

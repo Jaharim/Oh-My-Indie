@@ -9,8 +9,6 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
 import Button from "../../shared/components/UIElements/Button";
-import ErroModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const formReducer = (state, action) => {
