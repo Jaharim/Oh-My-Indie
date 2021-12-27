@@ -13,7 +13,6 @@ import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const SearchIndie = (props) => {
   const auth = useContext(AuthContext);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const history = useHistory();
@@ -37,12 +36,11 @@ const SearchIndie = (props) => {
 
   const errorModalCloseHandler = () => {
     setError(false);
-    history.replace(`/auth/`);
+    if (!auth.isLoggedIn) history.replace(`/auth/`);
   };
 
   useEffect(() => {
     const getRandomIndieInformation = async () => {
-      setIsLoading(true);
       try {
         const response = await fetch(`http://localhost:5000/indie`);
 
@@ -60,12 +58,9 @@ const SearchIndie = (props) => {
 
         console.log(responseData.message);
       } catch (err) {
-        console.log(err);
         setErrorMsg(err.message);
         setError(true);
       }
-
-      setIsLoading(false);
     };
     getRandomIndieInformation();
   }, []);
@@ -92,15 +87,18 @@ const SearchIndie = (props) => {
         history.replace(`/indie/${formState.value}`);
       }
     } catch (err) {
-      //console.log(err);
-      //setError(err.message || "Something went wrong, please try again");
       setErrorMsg(err.message);
       setError(true);
     }
   };
 
   const randomIndieClickHandler = (event) => {
-    history.replace(`/indie/${randomIndie.name}`);
+    if (auth.isLoggedIn) {
+      history.replace(`/indie/${randomIndie.name}`);
+    } else {
+      setErrorMsg("로그인 후 이용해주세요.");
+      setError(true);
+    }
   };
 
   return (

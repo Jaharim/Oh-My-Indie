@@ -7,12 +7,7 @@ import "./MainNavigation.css";
 
 const MainNavigation = (props) => {
   return (
-    <MainHeader>
-      <button className="main-navigation__menu-btn">
-        <span />
-        <span />
-        <span />
-      </button>
+    <MainHeader className="main-navigation__menu-btn">
       <h1 className="main-navigation__title">
         <Link to="/">Oh, My Indie</Link>
       </h1>

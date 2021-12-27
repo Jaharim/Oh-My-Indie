@@ -100,7 +100,6 @@ const Auth = () => {
 
       history.replace("/");
     } catch (err) {
-      console.log(err);
       setErrorMsg(err.message);
       setError(true);
     }

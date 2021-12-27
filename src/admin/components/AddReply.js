@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { Fragment, useCallback, useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import {
   VALIDATOR_REQUIRE,
@@ -11,15 +11,21 @@ import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
 
 import "./AddReply.css";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const AddReply = (props) => {
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
   const [okModalStatus, setOkModalStatus] = useState(false);
   const [replyFormState, setReplyFormState] = useState({
     value: "",
     isValid: false,
   });
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
 
   const textareaInputHandler = useCallback((id, value, isValid) => {
     setReplyFormState({
@@ -60,14 +66,17 @@ const AddReply = (props) => {
         throw new Error("response is not ok");
       }
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
     setOkModalStatus(true);
   };
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!okModalStatus && (
         <div className="contact-modal">
           <form className="contact-form" onSubmit={replySubmitHandler}>

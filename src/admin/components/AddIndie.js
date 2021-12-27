@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useReducer, useState } from "react";
+import React, {
+  Fragment,
+  useCallback,
+  useContext,
+  useReducer,
+  useState,
+} from "react";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";
@@ -7,6 +13,7 @@ import ImageUpload from "./ImageUpload";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./AddIndie.css";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -35,7 +42,8 @@ const formReducer = (state, action) => {
 
 const AddIndie = (props) => {
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [addIndieOkModalStatus, setAddIndieOkModalStatus] = useState(false);
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
@@ -92,6 +100,10 @@ const AddIndie = (props) => {
     });
   }, []);
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   const addIndieSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -120,8 +132,8 @@ const AddIndie = (props) => {
         throw new Error("response is not ok");
       }
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
 
     setAddIndieOkModalStatus(true);
@@ -134,6 +146,9 @@ const AddIndie = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!addIndieOkModalStatus && (
         <div className="addIndie-modal">
           <form

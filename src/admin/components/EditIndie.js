@@ -7,6 +7,7 @@ import ImageUpload from "./ImageUpload";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./EditIndie.css";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -38,7 +39,8 @@ const EditIndie = (props) => {
   const [submitCheck, setSubmitCheck] = useState(false);
   const [checkEditImg, setCheckEditImg] = useState(false);
   const [editIndieOKModalStatus, setEditIndieOKModalStatus] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       numberString: {
@@ -93,6 +95,10 @@ const EditIndie = (props) => {
     });
   }, []);
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   const editIndieSubmitHandler = async (event) => {
     event.preventDefault();
     try {
@@ -123,12 +129,11 @@ const EditIndie = (props) => {
         throw new Error("response is not ok");
       }
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
 
     setEditIndieOKModalStatus(true);
-    console.log(formState);
   };
 
   const editIndieOkBtnHandler = (event) => {
@@ -142,6 +147,9 @@ const EditIndie = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!editIndieOKModalStatus && (
         <div className="editIndie-modal">
           <form className="editIndie-modal-form" onSubmit="return check()">

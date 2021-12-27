@@ -1,22 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 
 import Button from "../../shared/components/UIElements/Button";
 import "./ContactAdmin.css";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import ContactMessage from "./ContactMessage";
 import { useHistory } from "react-router";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const CompleteContactMsg = (props) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const contactMessage = [];
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [contactArr, setContactArr] = useState([]);
   const [deleteContactStatus, setDeleteContactStatus] = useState(false);
 
   const backToAdminPageHandler = (event) => {
     event.preventDefault();
     history.replace("/admin");
+  };
+
+  const errorModalCloseHandler = () => {
+    setError(false);
   };
 
   const deleteContactMsgHandler = (props) => {
@@ -46,8 +52,8 @@ const CompleteContactMsg = (props) => {
 
         await setContactArr(contactMessage);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     };
     getContactMessage();
@@ -55,36 +61,41 @@ const CompleteContactMsg = (props) => {
   }, [deleteContactStatus]);
 
   return (
-    <div className="contact-admin">
-      <div className="contact-admin-container">
-        <h1 className="contact-admin-header"> Contact Messages </h1>
-        <div className="contact-admin-main">
-          <ul className="contact-admin-body">
-            {contactArr.map((el) => {
-              return (
-                <li className="contact-admin-message">
-                  <ContactMessage
-                    title={el.title}
-                    content={el.content}
-                    nickname={el.nickname}
-                    id={el.id}
-                    onDelete={deleteContactMsgHandler}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className="contact-admin-button__container">
-          <Button
-            className="back-Btn__contact-admin"
-            onClick={backToAdminPageHandler}
-          >
-            뒤로가기
-          </Button>
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
+      <div className="contact-admin">
+        <div className="contact-admin-container">
+          <h1 className="contact-admin-header"> Contact Messages </h1>
+          <div className="contact-admin-main">
+            <ul className="contact-admin-body">
+              {contactArr.map((el) => {
+                return (
+                  <li className="contact-admin-message">
+                    <ContactMessage
+                      title={el.title}
+                      content={el.content}
+                      nickname={el.nickname}
+                      id={el.id}
+                      onDelete={deleteContactMsgHandler}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="contact-admin-button__container">
+            <Button
+              className="back-Btn__contact-admin"
+              onClick={backToAdminPageHandler}
+            >
+              뒤로가기
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

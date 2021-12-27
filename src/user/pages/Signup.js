@@ -97,7 +97,6 @@ const Signup = () => {
       }
       history.replace("/auth");
     } catch (err) {
-      console.log(err);
       setErrorMsg(err.message);
       setError(true);
     }

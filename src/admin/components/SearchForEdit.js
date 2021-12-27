@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import EditIndie from "./EditIndie";
 
@@ -9,12 +10,18 @@ const SearchForEdit = (props) => {
   const auth = useContext(AuthContext);
   const [editBackdropStatus, setEditBackdropStatus] = useState(false);
   const [searchedData, setSearchedData] = useState();
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
+
   const enteredIndieName = useRef();
 
   const editIndieMoalCloseHandler = (event) => {
     setEditBackdropStatus(false);
     enteredIndieName.current.value = "";
+  };
+
+  const errorModalCloseHandler = () => {
+    setError(false);
   };
 
   const searchEditHandler = async (event) => {
@@ -40,29 +47,34 @@ const SearchForEdit = (props) => {
 
         setEditBackdropStatus(true);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     }
   };
   return (
-    <div className="search-edit__container">
-      <form className="search-edit__form" onSubmit={searchEditHandler}>
-        <label for="indieName">수정할 Indie</label>
-        <div className="search-edit-input__container">
-          <input type="text" name="indieName" ref={enteredIndieName} />
-          <button>🔍</button>
-        </div>
-      </form>
-      {editBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
-      {editBackdropStatus && (
-        <EditIndie
-          indieName={enteredIndieName.current.value}
-          indieInformForEdit={searchedData}
-          onClick={editIndieMoalCloseHandler}
-        />
+    <React.Fragment>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
-    </div>
+      <div className="search-edit__container">
+        <form className="search-edit__form" onSubmit={searchEditHandler}>
+          <label for="indieName">수정할 Indie</label>
+          <div className="search-edit-input__container">
+            <input type="text" name="indieName" ref={enteredIndieName} />
+            <button>🔍</button>
+          </div>
+        </form>
+        {editBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}
+        {editBackdropStatus && (
+          <EditIndie
+            indieName={enteredIndieName.current.value}
+            indieInformForEdit={searchedData}
+            onClick={editIndieMoalCloseHandler}
+          />
+        )}
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 import Button from "../../shared/components/UIElements/Button";
 
 import "./DeleteContactMsg.css";
@@ -7,7 +8,12 @@ import "./DeleteContactMsg.css";
 const DeleteContactMsg = (props) => {
   const [deleteConfirmStatus, setDeleteConfirmStatus] = useState(false);
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
+
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
 
   const deleteConfirmBtnHandler = async (event) => {
     event.preventDefault();
@@ -30,8 +36,8 @@ const DeleteContactMsg = (props) => {
 
       setDeleteConfirmStatus(true);
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
   };
 
@@ -47,6 +53,9 @@ const DeleteContactMsg = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!deleteConfirmStatus && (
         <div className="contact-message-delete-modal">
           <div className="contact-message-delete-modal-form">

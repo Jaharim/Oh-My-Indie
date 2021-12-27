@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import ErrorModal from "../../shared/components/error/ErrorModal";
 import Input from "../../shared/components/FormElements/Input";
 import Button from "../../shared/components/UIElements/Button";
 import {
@@ -11,7 +12,8 @@ import "./Reply.css";
 
 const Reply = (props) => {
   const auth = useContext(AuthContext);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const [contentStatus, setContentStatus] = useState(false);
   const [editOkModalStatus, setEditOkModalStatus] = useState(false);
 
@@ -46,6 +48,10 @@ const Reply = (props) => {
     setContentStatus(false);
   };
 
+  const errorModalCloseHandler = () => {
+    setError(false);
+  };
+
   const editReplySubmitHandler = async () => {
     try {
       const response = await fetch(
@@ -70,8 +76,8 @@ const Reply = (props) => {
       }
       setEditOkModalStatus(true);
     } catch (err) {
-      console.log(err);
-      setError(err.message || "Something went wrong, please try again");
+      setErrorMsg(err.message);
+      setError(true);
     }
   };
 
@@ -95,8 +101,8 @@ const Reply = (props) => {
 
         setContent(responseData.content);
       } catch (err) {
-        console.log(err);
-        setError(err.message || "Something went wrong, please try again");
+        setErrorMsg(err.message);
+        setError(true);
       }
     };
     getReplyContent();
@@ -104,6 +110,9 @@ const Reply = (props) => {
 
   return (
     <div>
+      {error && (
+        <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
+      )}
       {!contentStatus && !editOkModalStatus && (
         <div className="reply-modal">
           <div className="reply-form">

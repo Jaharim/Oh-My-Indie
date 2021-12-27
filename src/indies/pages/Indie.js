@@ -42,7 +42,6 @@ const Indie = (props) => {
           throw new Error(responseData.message);
         }
       } catch (err) {
-        //console.log(err);
         setErrorMsg(err.message);
         setError(true);
       }
