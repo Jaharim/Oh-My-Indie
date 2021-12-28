@@ -56,10 +56,14 @@ const SearchForDelete = (props) => {
           className="search-delete__form"
           onSubmit={deleteIndieModalOpenHandler}
         >
-          <label for="indieName">삭제할 Indie</label>
+          <label htmlFor="indieName">삭제할 Indie</label>
           <div className="search-delete-input__container">
             <input type="text" name="indieName" ref={enteredIndieName} />
-            <button>🔍</button>
+            <button>
+              <span role="img" aria-label="search">
+                🔍
+              </span>
+            </button>
           </div>
         </form>
         {deleteBackdropStatus && (

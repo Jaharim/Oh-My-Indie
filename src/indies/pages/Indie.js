@@ -14,11 +14,6 @@ const Indie = (props) => {
   const history = useHistory();
   const params = useParams();
 
-  const errorModalOpenHandler = (msg) => {
-    setErrorMsg(msg);
-    setError(true);
-    console.log("props 작동!");
-  };
   const errorModalCloseHandler = () => {
     setError(false);
   };
@@ -38,15 +33,16 @@ const Indie = (props) => {
         const responseData = await response.json();
 
         if (!response.ok) {
-          props.onErrorSubmit();
           throw new Error(responseData.message);
         }
       } catch (err) {
+        console.log(err);
         setErrorMsg(err.message);
         setError(true);
       }
     };
     indieExistChecker();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const goToBackPageHandler = () => {
@@ -61,11 +57,7 @@ const Indie = (props) => {
       <div className="indie">
         <div className="indie__container">
           <h1 className="indie__header">My Indie, {params.indieId}</h1>
-          <IndieDetail
-            className="indie__body"
-            name={params.indieId}
-            onError={errorModalOpenHandler}
-          />
+          <IndieDetail className="indie__body" name={params.indieId} />
           <Button className="back-Btn__indie" onClick={goToBackPageHandler}>
             뒤로가기
           </Button>

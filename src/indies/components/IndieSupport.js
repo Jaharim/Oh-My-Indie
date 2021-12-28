@@ -1,12 +1,5 @@
-import React, {
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
 import SupportMessage from "./SupportMessage";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
@@ -70,7 +63,7 @@ const IndieSupport = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.supportMessageJson.map((el) => {
+        await responseData.supportMessageJson.forEach((el) => {
           supportMessage.push(el);
         });
 
@@ -83,6 +76,7 @@ const IndieSupport = (props) => {
     getSupportMessage();
     setChangeCheckStatus(false);
     setDeleteCheckStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addSupportMsgModalStatus, changeCheckStatus, deleteCheckStatus]);
 
   return (

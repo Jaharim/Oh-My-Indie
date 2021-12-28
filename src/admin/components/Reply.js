@@ -106,7 +106,7 @@ const Reply = (props) => {
       }
     };
     getReplyContent();
-  }, []);
+  }, [auth.token, props.props.id]);
 
   return (
     <div>

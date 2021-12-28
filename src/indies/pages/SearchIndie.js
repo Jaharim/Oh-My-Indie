@@ -55,8 +55,6 @@ const SearchIndie = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-
-        console.log(responseData.message);
       } catch (err) {
         setErrorMsg(err.message);
         setError(true);
@@ -125,7 +123,9 @@ const SearchIndie = (props) => {
                   onInput={indieInputHandler}
                 />
                 <Button className={"search-Btn"} disabled={!formState.isValid}>
-                  🔍
+                  <span role="img" aria-label="search">
+                    🔍
+                  </span>
                 </Button>
               </form>
             </div>

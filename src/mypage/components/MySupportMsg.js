@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import SupportMessage from "../../indies/components/SupportMessage";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
@@ -16,7 +16,6 @@ const MySupportMsg = (props) => {
   const history = useHistory();
   const [supportArr, setSupportArr] = useState([]);
   const supportMessage = [];
-  const params = useParams();
 
   const changeCheckHandler = () => {
     setChangeCheckStatus(true);
@@ -48,7 +47,7 @@ const MySupportMsg = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.mySupportMessageJson.map((el) => {
+        await responseData.mySupportMessageJson.forEach((el) => {
           supportMessage.push(el);
         });
 
@@ -62,6 +61,7 @@ const MySupportMsg = (props) => {
     getSupportMessage();
     setChangeCheckStatus(false);
     setDeleteCheckStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCheckStatus, deleteCheckStatus]);
 
   return (

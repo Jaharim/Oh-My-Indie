@@ -12,7 +12,6 @@ const Admin = (props) => {
   const history = useHistory();
   const [adminMode, setAdminMode] = useState("indie");
   const [addBackdropStatus, setAddBackdropStatus] = useState(false);
-  const [deleteBackdropStatus, setDeleteBackdropStatus] = useState(false);
 
   const addIndieModalOpenHandler = (event) => {
     event.preventDefault();

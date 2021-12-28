@@ -9,7 +9,6 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/components/util/validators";
 import { AuthContext } from "../../shared/components/context/auth-context";
-import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/UIElements/Button";
 import ErrorModal from "../../shared/components/error/ErrorModal";
 
@@ -40,11 +39,9 @@ const formReducer = (state, action) => {
 
 const Auth = () => {
   const history = useHistory();
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
-  const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       email: {

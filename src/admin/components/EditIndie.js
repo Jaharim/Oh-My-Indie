@@ -36,7 +36,6 @@ const formReducer = (state, action) => {
 
 const EditIndie = (props) => {
   const auth = useContext(AuthContext);
-  const [submitCheck, setSubmitCheck] = useState(false);
   const [checkEditImg, setCheckEditImg] = useState(false);
   const [editIndieOKModalStatus, setEditIndieOKModalStatus] = useState(false);
   const [error, setError] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import { useHistory } from "react-router";
 import SupportMessage from "../../indies/components/SupportMessage";
 
 import "./SupportMsgAdmin.css";
@@ -47,7 +47,7 @@ const SupportMsgAdmin = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.supportMessageJson.map((el) => {
+        await responseData.supportMessageJson.forEach((el) => {
           supportMessage.push(el);
         });
 
@@ -60,6 +60,7 @@ const SupportMsgAdmin = (props) => {
     getSupportMessage();
     setChangeCheckStatus(false);
     setDeleteCheckStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeCheckStatus, deleteCheckStatus]);
 
   return (

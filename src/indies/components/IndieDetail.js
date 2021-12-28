@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import ErrorModal from "../../shared/components/error/ErrorModal";
@@ -67,6 +67,7 @@ const IndieDetail = (props) => {
     };
     getSearchedIndieInformation();
     setLikeClicked(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [likeClicked]);
 
   const heartClickHandler = async () => {
@@ -99,12 +100,12 @@ const IndieDetail = (props) => {
       )}
       <div className="detail-container__body">
         <div className="detail-container__left">
-          <div className="detail-img">
+          {/* <div className="detail-img">
             <img
               src={`http://localhost:5000/${indieDetail.image}`}
               alt={indieDetail.name}
             />
-          </div>
+          </div> */}
           <div className="detail-favorite">
             <div className="detail-like__container" onClick={heartClickHandler}>
               <div
@@ -128,7 +129,7 @@ const IndieDetail = (props) => {
               <Link
                 className="detail-support"
                 to={`/indie/${props.name}/support`}
-                exact
+                exact="true"
               >
                 Indie 에게,
               </Link>
@@ -156,13 +157,25 @@ const IndieDetail = (props) => {
           </span>
           <div className="detail-container__footer">
             <div className="detail-container__sns">
-              <a href={`${indieDetail.soundcloud}`} target="_blank">
+              <a
+                href={`${indieDetail.soundcloud}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="detail-sns__soundcloud" />
               </a>
-              <a href={`${indieDetail.instagram}`} target="_blank">
+              <a
+                href={`${indieDetail.instagram}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="detail-sns__instagram" />
               </a>
-              <a href={`${indieDetail.youtube}`} target="_blank">
+              <a
+                href={`${indieDetail.youtube}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="detail-sns__youtube" />
               </a>
             </div>

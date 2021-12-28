@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useCallback,
-  useContext,
-  useReducer,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 
 import Input from "../../shared/components/FormElements/Input";

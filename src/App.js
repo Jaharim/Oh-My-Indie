@@ -1,7 +1,6 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect, Switch } from "react-router";
-import { Link } from "react-router-dom";
 
 import Main from "./main/pages/Main";
 import Indie from "./indies/pages/Indie";
@@ -22,7 +21,7 @@ import SupportMsgAdmin from "./admin/components/SupportMsgAdmin";
 import CompleteContactMsg from "./admin/components/CompleteContactMsg";
 
 function App() {
-  const { token, login, logout, userId, isAdmin } = useAuth();
+  const { token, login, logout, isAdmin } = useAuth();
   const [errorSubmit, setErrorSubmit] = useState(false);
 
   const errorRedirectHandler = () => {
@@ -40,13 +39,13 @@ function App() {
         <Route path="/indie" exact>
           <SearchIndie />
         </Route>
-        <Route path="/indie/:indieId" exact>
+        <Route path="/indie/:indieId">
           <Indie />
         </Route>
         <Route path="/contact" exact>
           <Contact />
         </Route>
-        <Route path="/indie/:indieId/support" exact>
+        <Route path="/indie/:indieId/support">
           <IndieSupport />
         </Route>
         <Route path="/logout" exact>
@@ -73,7 +72,7 @@ function App() {
           </Route>
         )}
         {isAdmin && (
-          <Route path="/admin/contact" exact>
+          <Route path="/admin/contact">
             <ContactAdmin />
           </Route>
         )}
@@ -83,7 +82,7 @@ function App() {
           </Route>
         )}
         {isAdmin && (
-          <Route path="/admin/support" exact>
+          <Route path="/admin/support">
             <SupportMsgAdmin />
           </Route>
         )}

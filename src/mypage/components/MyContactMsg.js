@@ -38,7 +38,7 @@ const MyContactMsg = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.myContactMessageJson.map((el) => {
+        await responseData.myContactMessageJson.forEach((el) => {
           contactMessage.push(el);
         });
 
@@ -49,6 +49,7 @@ const MyContactMsg = (props) => {
       }
     };
     getContactMessage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

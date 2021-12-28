@@ -7,11 +7,11 @@ import "./MainNavigation.css";
 
 const MainNavigation = (props) => {
   return (
-    <MainHeader className="main-navigation__menu-btn">
+    <MainHeader>
       <h1 className="main-navigation__title">
         <Link to="/">Oh, My Indie</Link>
       </h1>
-      <nav>
+      <nav className="main-navigation__links">
         <NavLinks />
       </nav>
     </MainHeader>

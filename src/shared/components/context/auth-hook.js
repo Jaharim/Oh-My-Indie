@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 let logoutTimer;
 
@@ -66,5 +66,5 @@ export const useAuth = () => {
     }
   }, [login]);
 
-  return { token, login, logout, userId, isAdmin };
+  return { token, login, logout, userId, isAdmin, status };
 };

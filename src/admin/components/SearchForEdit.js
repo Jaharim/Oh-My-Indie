@@ -59,10 +59,14 @@ const SearchForEdit = (props) => {
       )}
       <div className="search-edit__container">
         <form className="search-edit__form" onSubmit={searchEditHandler}>
-          <label for="indieName">수정할 Indie</label>
+          <label htmlFor="indieName">수정할 Indie</label>
           <div className="search-edit-input__container">
             <input type="text" name="indieName" ref={enteredIndieName} />
-            <button>🔍</button>
+            <button>
+              <span role="img" aria-label="search">
+                🔍
+              </span>
+            </button>
           </div>
         </form>
         {editBackdropStatus && <Backdrop onClick={editIndieMoalCloseHandler} />}

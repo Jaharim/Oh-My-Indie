@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from "react";
-import IndieSupport from "../../../indies/components/IndieSupport";
 
 import { validate } from "../util/validators";
 

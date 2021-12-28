@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useReducer, useState } from "react";
+import React, { useCallback, useReducer, useState } from "react";
 import { useHistory } from "react-router";
 
 import "./Auth.css";
@@ -38,7 +38,6 @@ const formReducer = (state, action) => {
 
 const Signup = () => {
   const history = useHistory();
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
@@ -74,10 +73,7 @@ const Signup = () => {
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
     try {
-      setIsLoading(true);
-
       const response = await fetch("http://localhost:5000/auth/signup", {
         method: "POST",
         headers: {

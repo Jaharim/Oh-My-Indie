@@ -1,5 +1,4 @@
-import React, { Fragment, useCallback, useContext, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useCallback, useContext, useState } from "react";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,

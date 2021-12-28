@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Button from "../../shared/components/UIElements/Button";
 import "./ContactAdmin.css";
@@ -46,7 +46,7 @@ const CompleteContactMsg = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        await responseData.contactMessageJson.map((el) => {
+        await responseData.contactMessageJson.forEach((el) => {
           contactMessage.push(el);
         });
 
@@ -58,6 +58,7 @@ const CompleteContactMsg = (props) => {
     };
     getContactMessage();
     setDeleteContactStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteContactStatus]);
 
   return (

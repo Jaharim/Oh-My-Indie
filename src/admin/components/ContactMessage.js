@@ -6,7 +6,6 @@ import DeleteContactMsg from "./DeleteContactMsg";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import AddReply from "./AddReply";
 import Reply from "./Reply";
-import ErrorModal from "../../shared/components/error/ErrorModal";
 
 const ContactMessage = (props) => {
   const { isAdmin } = useAuth();
