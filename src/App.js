@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect, Switch } from "react-router";
 

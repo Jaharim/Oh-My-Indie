@@ -35,8 +35,10 @@ const SearchForDelete = (props) => {
           }
         );
 
+        const responseData = await response.json();
+
         if (!response.ok) {
-          throw new Error("response is not ok");
+          throw new Error(responseData.message);
         }
         setdeleteBackdropStatus(true);
       } catch (err) {

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import SupportMessage from "../../indies/components/SupportMessage";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import { v4 as uuidv4 } from "uuid";
 
 import "./MySupportMsg.css";
 import Button from "../../shared/components/UIElements/Button";
@@ -52,7 +53,6 @@ const MySupportMsg = (props) => {
         });
 
         await setSupportArr(supportMessage);
-        console.log(responseData.indieNames);
       } catch (err) {
         setErrorMsg(err.message);
         setError(true);
@@ -76,7 +76,7 @@ const MySupportMsg = (props) => {
             <ul className="support-body">
               {supportArr.map((el) => {
                 return (
-                  <li className="support-message">
+                  <li className="support-message" key={uuidv4()}>
                     <SupportMessage
                       title={el.title}
                       body={el.body}

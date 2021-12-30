@@ -102,12 +102,12 @@ const IndieDetail = (props) => {
       <div className="detail">
         <div className="detail-container__body">
           <div className="detail-container__left">
-            {/* <div className="detail-img">
-            <img
-              src={`http://localhost:5000/${indieDetail.image}`}
-              alt={indieDetail.name}
-            />
-          </div> */}
+            <div className="detail-img">
+              <img
+                src={`http://localhost:5000/${indieDetail.image}`}
+                alt={indieDetail.name}
+              />
+            </div>
             <div className="detail-favorite">
               <div
                 className="detail-like__container"

@@ -114,6 +114,7 @@ const AddIndie = (props) => {
       formData.append("instagram", formState.inputs.instagram.value);
       formData.append("youtube", formState.inputs.youtube.value);
       formData.append("image", formState.inputs.image.value);
+
       const response = await fetch(`http://localhost:5000/admin/addIndie`, {
         method: "POST",
         body: formData,
@@ -122,8 +123,10 @@ const AddIndie = (props) => {
         },
       });
 
+      const responseData = await response.json();
+
       if (!response.ok) {
-        throw new Error("response is not ok");
+        throw new Error(responseData.message);
       }
     } catch (err) {
       setErrorMsg(err.message);

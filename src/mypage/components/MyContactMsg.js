@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "../../shared/components/UIElements/Button";
+import { v4 as uuidv4 } from "uuid";
 
 import ContactMessage from "../../admin/components/ContactMessage";
 import { useHistory } from "react-router";
@@ -64,7 +65,7 @@ const MyContactMsg = (props) => {
             <ul className="contact-mypage-body">
               {contactArr.map((el) => {
                 return (
-                  <li className="contact-mypage-message">
+                  <li className="contact-mypage-message" key={uuidv4()}>
                     <ContactMessage
                       title={el.title}
                       content={el.content}

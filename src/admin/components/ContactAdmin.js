@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import Button from "../../shared/components/UIElements/Button";
 import "./ContactAdmin.css";
@@ -76,7 +77,7 @@ const ContactAdmin = (props) => {
             <ul className="contact-admin-body">
               {contactArr.map((el) => {
                 return (
-                  <li className="contact-admin-message">
+                  <li className="contact-admin-message" key={uuidv4()}>
                     <ContactMessage
                       title={el.title}
                       content={el.content}

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import SupportMessage from "../../indies/components/SupportMessage";
+import { v4 as uuidv4 } from "uuid";
 
 import "./SupportMsgAdmin.css";
 import Button from "../../shared/components/UIElements/Button";
@@ -75,7 +76,7 @@ const SupportMsgAdmin = (props) => {
             <ul className="support-body">
               {supportArr.map((el) => {
                 return (
-                  <li className="support-message">
+                  <li className="support-message" key={uuidv4()}>
                     <SupportMessage
                       title={el.title}
                       body={el.body}

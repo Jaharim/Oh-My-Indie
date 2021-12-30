@@ -9,7 +9,7 @@ const RandomIndie = (props) => {
     <div className="searched-container" onClick={props.onClick}>
       <img
         className="searched-image"
-        //src={`http://localhost:5000/${props.image}`}
+        src={`http://localhost:5000/${props.image}`}
         alt="random-img"
       />
       <span className="searched-name">{props.name}</span>

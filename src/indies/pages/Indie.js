@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { AuthContext } from "../../shared/components/context/auth-context";
 import ErrorModal from "../../shared/components/error/ErrorModal";
 import Button from "../../shared/components/UIElements/Button";
 import IndieDetail from "../components/IndieDetail";
@@ -8,7 +7,6 @@ import IndieDetail from "../components/IndieDetail";
 import "./Indie.css";
 
 const Indie = (props) => {
-  const auth = useContext(AuthContext);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const history = useHistory();
