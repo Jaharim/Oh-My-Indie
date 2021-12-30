@@ -39,13 +39,13 @@ function App() {
         <Route path="/indie" exact>
           <SearchIndie />
         </Route>
-        <Route path="/indie/:indieId">
+        <Route path="/indie/:indieId" exact>
           <Indie />
         </Route>
         <Route path="/contact" exact>
           <Contact />
         </Route>
-        <Route path="/indie/:indieId/support">
+        <Route path="/indie/:indieId/support" exact>
           <IndieSupport />
         </Route>
         <Route path="/logout" exact>
@@ -57,12 +57,12 @@ function App() {
           </Route>
         )}
         {!isAdmin && (
-          <Route path="/mypage/support">
+          <Route path="/mypage/support" exact>
             <MySupportMsg />
           </Route>
         )}
         {!isAdmin && (
-          <Route path="/mypage/contact">
+          <Route path="/mypage/contact" exact>
             <MyContactMsg />
           </Route>
         )}
@@ -72,17 +72,17 @@ function App() {
           </Route>
         )}
         {isAdmin && (
-          <Route path="/admin/contact">
+          <Route path="/admin/contact" exact>
             <ContactAdmin />
           </Route>
         )}
         {isAdmin && (
-          <Route path="/admin/contact/complete">
+          <Route path="/admin/contact/complete" exact>
             <CompleteContactMsg />
           </Route>
         )}
         {isAdmin && (
-          <Route path="/admin/support">
+          <Route path="/admin/support" exact>
             <SupportMsgAdmin />
           </Route>
         )}

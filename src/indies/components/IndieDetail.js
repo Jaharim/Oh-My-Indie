@@ -28,6 +28,7 @@ const IndieDetail = (props) => {
     setError(false);
   };
 
+  const storedData = JSON.parse(localStorage.getItem("userData"));
   useEffect(() => {
     const getSearchedIndieInformation = async () => {
       try {
@@ -35,7 +36,7 @@ const IndieDetail = (props) => {
           `http://localhost:5000/indie/${props.name}`,
           {
             headers: {
-              Authorization: `Bearer ${auth.token}`,
+              Authorization: `Bearer ${storedData.token}`,
             },
           }
         );
@@ -60,7 +61,7 @@ const IndieDetail = (props) => {
           throw new Error(responseData.message);
         }
       } catch (err) {
-        console.log(err.message);
+        console.log(err);
         setErrrorMsg(err.message);
         setError(true);
       }
@@ -94,96 +95,101 @@ const IndieDetail = (props) => {
   };
 
   return (
-    <div className="detail">
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
-      <div className="detail-container__body">
-        <div className="detail-container__left">
-          {/* <div className="detail-img">
+      <div className="detail">
+        <div className="detail-container__body">
+          <div className="detail-container__left">
+            {/* <div className="detail-img">
             <img
               src={`http://localhost:5000/${indieDetail.image}`}
               alt={indieDetail.name}
             />
           </div> */}
-          <div className="detail-favorite">
-            <div className="detail-like__container" onClick={heartClickHandler}>
+            <div className="detail-favorite">
               <div
-                className={`${
-                  !indieDetail.likeClicked
-                    ? "detail-like__image"
-                    : "detail-like__image-active"
-                }`}
-              />
-              <div
-                className={`${
-                  !indieDetail.likeClicked
-                    ? "detail-like__number"
-                    : "detail-like__number-active"
-                }`}
+                className="detail-like__container"
+                onClick={heartClickHandler}
               >
-                {indieDetail.like}
+                <div
+                  className={`${
+                    !indieDetail.likeClicked
+                      ? "detail-like__image"
+                      : "detail-like__image-active"
+                  }`}
+                />
+                <div
+                  className={`${
+                    !indieDetail.likeClicked
+                      ? "detail-like__number"
+                      : "detail-like__number-active"
+                  }`}
+                >
+                  {indieDetail.like}
+                </div>
+              </div>
+              <div className="detail-container__support">
+                <Link
+                  className="detail-support"
+                  to={`/indie/${props.name}/support`}
+                  exact="true"
+                >
+                  Indie 에게,
+                </Link>
               </div>
             </div>
-            <div className="detail-container__support">
-              <Link
-                className="detail-support"
-                to={`/indie/${props.name}/support`}
-                exact="true"
-              >
-                Indie 에게,
-              </Link>
-            </div>
           </div>
-        </div>
-        <div className="detail-container__right">
-          <span className="detail-desc">
-            <div className="detail-desc__contents">
-              <p>소속사 : &nbsp;</p>
-              {indieDetail.company}
-            </div>
-            <br />
-            <div className="detail-desc__contents">
-              <p>대표곡 : &nbsp;</p>
-              {indieDetail.song}
-            </div>
-            <br />
-            <div className="detail-desc__contents">
-              <p>생일 : &nbsp;</p>
-              {indieDetail.birth}
-            </div>
-            <br />
-            {indieDetail.description}
-          </span>
-          <div className="detail-container__footer">
-            <div className="detail-container__sns">
-              <a
-                href={`${indieDetail.soundcloud}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="detail-sns__soundcloud" />
-              </a>
-              <a
-                href={`${indieDetail.instagram}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="detail-sns__instagram" />
-              </a>
-              <a
-                href={`${indieDetail.youtube}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="detail-sns__youtube" />
-              </a>
+          <div className="detail-container__right">
+            <span className="detail-desc">
+              <div className="detail-desc__contents">
+                <p>소속사 : &nbsp;</p>
+                {indieDetail.company}
+              </div>
+              <br />
+              <div className="detail-desc__contents">
+                <p>대표곡 : &nbsp;</p>
+                {indieDetail.song}
+              </div>
+              <br />
+              <div className="detail-desc__contents">
+                <p>생일 : &nbsp;</p>
+                {indieDetail.birth}
+              </div>
+              <br />
+              {indieDetail.description}
+            </span>
+            <div className="detail-container__footer">
+              <div className="detail-container__sns">
+                <a
+                  href={`${indieDetail.soundcloud}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="detail-sns__soundcloud" />
+                </a>
+                <a
+                  href={`${indieDetail.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="detail-sns__instagram" />
+                </a>
+                <a
+                  href={`${indieDetail.youtube}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="detail-sns__youtube" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
-export default IndieDetail;
+export default React.memo(IndieDetail);

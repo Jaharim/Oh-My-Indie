@@ -18,6 +18,7 @@ const Indie = (props) => {
     setError(false);
   };
 
+  const storedData = JSON.parse(localStorage.getItem("userData"));
   useEffect(() => {
     const indieExistChecker = async () => {
       try {
@@ -25,13 +26,12 @@ const Indie = (props) => {
           `http://localhost:5000/indie/${params.indieId}`,
           {
             headers: {
-              Authorization: `Bearer ${auth.token}`,
+              Authorization: `Bearer ${storedData.token}`,
             },
           }
         );
 
         const responseData = await response.json();
-
         if (!response.ok) {
           throw new Error(responseData.message);
         }
@@ -41,7 +41,9 @@ const Indie = (props) => {
         setError(true);
       }
     };
+
     indieExistChecker();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -67,4 +69,4 @@ const Indie = (props) => {
   );
 };
 
-export default Indie;
+export default React.memo(Indie);

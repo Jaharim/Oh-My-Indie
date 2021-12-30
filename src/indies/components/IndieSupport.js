@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import SupportMessage from "./SupportMessage";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import { v4 as uuidv4 } from "uuid";
 
 import "./IndieSupport.css";
 import Button from "../../shared/components/UIElements/Button";
@@ -91,7 +92,7 @@ const IndieSupport = (props) => {
             <ul className="support-body">
               {supportArr.map((el) => {
                 return (
-                  <li className="support-message">
+                  <li className="support-message" key={uuidv4()}>
                     <SupportMessage
                       title={el.title}
                       body={el.body}
