@@ -13,6 +13,15 @@ const ContactMessage = (props) => {
   const [addReplyModalStatus, setAddReplyModalStatus] = useState(false);
   const [deleteModalStatus, setDeleteModalStatus] = useState(false);
 
+  const messageButton__Reply = {
+    backgroundImage: `url("${process.env.REACT_APP_BACKEND_URL}/images/plus.png")`,
+    marginRight: "4px",
+  };
+
+  const messageButton__Delete = {
+    backgroundImage: `url("${process.env.REACT_APP_BACKEND_URL}/images/delete.png")`,
+  };
+
   let replyStatus;
 
   const addReplyBtnHandler = () => {
@@ -79,12 +88,14 @@ const ContactMessage = (props) => {
           <div className="message-button__container">
             {isAdmin && replyBtnRef && (
               <div
-                className="message-button__reply"
+                className="message-button__delete"
+                style={messageButton__Reply}
                 onClick={addReplyBtnHandler}
               />
             )}
             <div
               className="message-button__delete"
+              style={messageButton__Delete}
               onClick={deleteContactMessageHandler}
             />
           </div>

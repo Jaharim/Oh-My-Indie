@@ -24,6 +24,12 @@ const IndieDetail = (props) => {
     likeClicked: false,
   });
 
+  const bringImageFromServer = (imageName) => {
+    return {
+      backgroundImage: `url("${process.env.REACT_APP_BACKEND_URL}/images/${imageName}.png")`,
+    };
+  };
+
   const errorModalCloseHandler = () => {
     setError(false);
   };
@@ -114,11 +120,12 @@ const IndieDetail = (props) => {
                 onClick={heartClickHandler}
               >
                 <div
-                  className={`${
+                  className="detail-like__image"
+                  style={
                     !indieDetail.likeClicked
-                      ? "detail-like__image"
-                      : "detail-like__image-active"
-                  }`}
+                      ? bringImageFromServer("heart")
+                      : bringImageFromServer("heart_active")
+                  }
                 />
                 <div
                   className={`${
@@ -167,21 +174,30 @@ const IndieDetail = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="detail-sns__soundcloud" />
+                  <div
+                    className="detail-sns__soundcloud"
+                    style={bringImageFromServer("soundcloud")}
+                  />
                 </a>
                 <a
                   href={`${indieDetail.instagram}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="detail-sns__instagram" />
+                  <div
+                    className="detail-sns__instagram"
+                    style={bringImageFromServer("instagram")}
+                  />
                 </a>
                 <a
                   href={`${indieDetail.youtube}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="detail-sns__youtube" />
+                  <div
+                    className="detail-sns__youtube"
+                    style={bringImageFromServer("youtube")}
+                  />
                 </a>
               </div>
             </div>

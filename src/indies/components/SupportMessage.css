@@ -40,17 +40,10 @@
   cursor: pointer;
 }
 
-.message-button__edit {
-  width: 18px;
-  height: 18px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/pen.png");
-  background-size: cover;
-  margin-right: 2px;
-}
+.message-button__edit,
 .message-button__delete {
   width: 18px;
   height: 18px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/delete.png");
   background-size: cover;
 }
 

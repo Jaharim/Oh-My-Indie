@@ -13,6 +13,15 @@ const SupportMessage = (props) => {
   const [editBtnStatus, setEditBtnStatus] = useState(false);
   const [deleteBtnStatus, setDeleteBtnStatus] = useState(false);
 
+  const editBtnImage = {
+    backgroundImage: `url("${process.env.REACT_APP_BACKEND_URL}/images/pen.png")`,
+    marginRight: "2px",
+  };
+
+  const deleteBtnImage = {
+    backgroundImage: `url("${process.env.REACT_APP_BACKEND_URL}/images/delete.png")`,
+  };
+
   const messageEditBtnHandler = () => {
     setEditBtnStatus(true);
   };
@@ -42,9 +51,14 @@ const SupportMessage = (props) => {
   if (props.creator === userId || isAdmin) {
     customBtn = (
       <div className="message-button__container">
-        <div className="message-button__edit" onClick={messageEditBtnHandler} />
+        <div
+          className="message-button__edit"
+          style={editBtnImage}
+          onClick={messageEditBtnHandler}
+        />
         <div
           className="message-button__delete"
+          style={deleteBtnImage}
           onClick={messageDeleteBtnHandler}
         />
       </div>

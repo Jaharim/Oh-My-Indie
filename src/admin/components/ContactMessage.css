@@ -27,22 +27,14 @@
   text-align: left;
 }
 
-.message-button__reply {
+.message-button__reply,
+.message-button__delete {
   width: 18px;
   height: 18px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/plus.png");
   background-size: cover;
-  margin-right: 4px;
   cursor: pointer;
 }
 
-.message-delete__btn {
-  width: 18px;
-  height: 18px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/delete.png");
-  background-size: cover;
-  cursor: pointer;
-}
 .message-body {
   display: flex;
   flex-direction: column;

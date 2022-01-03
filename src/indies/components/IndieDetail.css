@@ -89,23 +89,6 @@
   font-weight: bold;
 }
 
-.detail-like__image {
-  width: 25px;
-  height: 25px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/heart.png");
-}
-
-.detail-like__image-active {
-  width: 25px;
-  height: 25px;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/heart_active.png");
-}
-
-.detail-like__image:hover,
-.detail-like__image-active:hover {
-  cursor: pointer;
-}
-
 .detail-desc {
   display: flex;
   flex-direction: column;
@@ -132,29 +115,19 @@
   width: 100%;
 }
 
-.detail-sns__youtube {
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/youtube.png");
-  margin-right: 10px;
+.detail-like__image,
+.detail-like__image-active {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
-.detail-sns__instagram {
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/instagram.png");
-  margin-right: 10px;
-}
-
+.detail-sns__youtube,
+.detail-sns__instagram,
 .detail-sns__soundcloud {
   width: 30px;
   height: 30px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("%REACT_APP_BACKEND_URL%/images/soundcloud.png");
   margin-right: 10px;
 }
