@@ -37,7 +37,7 @@
   width: 25px;
   height: 25px;
   background-repeat: no-repeat;
-  background-image: url("http://localhost:5000/images/heart_active.png");
+  background-image: url("%REACT_APP_BACKEND_URL%/images/heart_active.png");
   margin-right: 5px;
 }
 

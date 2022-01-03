@@ -13,6 +13,15 @@
   width: 100%;
 }
 
+.image-input__form-img {
+  text-align: center;
+  width: 30%;
+}
+
+.image-input__form-button {
+  width: 177px;
+}
+
 .image-input__form-img img {
   width: 100px;
   height: 100px;

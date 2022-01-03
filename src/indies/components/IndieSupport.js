@@ -51,7 +51,7 @@ const IndieSupport = (props) => {
     const getSupportMessage = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${params.indieId}/support`,
+          `${process.env.REACT_APP_BACKEND_URL}/indie/${params.indieId}/support`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

@@ -115,13 +115,16 @@ const AddIndie = (props) => {
       formData.append("youtube", formState.inputs.youtube.value);
       formData.append("image", formState.inputs.image.value);
 
-      const response = await fetch(`http://localhost:5000/admin/addIndie`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/admin/addIndie`,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+        }
+      );
 
       const responseData = await response.json();
 

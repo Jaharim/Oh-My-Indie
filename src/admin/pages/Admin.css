@@ -82,6 +82,7 @@
   border-radius: 6px;
   width: 20%;
   height: 100%;
+  cursor: pointer;
 }
 
 .adminMode-contact__button:hover,

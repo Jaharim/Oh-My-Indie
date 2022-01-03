@@ -43,14 +43,14 @@
 .message-button__edit {
   width: 18px;
   height: 18px;
-  background-image: url("http://localhost:5000/images/pen.png");
+  background-image: url("%REACT_APP_BACKEND_URL%/images/pen.png");
   background-size: cover;
   margin-right: 2px;
 }
 .message-button__delete {
   width: 18px;
   height: 18px;
-  background-image: url("http://localhost:5000/images/delete.png");
+  background-image: url("%REACT_APP_BACKEND_URL%/images/delete.png");
   background-size: cover;
 }
 

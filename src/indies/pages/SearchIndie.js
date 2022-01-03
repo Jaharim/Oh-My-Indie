@@ -42,7 +42,9 @@ const SearchIndie = (props) => {
   useEffect(() => {
     const getRandomIndieInformation = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/indie`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/indie`
+        );
 
         const responseData = await response.json();
 
@@ -67,7 +69,7 @@ const SearchIndie = (props) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/indie/${formState.value}`,
+        `${process.env.REACT_APP_BACKEND_URL}/indie/${formState.value}`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`,

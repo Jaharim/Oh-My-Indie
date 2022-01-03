@@ -55,7 +55,7 @@ const Reply = (props) => {
   const editReplySubmitHandler = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/admin/contact/reply`,
+        `${process.env.REACT_APP_BACKEND_URL}/admin/contact/reply`,
         {
           method: "PATCH",
           headers: {
@@ -85,7 +85,7 @@ const Reply = (props) => {
     const getReplyContent = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/admin/contact/complete/${props.props.id}`,
+          `${process.env.REACT_APP_BACKEND_URL}/admin/contact/complete/${props.props.id}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

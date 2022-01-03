@@ -29,7 +29,7 @@ const SearchForEdit = (props) => {
     if (enteredIndieName.current.value !== "") {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${enteredIndieName.current.value}`,
+          `${process.env.REACT_APP_BACKEND_URL}/indie/${enteredIndieName.current.value}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,
@@ -38,7 +38,7 @@ const SearchForEdit = (props) => {
         );
 
         const responseData = await response.json();
-        const responseImg = `http://localhost:5000/${responseData.image}`;
+        const responseImg = `${process.env.REACT_APP_BACKEND_URL}/${responseData.image}`;
         responseData.image = responseImg;
         setSearchedData(responseData);
         if (!response.ok) {

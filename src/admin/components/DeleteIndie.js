@@ -24,7 +24,7 @@ const DeleteIndie = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/admin/${props.indieName}/deleteIndie`,
+        `${process.env.REACT_APP_BACKEND_URL}/admin/${props.indieName}/deleteIndie`,
         {
           method: "DELETE",
           headers: {

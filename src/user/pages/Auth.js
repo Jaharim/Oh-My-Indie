@@ -73,16 +73,19 @@ const Auth = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formState.inputs.email.value,
-          password: formState.inputs.password.value,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -90,7 +93,10 @@ const Auth = () => {
         throw new Error(responseData.message);
       }
       if (response.ok) {
-        if (formState.inputs.email.value === "admin@admin.com")
+        if (
+          formState.inputs.email.value ===
+          `${process.env.REACT_APP_ADMIN_EMAIL}`
+        )
           auth.login(responseData.userId, responseData.token, "admin");
         else auth.login(responseData.userId, responseData.token, "user");
       }

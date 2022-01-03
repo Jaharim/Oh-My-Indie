@@ -37,11 +37,14 @@ const MySupportMsg = (props) => {
   useEffect(() => {
     const getSupportMessage = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/mypage/support`, {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/mypage/support`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
+        );
 
         const responseData = await response.json();
 

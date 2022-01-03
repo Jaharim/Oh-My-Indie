@@ -22,7 +22,7 @@ const DeleteSupportMsg = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/indie/${params.indieId}/support`,
+        `${process.env.REACT_APP_BACKEND_URL}/indie/${params.indieId}/support`,
         {
           method: "DELETE",
           headers: {

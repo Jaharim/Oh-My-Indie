@@ -34,7 +34,7 @@ const CompleteContactMsg = (props) => {
     const getContactMessage = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/admin/contact/complete`,
+          `${process.env.REACT_APP_BACKEND_URL}/admin/contact/complete`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

@@ -28,11 +28,14 @@ const MyContactMsg = (props) => {
   useEffect(() => {
     const getContactMessage = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/mypage/contact`, {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/mypage/contact`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
+        );
 
         const responseData = await response.json();
 

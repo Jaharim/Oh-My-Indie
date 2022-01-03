@@ -27,7 +27,7 @@ const SearchForDelete = (props) => {
     if (enteredIndieName.current.value !== "") {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${enteredIndieName.current.value}`,
+          `${process.env.REACT_APP_BACKEND_URL}/indie/${enteredIndieName.current.value}`,
           {
             headers: {
               Authorization: `Bearer ${auth.token}`,

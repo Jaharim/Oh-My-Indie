@@ -114,7 +114,7 @@ const EditIndie = (props) => {
       formData.append("image", formState.inputs.image.value);
       formData.append("checkEditImg", checkEditImg);
       const response = await fetch(
-        `http://localhost:5000/admin/${props.indieName}/editIndie`,
+        `${process.env.REACT_APP_BACKEND_URL}/admin/${props.indieName}/editIndie`,
         {
           method: "PATCH",
           body: formData,
@@ -153,7 +153,7 @@ const EditIndie = (props) => {
       )}
       {!editIndieOKModalStatus && (
         <div className="editIndie-modal">
-          <form className="editIndie-modal-form" onSubmit="return check()">
+          <form className="editIndie-modal-form">
             <div className="editIndie-modal-form__input">
               <span>등록번호 : </span>
               <Input
@@ -176,8 +176,6 @@ const EditIndie = (props) => {
                 value={`${props.indieInformForEdit.name}`}
               />
             </div>
-            {/* <div className="editIndie-modal-form__input">
-              <span>ImageUrl : </span> */}
             <ImageUpload
               className="editIndie-modal-form__input"
               id="image"

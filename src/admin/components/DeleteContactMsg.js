@@ -19,16 +19,19 @@ const DeleteContactMsg = (props) => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/admin/contact`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
-        },
-        body: JSON.stringify({
-          id: props.props.id,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/admin/contact`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+          body: JSON.stringify({
+            id: props.props.id,
+          }),
+        }
+      );
 
       const responseData = await response.json();
 

@@ -21,7 +21,7 @@ const Indie = (props) => {
     const indieExistChecker = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${params.indieId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/indie/${params.indieId}`,
           {
             headers: {
               Authorization: `Bearer ${storedData.token}`,

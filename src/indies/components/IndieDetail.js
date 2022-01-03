@@ -33,7 +33,7 @@ const IndieDetail = (props) => {
     const getSearchedIndieInformation = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/indie/${props.name}`,
+          `${process.env.REACT_APP_BACKEND_URL}/indie/${props.name}`,
           {
             headers: {
               Authorization: `Bearer ${storedData.token}`,
@@ -74,7 +74,7 @@ const IndieDetail = (props) => {
   const heartClickHandler = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/indie/${props.name}/like`,
+        `${process.env.REACT_APP_BACKEND_URL}/indie/${props.name}/like`,
         {
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -104,7 +104,7 @@ const IndieDetail = (props) => {
           <div className="detail-container__left">
             <div className="detail-img">
               <img
-                src={`http://localhost:5000/${indieDetail.image}`}
+                src={`${process.env.REACT_APP_BACKEND_URL}/${indieDetail.image}`}
                 alt={indieDetail.name}
               />
             </div>

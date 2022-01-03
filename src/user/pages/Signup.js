@@ -74,17 +74,20 @@ const Signup = () => {
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formState.inputs.email.value,
-          password: formState.inputs.password.value,
-          nickname: formState.inputs.nickname.value,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+            nickname: formState.inputs.nickname.value,
+          }),
+        }
+      );
 
       const responseData = await response.json();
 
