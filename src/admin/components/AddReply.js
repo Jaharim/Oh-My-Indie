@@ -47,7 +47,7 @@ const AddReply = (props) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/admin/contact/reply`,
+        `${process.env.REACT_APP_BACKEND_URL}/admin/contact/reply`,
         {
           method: "PATCH",
           headers: {
