@@ -120,6 +120,7 @@ const Signup = () => {
                 validators={[VALIDATOR_MINLENGTH(2)]}
                 errorText="Please enter a valid nickname."
                 onInput={inputHandler}
+                placeholder={"2글자 이상"}
               />
             </div>
             <div className="signup-form-input__container">

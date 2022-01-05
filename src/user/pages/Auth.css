@@ -24,6 +24,12 @@
   margin-bottom: 1rem;
 }
 
+.login-form-input__container span,
+.signup-form-input__container span {
+  width: 30%;
+  text-align: right;
+}
+
 .login-form__container h2 {
   display: flex;
   flex-direction: row;

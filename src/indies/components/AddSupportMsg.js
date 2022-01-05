@@ -130,7 +130,7 @@ const AddSupportMsgModal = (props) => {
                   VALIDATOR_MINLENGTH(5),
                   VALIDATOR_MAXLENGTH(10),
                 ]}
-                errorText="제목을 5글자 이상 입력해주세요."
+                placeholder="5글자 이상 (최대 10자)"
                 onInput={inputHandler}
               />
             </div>
@@ -145,7 +145,7 @@ const AddSupportMsgModal = (props) => {
                   VALIDATOR_MINLENGTH(5),
                   VALIDATOR_MAXLENGTH(150),
                 ]}
-                errorText="내용을 입력해주세요."
+                placeholder="5글자 이상 입력해주세요.(최대 150자)"
                 onInput={inputHandler}
               />
             </div>

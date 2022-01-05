@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useState } from "react";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
+  VALIDATOR_MAXLENGTH,
 } from "../../shared/components/util/validators";
 
 import { AuthContext } from "../../shared/components/context/auth-context";
@@ -97,8 +98,12 @@ const ContactForm = (props) => {
                 id="contactTitle"
                 element="input"
                 type="text"
-                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-                errorText="제목을 5글자 이상 입력해주세요."
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MINLENGTH(5),
+                  VALIDATOR_MAXLENGTH(10),
+                ]}
+                placeholder="5글자 이상 (최대 10자)"
                 onInput={titleInputHandler}
               />
             </div>
@@ -110,7 +115,7 @@ const ContactForm = (props) => {
                 rows="10"
                 cols="22"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-                errorText="내용을 입력해주세요."
+                placeholder="5글자 이상 입력해주세요."
                 onInput={textareaInputHandler}
               />
             </div>
