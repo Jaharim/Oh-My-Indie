@@ -67,6 +67,7 @@
   font-size: smaller;
 }
 
+.detail-support,
 .detail-support:visited .detail-support:active .detail-support:link {
   color: black;
 }
