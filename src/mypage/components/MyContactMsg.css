@@ -26,17 +26,17 @@
 }
 
 .contact-mypage-header {
-  position: absolute;
+  position: relative;
   border: 5px double black;
   border-style: none none double none;
-  top: 9%;
+  top: -6%;
 }
 
 .contact-mypage-main {
   position: relative;
   width: 100%;
   height: 60%;
-  top: 10%;
+  top: 4%;
   overflow: auto;
 }
 
@@ -55,5 +55,5 @@
   align-items: center;
   width: 50%;
   position: relative;
-  top: 14%;
+  top: 9%;
 }

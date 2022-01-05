@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect, Switch } from "react-router";
 
-import Main from "./main/pages/Main";
+import { AuthContext } from "./shared/components/context/auth-context";
+
+import { useAuth } from "./shared/components/context/auth-hook";
+
+import MyPage from "./mypage/pages/MyPage";
+/* import Main from "./main/pages/Main";
 import Indie from "./indies/pages/Indie";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import SearchIndie from "./indies/pages/SearchIndie";
@@ -18,7 +23,42 @@ import MyPage from "./mypage/pages/MyPage";
 import MySupportMsg from "./mypage/components/MySupportMsg";
 import MyContactMsg from "./mypage/components/MyContactMsg";
 import SupportMsgAdmin from "./admin/components/SupportMsgAdmin";
-import CompleteContactMsg from "./admin/components/CompleteContactMsg";
+import CompleteContactMsg from "./admin/components/CompleteContactMsg"; */
+
+const Main = React.lazy(() => import("./main/pages/Main"));
+const Indie = React.lazy(() => import("./indies/pages/Indie"));
+const MainNavigation = React.lazy(() =>
+  import("./shared/components/Navigation/MainNavigation")
+);
+const SearchIndie = React.lazy(() => import("./indies/pages/SearchIndie"));
+const Contact = React.lazy(() => import("./contact/pages/Contact"));
+const IndieSupport = React.lazy(() =>
+  import("./indies/components/IndieSupport")
+);
+const Auth = React.lazy(() => import("./user/pages/Auth"));
+
+const Signup = React.lazy(() => import("./user/pages/Signup"));
+const Admin = React.lazy(() => import("./admin/pages/Admin"));
+
+const ContactAdmin = React.lazy(() =>
+  import("./admin/components/ContactAdmin")
+); /* 
+const MyPage = React.lazy(() => import("./mypage/pages/MyPage")); */
+const MySupportMsg = React.lazy(() =>
+  import("./mypage/components/MySupportMsg")
+);
+const MyContactMsg = React.lazy(() =>
+  import("./mypage/components/MyContactMsg")
+);
+const SupportMsgAdmin = React.lazy(() =>
+  import("./admin/components/SupportMsgAdmin")
+);
+const CompleteContactMsg = React.lazy(() =>
+  import("./admin/components/CompleteContactMsg")
+);
+const Loading = React.lazy(() =>
+  import("./shared/components/UIElements/Loading")
+);
 
 function App() {
   const { token, login, logout, isAdmin } = useAuth();

@@ -23,14 +23,15 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
 .indie__header {
-  position: absolute;
+  position: relative;
   border: 5px double black;
   border-style: none none double none;
-  top: 9%;
+  top: -7%;
 }
 
-.indie__backBtn {
+.back-Btn__indie {
   position: relative;
-  top: 45%;
+  top: 9%;
 }

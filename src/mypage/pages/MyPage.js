@@ -13,8 +13,8 @@ const MyPage = (props) => {
     history.push("/mypage/contact");
   };
   return (
-    <div className="admin__container">
-      <div className="admin-menu__container">
+    <div className="myPage__container">
+      <div className="myPage-menu__container">
         <div className="myPage-menu-addIndie__container">
           <div
             className="myPage-menu-addIndie__text"
