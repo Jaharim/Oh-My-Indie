@@ -13,6 +13,14 @@ const SearchForDelete = (props) => {
   const [errorMsg, setErrorMsg] = useState();
   const enteredIndieName = useRef();
 
+  const focusedInputHandler = () => {
+    props.focusedEditInput();
+  };
+
+  const blurInputHandler = () => {
+    props.blurredEditInput();
+  };
+
   const deleteIndieMoalCloseHandler = (event) => {
     setdeleteBackdropStatus(false);
     enteredIndieName.current.value = "";
@@ -60,7 +68,13 @@ const SearchForDelete = (props) => {
         >
           <label htmlFor="indieName">삭제할 Indie</label>
           <div className="search-delete-input__container">
-            <input type="text" name="indieName" ref={enteredIndieName} />
+            <input
+              type="text"
+              name="indieName"
+              ref={enteredIndieName}
+              onFocus={focusedInputHandler}
+              onBlur={blurInputHandler}
+            />
             <button>
               <span role="img" aria-label="search">
                 🔍

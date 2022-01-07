@@ -15,6 +15,14 @@ const SearchForEdit = (props) => {
 
   const enteredIndieName = useRef();
 
+  const focusedInputHandler = () => {
+    props.focusedEditInput();
+  };
+
+  const blurInputHandler = () => {
+    props.blurredEditInput();
+  };
+
   const editIndieMoalCloseHandler = (event) => {
     setEditBackdropStatus(false);
     enteredIndieName.current.value = "";
@@ -61,7 +69,13 @@ const SearchForEdit = (props) => {
         <form className="search-edit__form" onSubmit={searchEditHandler}>
           <label htmlFor="indieName">수정할 Indie</label>
           <div className="search-edit-input__container">
-            <input type="text" name="indieName" ref={enteredIndieName} />
+            <input
+              type="text"
+              name="indieName"
+              ref={enteredIndieName}
+              onFocus={focusedInputHandler}
+              onBlur={blurInputHandler}
+            />
             <button>
               <span role="img" aria-label="search">
                 🔍

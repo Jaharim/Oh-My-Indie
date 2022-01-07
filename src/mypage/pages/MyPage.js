@@ -20,7 +20,10 @@ const MyPage = (props) => {
             className="myPage-menu-addIndie__text"
             onClick={openSupportMsgHandler}
           >
-            Support Message
+            나의 Support 메시지
+            <br />
+            <br />
+            모아보기
           </div>
         </div>
         <div className="myPage-menu-addIndie__container">
@@ -28,7 +31,10 @@ const MyPage = (props) => {
             className="myPage-menu-addIndie__text"
             onClick={openContactMsgHandler}
           >
-            Contact Message
+            나의 Contact 메시지
+            <br />
+            <br />
+            모아보기
           </div>
         </div>
       </div>

@@ -1,11 +1,20 @@
-.myPage-menu__container {
+.myPage__container {
   display: flex;
   position: absolute;
+  width: 100vw;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.myPage-menu__container {
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  width: 80%;
-  height: 40%;
+  width: 80rem;
+  height: 30rem;
   top: 20%;
   left: 10%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -22,7 +31,7 @@
   align-content: center;
   text-align: center;
   width: 30%;
-  height: 60%;
+  height: 50%;
 }
 
 .myPage-menu-addIndie__text:hover {

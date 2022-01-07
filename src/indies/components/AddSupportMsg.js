@@ -149,7 +149,12 @@ const AddSupportMsgModal = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <Button disabled={!formState.isValid}>등록</Button>
+            <div className="support-message-button-form">
+              <Button disabled={!formState.isValid}>등록</Button>
+              <Button type="button" onClick={supportMsgOkBtnHandler}>
+                닫기
+              </Button>
+            </div>
           </form>
         </div>
       )}

@@ -82,7 +82,7 @@ const ContactForm = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -119,12 +119,17 @@ const ContactForm = (props) => {
                 onInput={textareaInputHandler}
               />
             </div>
-            <Button
-              className={"button"}
-              disabled={!titleFormState.isValid || !textareaFormState.isValid}
-            >
-              보내기
-            </Button>
+            <div className="contact-button-form">
+              <Button
+                className={"button"}
+                disabled={!titleFormState.isValid || !textareaFormState.isValid}
+              >
+                보내기
+              </Button>
+              <Button type="button" onClick={contactOkBtnHandler}>
+                닫기
+              </Button>
+            </div>
           </form>
         </div>
       )}
@@ -136,7 +141,7 @@ const ContactForm = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

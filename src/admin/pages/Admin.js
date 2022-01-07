@@ -10,8 +10,27 @@ import "./Admin.css";
 const Admin = (props) => {
   let adminContent;
   const history = useHistory();
+  const [editIndieStatus, setEditIndieStatus] = useState("");
+
+  const [deleteIndieStatus, setDeleteIndieStatus] = useState("");
   const [adminMode, setAdminMode] = useState("indie");
   const [addBackdropStatus, setAddBackdropStatus] = useState(false);
+
+  const editInputFocusHandler = () => {
+    setEditIndieStatus("edit-indie-input-focused");
+  };
+
+  const editInputBlurHandler = () => {
+    setEditIndieStatus("");
+  };
+
+  const deleteInputFocusHandler = () => {
+    setDeleteIndieStatus("delete-indie-input-focused");
+  };
+
+  const deleteInputBlurHandler = () => {
+    setDeleteIndieStatus("");
+  };
 
   const addIndieModalOpenHandler = (event) => {
     event.preventDefault();
@@ -27,8 +46,6 @@ const Admin = (props) => {
     console.log("good");
     setAddBackdropStatus(false);
   };
-
-  const editIndieHandler = (event) => {};
 
   const changeUserModeHandler = () => {
     setAdminMode("user");
@@ -67,11 +84,19 @@ const Admin = (props) => {
             <AddIndie className="addIndie-modal" onSubmit={addIndieHandler} />
           )}
         </div>
-        <div className="admin-menu-editIndie__container">
-          <SearchForEdit onSubmit={editIndieHandler} />
+        <div className={`admin-menu-editIndie__container ${editIndieStatus}`}>
+          <SearchForEdit
+            focusedEditInput={editInputFocusHandler}
+            blurredEditInput={editInputBlurHandler}
+          />
         </div>
-        <div className="admin-menu-deleteIndie__container">
-          <SearchForDelete />
+        <div
+          className={`admin-menu-deleteIndie__container ${deleteIndieStatus}`}
+        >
+          <SearchForDelete
+            focusedEditInput={deleteInputFocusHandler}
+            blurredEditInput={deleteInputBlurHandler}
+          />
         </div>
       </React.Fragment>
     );
@@ -83,7 +108,8 @@ const Admin = (props) => {
             className="admin-menu-addIndie__text"
             onClick={openSupportMsgAdminModeHandler}
           >
-            Support Message 관리
+            Support 메시지 <br />
+            <br /> 모아보기
           </div>
         </div>
         <div className="admin-menu-addIndie__container">
@@ -91,7 +117,10 @@ const Admin = (props) => {
             className="admin-menu-addIndie__text"
             onClick={openContactAdminModeHandler}
           >
-            답변대기 Contact
+            답변대기중인 Contact 메시지
+            <br />
+            <br />
+            모아보기
           </div>
         </div>
         <div className="admin-menu-addIndie__container">
@@ -99,7 +128,10 @@ const Admin = (props) => {
             className="admin-menu-addIndie__text"
             onClick={openRepliedContactAdminModeHandler}
           >
-            답변완료 Contact
+            답변완료한 Contact 메시지
+            <br />
+            <br />
+            모아보기
           </div>
         </div>
       </React.Fragment>
@@ -110,19 +142,20 @@ const Admin = (props) => {
     <React.Fragment>
       <div className="admin__container">
         <div className="admin-menu__container">{adminContent}</div>
-      </div>
-      <div className="adminMode__container">
-        <div
-          className="adminMode-indie__button"
-          onClick={changeIndieModeHandler}
-        >
-          Indie
-        </div>
-        <div
-          className="adminMode-contact__button"
-          onClick={changeUserModeHandler}
-        >
-          User
+
+        <div className="adminMode__container">
+          <div
+            className="adminMode-indie__button"
+            onClick={changeIndieModeHandler}
+          >
+            Indie
+          </div>
+          <div
+            className="adminMode-contact__button"
+            onClick={changeUserModeHandler}
+          >
+            User
+          </div>
         </div>
       </div>
     </React.Fragment>
