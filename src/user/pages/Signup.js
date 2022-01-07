@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useReducer, useState, useContext } from "react";
 import { useHistory } from "react-router";
 
 import "./Auth.css";
@@ -10,7 +10,6 @@ import {
 } from "../../shared/components/util/validators";
 import Button from "../../shared/components/UIElements/Button";
 import ErrorModal from "../../shared/components/error/ErrorModal";
-import { useContext } from "react/cjs/react.development";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
 const formReducer = (state, action) => {
