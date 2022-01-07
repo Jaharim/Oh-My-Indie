@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect, Switch } from "react-router";
 
@@ -6,7 +6,6 @@ import { AuthContext } from "./shared/components/context/auth-context";
 
 import { useAuth } from "./shared/components/context/auth-hook";
 
-import MyPage from "./mypage/pages/MyPage";
 /* import Main from "./main/pages/Main";
 import Indie from "./indies/pages/Indie";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
@@ -42,8 +41,8 @@ const Admin = React.lazy(() => import("./admin/pages/Admin"));
 
 const ContactAdmin = React.lazy(() =>
   import("./admin/components/ContactAdmin")
-); /* 
-const MyPage = React.lazy(() => import("./mypage/pages/MyPage")); */
+);
+const MyPage = React.lazy(() => import("./mypage/pages/MyPage"));
 const MySupportMsg = React.lazy(() =>
   import("./mypage/components/MySupportMsg")
 );
@@ -55,9 +54,6 @@ const SupportMsgAdmin = React.lazy(() =>
 );
 const CompleteContactMsg = React.lazy(() =>
   import("./admin/components/CompleteContactMsg")
-);
-const Loading = React.lazy(() =>
-  import("./shared/components/UIElements/Loading")
 );
 
 function App() {

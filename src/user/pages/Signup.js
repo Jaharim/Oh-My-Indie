@@ -10,6 +10,8 @@ import {
 } from "../../shared/components/util/validators";
 import Button from "../../shared/components/UIElements/Button";
 import ErrorModal from "../../shared/components/error/ErrorModal";
+import { useContext } from "react/cjs/react.development";
+import { AuthContext } from "../../shared/components/context/auth-context";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -37,6 +39,7 @@ const formReducer = (state, action) => {
 };
 
 const Signup = () => {
+  const auth = useContext(AuthContext);
   const history = useHistory();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
@@ -94,7 +97,8 @@ const Signup = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
-      history.replace("/auth");
+      auth.login(responseData.userId, responseData.token, "user");
+      history.replace("/");
     } catch (err) {
       setErrorMsg(err.message);
       setError(true);

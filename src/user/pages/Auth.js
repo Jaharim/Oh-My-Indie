@@ -69,6 +69,10 @@ const Auth = () => {
     setError(false);
   };
 
+  const linkToSignupHandler = () => {
+    history.push("/signup");
+  };
+
   const authSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -117,7 +121,7 @@ const Auth = () => {
         <div className="login-form__container">
           <h2>로그인</h2>
 
-          <form onSubmit={authSubmitHandler}>
+          <form>
             <div className="login-form-input__container">
               <span>이메일 : </span>
               <Input
@@ -138,10 +142,23 @@ const Auth = () => {
                 onInput={inputHandler}
               />
             </div>
-            <Button className="login-Btn" disabled={!formState.isValid}>
+          </form>
+          <div className="login-form-button__container">
+            <Button
+              className="login-Btn"
+              disabled={!formState.isValid}
+              onClick={authSubmitHandler}
+            >
               로그인
             </Button>
-          </form>
+            <Button
+              className="signup-Btn"
+              type="button"
+              onClick={linkToSignupHandler}
+            >
+              회원가입
+            </Button>
+          </div>
         </div>
       </div>
     </React.Fragment>

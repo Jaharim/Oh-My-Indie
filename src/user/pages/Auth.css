@@ -55,3 +55,14 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.login-form-button__container {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.login-form-button__container button {
+  width: 25%;
+}
