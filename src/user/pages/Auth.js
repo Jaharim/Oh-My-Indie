@@ -11,6 +11,7 @@ import {
 import { AuthContext } from "../../shared/components/context/auth-context";
 import Button from "../../shared/components/UIElements/Button";
 import ErrorModal from "../../shared/components/error/ErrorModal";
+import Loading from "../../shared/components/UIElements/Loading";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -39,6 +40,7 @@ const formReducer = (state, action) => {
 
 const Auth = () => {
   const history = useHistory();
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
@@ -70,12 +72,12 @@ const Auth = () => {
   };
 
   const linkToSignupHandler = () => {
-    history.push("/signup");
+    history.push("/auth/signup");
   };
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
-
+    setLoadingSpinner(true);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
@@ -105,6 +107,7 @@ const Auth = () => {
         else auth.login(responseData.userId, responseData.token, "user");
       }
 
+      setLoadingSpinner(false);
       history.replace("/");
     } catch (err) {
       setErrorMsg(err.message);
@@ -119,6 +122,8 @@ const Auth = () => {
       )}
       <div className="login-form">
         <div className="login-form__container">
+          {loadingSpinner && <Loading />}
+
           <h2>로그인</h2>
 
           <form>

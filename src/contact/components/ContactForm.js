@@ -12,10 +12,12 @@ import Button from "../../shared/components/UIElements/Button";
 
 import "./ContactForm.css";
 import ErrorModal from "../../shared/components/error/ErrorModal";
+import Loading from "../../shared/components/UIElements/Loading";
 const ContactForm = (props) => {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const auth = useContext(AuthContext);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
   const [okModalStatus, setOkModalStatus] = useState(false);
   const [titleFormState, setFormState] = useState({
     value: "",
@@ -52,7 +54,7 @@ const ContactForm = (props) => {
 
   const contactSubmitHandler = async (event) => {
     event.preventDefault();
-
+    setLoadingSpinner(true);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/contact`,
@@ -78,6 +80,7 @@ const ContactForm = (props) => {
       setErrorMsg(err.message);
       setError(true);
     }
+    setLoadingSpinner(false);
     setOkModalStatus(true);
   };
 
@@ -89,6 +92,7 @@ const ContactForm = (props) => {
       {!okModalStatus && (
         <div className="contact-modal">
           <form className="contact-form" onSubmit={contactSubmitHandler}>
+            {loadingSpinner && <Loading />}
             <div className="contact-header">
               <span>Contact Us</span>
             </div>
@@ -134,8 +138,8 @@ const ContactForm = (props) => {
         </div>
       )}
       {okModalStatus && (
-        <div className="support-message-post-Ok-modal">
-          <div className="support-message-post-Ok-modal-form">
+        <div className="contact-post-Ok-modal">
+          <div className="contact-post-Ok-modal-form">
             <div>등록이 완료되었습니다.</div>
             <Button onClick={contactOkBtnHandler}>OK</Button>
           </div>

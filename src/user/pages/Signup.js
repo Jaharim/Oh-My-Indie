@@ -11,6 +11,7 @@ import {
 import Button from "../../shared/components/UIElements/Button";
 import ErrorModal from "../../shared/components/error/ErrorModal";
 import { AuthContext } from "../../shared/components/context/auth-context";
+import Loading from "../../shared/components/UIElements/Loading";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -41,6 +42,7 @@ const Signup = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const [error, setError] = useState(false);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
@@ -75,6 +77,7 @@ const Signup = () => {
 
   const authSubmitHandler = async (event) => {
     event.preventDefault();
+    setLoadingSpinner(true);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
@@ -96,6 +99,7 @@ const Signup = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
+      setLoadingSpinner(false);
       auth.login(responseData.userId, responseData.token, "user");
       history.replace("/");
     } catch (err) {
@@ -111,6 +115,7 @@ const Signup = () => {
       )}
       <div className="login-form">
         <div className="login-form__container">
+          {loadingSpinner && <Loading />}
           <h2>회원가입</h2>
 
           <form onSubmit={authSubmitHandler}>

@@ -151,7 +151,17 @@ const EditSupportMsg = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <Button disabled={!formState.isValid}>수정</Button>
+            <div className="support-message-button-form">
+              <Button disabled={!formState.isValid}>수정</Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  props.onCancel();
+                }}
+              >
+                닫기
+              </Button>
+            </div>
           </form>
         </div>
       )}
