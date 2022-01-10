@@ -18,7 +18,7 @@ const NavLinks = (props) => {
     <ul
       className="nav-links"
       onClick={() => {
-        props.onClick();
+        if (props.onClick) props.onClick();
       }}
     >
       <li>
