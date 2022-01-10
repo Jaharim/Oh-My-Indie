@@ -15,7 +15,12 @@ const NavLinks = (props) => {
   };
 
   return (
-    <ul className="nav-links">
+    <ul
+      className="nav-links"
+      onClick={() => {
+        props.onClick();
+      }}
+    >
       <li>
         <NavLink to="/" exact>
           HOME

@@ -49,3 +49,31 @@
   background: #292929;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    height: 100vh;
+  }
+  /* 
+  .nav-links li {
+    margin: 0 0.5rem;
+  } */
+
+  .nav-links a {
+    color: #583709;
+    text-decoration: none;
+  }
+
+  .nav-links button {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+  }
+
+  .nav-links button:hover,
+  .nav-links button:active {
+    background: #f8df00;
+    color: #292929;
+  }
+}
