@@ -72,7 +72,7 @@ const Auth = () => {
   };
 
   const linkToSignupHandler = () => {
-    history.push("/auth/signup");
+    history.push("/signup");
   };
 
   const authSubmitHandler = async (event) => {
