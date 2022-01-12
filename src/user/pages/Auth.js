@@ -126,9 +126,9 @@ const Auth = () => {
 
           <h2>로그인</h2>
 
-          <form>
+          <form className="login-form-input-form">
             <div className="login-form-input__container">
-              <span>이메일 : </span>
+              <span>이메일 </span>
               <Input
                 element="input"
                 id="email"
@@ -138,7 +138,7 @@ const Auth = () => {
               />
             </div>
             <div className="login-form-input__container">
-              <span>비밀번호 : </span>
+              <span>비밀번호 </span>
               <Input
                 element="input"
                 id="password"

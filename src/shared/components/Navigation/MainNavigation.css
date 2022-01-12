@@ -21,7 +21,7 @@
   height: none;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 815px) {
   .main-navigation__menu-btn {
     width: 2rem;
     height: 2rem;

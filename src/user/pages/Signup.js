@@ -113,14 +113,14 @@ const Signup = () => {
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
-      <div className="login-form">
+      <form className="login-form" onSubmit={authSubmitHandler}>
         <div className="login-form__container">
           {loadingSpinner && <Loading />}
           <h2>회원가입</h2>
 
-          <form onSubmit={authSubmitHandler}>
+          <div className="login-form-input-form">
             <div className="signup-form-input__container">
-              <span>닉네임 : </span>
+              <span>닉네임</span>
               <Input
                 element="input"
                 id="nickname"
@@ -132,7 +132,7 @@ const Signup = () => {
               />
             </div>
             <div className="signup-form-input__container">
-              <span>이메일 : </span>
+              <span>이메일</span>
               <Input
                 element="input"
                 id="email"
@@ -143,7 +143,7 @@ const Signup = () => {
               />
             </div>
             <div className="signup-form-input__container">
-              <span>비밀번호 : </span>
+              <span>비밀번호</span>
               <Input
                 element="input"
                 id="password"
@@ -156,9 +156,9 @@ const Signup = () => {
             <Button className="signup-Btn" disabled={!formState.isValid}>
               가입
             </Button>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     </React.Fragment>
   );
 };

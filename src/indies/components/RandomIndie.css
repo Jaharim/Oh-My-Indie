@@ -43,3 +43,9 @@
 .searched-like__number {
   font-weight: bold;
 }
+
+@media (max-width: 815px) {
+  .searched-container {
+    width: 100%;
+  }
+}
