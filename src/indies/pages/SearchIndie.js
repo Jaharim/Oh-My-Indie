@@ -107,7 +107,7 @@ const SearchIndie = (props) => {
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
       <div className="search__container">
-        <Card>
+        <div className="search-card">
           <div className="search__mine-container">
             <div className="search__mine-header">
               <h1> 당신의 Indie,</h1>
@@ -132,8 +132,8 @@ const SearchIndie = (props) => {
               </form>
             </div>
           </div>
-        </Card>
-        <Card>
+        </div>
+        <div className="search-card">
           <div className="search__somebody-container">
             <div className="search__somebody-header">
               <h1>다른 누군가의 Indie,</h1>
@@ -145,7 +145,7 @@ const SearchIndie = (props) => {
               onClick={randomIndieClickHandler}
             />
           </div>
-        </Card>
+        </div>
       </div>
     </React.Fragment>
   );
