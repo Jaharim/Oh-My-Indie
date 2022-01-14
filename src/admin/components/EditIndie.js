@@ -147,7 +147,7 @@ const EditIndie = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -183,7 +183,6 @@ const EditIndie = (props) => {
               mode={true}
               checkEditImg={checkEditImgHandler}
             />
-            {/* </div> */}
             <div className="editIndie-modal-form__input">
               <span>소속사 : </span>
               <Input
@@ -262,25 +261,32 @@ const EditIndie = (props) => {
                 value={`${formState.inputs.youtube.value}`}
               />
             </div>
-            <Button
-              type="button"
-              onClick={editIndieSubmitHandler}
-              disabled={!formState.isValid}
-            >
-              수정
-            </Button>
+            <div className="editIndie-modal-form__button">
+              <Button
+                type="button"
+                onClick={editIndieSubmitHandler}
+                disabled={!formState.isValid}
+              >
+                수정
+              </Button>
+              <Button type="button" onClick={editIndieOkBtnHandler}>
+                닫기
+              </Button>
+            </div>
           </form>
         </div>
       )}
       {editIndieOKModalStatus && (
         <div className="editIndie-Ok-modal">
           <div className="editIndie-Ok-modal-form">
-            <div>{formState.inputs.name.value}의 정보가 수정되었습니다.</div>
+            <div className="editIndie-Ok-message">
+              {formState.inputs.name.value}의 정보가 수정되었습니다.
+            </div>
             <Button onClick={editIndieOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

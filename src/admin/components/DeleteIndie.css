@@ -35,3 +35,18 @@
   align-items: center;
   height: 100%;
 }
+
+@media (max-width: 815px) {
+  .deleteIndie-modal__container {
+    width: 352px;
+    height: 160px;
+    top: 40%;
+    left: unset;
+    padding: 1rem;
+  }
+
+  .deleteIndie-question,
+  .deleteIndie-ok-message {
+    font-size: 15px;
+  }
+}

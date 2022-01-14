@@ -88,3 +88,21 @@
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 815px) {
+  .contact-modal {
+    top: 95px;
+    width: 100vw;
+    left: 0;
+    height: 550px;
+  }
+
+  .contact-form {
+    width: 352px;
+    height: 480px;
+  }
+
+  .addreply-confirm-btn__container {
+    width: 65%;
+  }
+}

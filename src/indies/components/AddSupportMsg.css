@@ -94,3 +94,21 @@
 .support-message-button-form button {
   width: 20%;
 }
+
+@media (max-width: 815px) {
+  .support-message-modal {
+    top: 95px;
+    width: 100vw;
+    left: 0;
+    height: 550px;
+  }
+
+  .support-message-form {
+    width: 352px;
+    height: 480px;
+  }
+
+  .support-message-button-form {
+    width: 65%;
+  }
+}

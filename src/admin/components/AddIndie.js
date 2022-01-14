@@ -145,7 +145,7 @@ const AddIndie = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -251,19 +251,31 @@ const AddIndie = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <Button disabled={!formState.isValid}>추가</Button>
+            <div className="addIndie-modal-form__button">
+              <Button disabled={!formState.isValid}>추가</Button>
+              <Button
+                type="button"
+                onClick={() => {
+                  props.onClose();
+                }}
+              >
+                닫기
+              </Button>
+            </div>
           </form>
         </div>
       )}
       {addIndieOkModalStatus && (
         <div className="addIndie-Ok-modal">
           <div className="addIndie-Ok-modal-form">
-            <div>{formState.inputs.name.value}의 등록이 완료되었습니다.</div>
+            <div className="addIndie-Ok-message">
+              {formState.inputs.name.value}의 등록이 완료되었습니다.
+            </div>
             <Button onClick={addIndieOkBtnHandler}>확인</Button>
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

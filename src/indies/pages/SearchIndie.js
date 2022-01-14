@@ -133,7 +133,7 @@ const SearchIndie = (props) => {
             </div>
           </div>
         </div>
-        <div className="search-card">
+        <div className="search-card__random">
           <div className="search__somebody-container">
             <div className="search__somebody-header">
               <h1>다른 누군가의 Indie,</h1>

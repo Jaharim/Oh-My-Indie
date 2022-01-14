@@ -11,7 +11,8 @@
   font-size: 0.8em;
 }
 
-.search-card {
+.search-card,
+.search-card__random {
   position: relative;
   margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -78,12 +79,21 @@
 }
 
 @media (max-width: 815px) {
+  .search__container {
+    height: 555px;
+  }
   .search__mine-container {
     font-size: smaller;
   }
 
   .search-card {
-    width: 20rem;
+    width: 320px;
+    height: 140px;
+  }
+
+  .search-card__random {
+    width: 320px;
+    height: 200px;
   }
 
   .search__mine-header {
@@ -93,5 +103,9 @@
 
   .search__somebody-header {
     font-size: smaller;
+  }
+
+  .search__somebody-container {
+    justify-content: center;
   }
 }

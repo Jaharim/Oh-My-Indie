@@ -57,3 +57,46 @@
   position: relative;
   top: 9%;
 }
+
+@media (max-width: 815px) {
+  .contact-mypage {
+    top: 115px;
+    height: 1235px;
+    justify-content: unset;
+  }
+
+  .contact-mypage-container {
+    width: 352px;
+    height: 1200px;
+  }
+
+  .contact-mypage-header {
+    font-size: 19px;
+    top: -6%;
+  }
+
+  .contact-mypage-main {
+    height: 75%;
+    top: -2%;
+  }
+
+  .contact-mypage-body {
+    grid-template-columns: repeat(1, 100%);
+    padding: 0 28px;
+  }
+
+  .contact-mypage-message {
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-mypage-button__container {
+    justify-content: space-evenly;
+    width: 85%;
+    top: 4%;
+  }
+
+  .contact-mypage-button__container button {
+    width: fit-content;
+  }
+}

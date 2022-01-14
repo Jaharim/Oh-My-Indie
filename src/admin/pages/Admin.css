@@ -100,3 +100,30 @@ button {
   transform: scale(1.01);
   font-weight: bolder;
 }
+
+@media (max-width: 815px) {
+  .admin__container {
+    top: 135px;
+    height: 675px;
+    justify-content: unset;
+  }
+
+  .admin-menu__container {
+    flex-direction: column;
+    width: 352px;
+    height: 690px;
+  }
+
+  .adminMode__container {
+    width: 320px;
+    height: 160px;
+    top: -108px;
+  }
+
+  .admin-menu-addIndie__container,
+  .admin-menu-editIndie__container,
+  .admin-menu-deleteIndie__container {
+    width: 255px;
+    height: 175px;
+  }
+}

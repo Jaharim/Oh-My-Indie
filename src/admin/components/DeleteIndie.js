@@ -54,7 +54,9 @@ const DeleteIndie = (props) => {
       <div className="deleteIndie-modal__container">
         {!deleteBackdropStatus && (
           <div className="deleteIndie-modal__confirm">
-            <div>정말로 {props.indieName}의 데이터를 삭제하시겠습니까?</div>
+            <div className="deleteIndie-question">
+              정말로 {props.indieName}의 데이터를 삭제하시겠습니까?
+            </div>
             <div className="deleteIndie-modal__confirm-button__container">
               <Button
                 className="indie-delete-modal-confirmBtn"
@@ -73,7 +75,9 @@ const DeleteIndie = (props) => {
         )}
         {deleteBackdropStatus && (
           <div className="deleteIndie-modal__ok">
-            <div>{props.indieName}의 데이터를 삭제하였습니다.</div>
+            <div className="deleteIndie-ok-message">
+              {props.indieName}의 데이터를 삭제하였습니다.
+            </div>
             <Button onClick={deleteIndieModalCloseHandler}>확인</Button>
           </div>
         )}

@@ -34,11 +34,12 @@
 
   width: 30%;
 }
-/* 
-.button {
-  text-align: center;
-  width: 15%;
-} */
+
+.editIndie-modal-form__button {
+  display: flex;
+  width: 65%;
+  justify-content: space-evenly;
+}
 
 .editIndie-Ok-modal {
   display: flex;
@@ -62,4 +63,33 @@
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 815px) {
+  .editIndie-modal {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: white;
+    z-index: 100;
+  }
+
+  .editIndie-modal-form {
+    width: 100%;
+    height: 100%;
+  }
+
+  .editIndie-Ok-modal {
+    width: 352px;
+    height: 160px;
+    top: 40%;
+    left: unset;
+    padding: 1rem;
+  }
+
+  .editIndie-Ok-message {
+    font-size: 15px;
+  }
 }

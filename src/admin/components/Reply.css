@@ -91,3 +91,35 @@
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 815px) {
+  .reply-modal {
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 700px;
+  }
+
+  .reply-form {
+    display: flex;
+    width: 352px;
+    height: 600px;
+  }
+
+  .reply-content-tail {
+    font-size: 12px;
+  }
+
+  .edit-reply-content-header {
+    width: 223px;
+  }
+
+  .edit-reply-form-content {
+    width: 90%;
+    align-items: center;
+  }
+
+  .reply-button-form {
+    width: 65%;
+  }
+}

@@ -64,3 +64,45 @@
   position: relative;
   top: 9%;
 }
+
+@media (max-width: 815px) {
+  .support {
+    top: 115px;
+    height: 1235px;
+    justify-content: unset;
+  }
+
+  .support-container {
+    width: 352px;
+    height: 1200px;
+  }
+
+  .support-header {
+    font-size: 19px;
+    top: -6%;
+  }
+
+  .support-main {
+    height: 75%;
+    top: -2%;
+  }
+
+  .support-body {
+    grid-template-columns: repeat(1, 100%);
+    padding: 0 28px;
+  }
+
+  .support-message {
+    justify-content: center;
+  }
+
+  .support-button__container {
+    justify-content: space-evenly;
+    width: 85%;
+    top: 4%;
+  }
+
+  .support-button__container button {
+    width: fit-content;
+  }
+}

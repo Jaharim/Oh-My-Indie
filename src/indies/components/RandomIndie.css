@@ -46,6 +46,8 @@
 
 @media (max-width: 815px) {
   .searched-container {
-    width: 100%;
+    justify-content: space-between;
+    width: 90%;
+    height: 46%;
   }
 }

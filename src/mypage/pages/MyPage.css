@@ -69,3 +69,32 @@
   width: 30%;
   height: 60%;
 }
+
+@media (max-width: 815px) {
+  .myPage__container {
+    top: 115px;
+    font-size: smaller;
+    width: 100vw;
+    height: 675px;
+  }
+
+  .myPage-menu__container {
+    flex-direction: column;
+    width: 320px;
+    height: 645px;
+  }
+
+  .myPage-menu-addIndie__container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width: 30%;
+    height: 50%;
+  }
+
+  .myPage-menu-addIndie__container {
+    width: 255px;
+    height: 175px;
+  }
+}

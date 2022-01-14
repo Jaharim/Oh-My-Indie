@@ -33,12 +33,12 @@ const Admin = (props) => {
   };
 
   const addIndieModalOpenHandler = (event) => {
-    event.preventDefault();
+    /* event.preventDefault(); */
     setAddBackdropStatus(true);
   };
 
   const addIndieModalCloseHandler = (event) => {
-    event.preventDefault();
+    /* event.preventDefault(); */
     setAddBackdropStatus(false);
   };
 
@@ -81,7 +81,11 @@ const Admin = (props) => {
             <Backdrop onClick={addIndieModalCloseHandler} />
           )}
           {addBackdropStatus && (
-            <AddIndie className="addIndie-modal" onSubmit={addIndieHandler} />
+            <AddIndie
+              className="addIndie-modal"
+              onSubmit={addIndieHandler}
+              onClose={addIndieModalCloseHandler}
+            />
           )}
         </div>
         <div className={`admin-menu-editIndie__container ${editIndieStatus}`}>
