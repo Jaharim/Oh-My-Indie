@@ -157,7 +157,7 @@ const Auth = () => {
               로그인
             </Button>
             <Button
-              className="signup-Btn"
+              className="to-signup-Btn"
               type="button"
               onClick={linkToSignupHandler}
             >

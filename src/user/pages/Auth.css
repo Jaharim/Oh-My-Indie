@@ -79,6 +79,10 @@
   width: 25%;
 }
 
+.to-signup-Btn {
+  color: black;
+}
+
 @media (max-width: 815px) {
   .login-form {
     display: flex;
@@ -89,17 +93,6 @@
     justify-content: center;
     align-items: center;
   }
-  /* 
-  .signup-form {
-    display: flex;
-    position: absolute;
-    width: 100vw;
-    height: 95vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 5vh;
-  } */
 
   .login-form__container {
     display: flex;

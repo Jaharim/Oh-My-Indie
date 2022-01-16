@@ -156,7 +156,7 @@ const AddIndie = (props) => {
             onSubmit={addIndieSubmitHandler}
           >
             <div className="addIndie-modal-form__input">
-              <span>등록번호 : </span>
+              <span>등록번호</span>
               <Input
                 element="input"
                 id="numberString"
@@ -166,7 +166,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>이름 : </span>
+              <span>이름</span>
               <Input
                 element="input"
                 id="name"
@@ -181,7 +181,7 @@ const AddIndie = (props) => {
               onInput={inputHandler}
             />
             <div className="addIndie-modal-form__input">
-              <span>소속사 : </span>
+              <span>소속사</span>
               <Input
                 element="input"
                 id="company"
@@ -191,7 +191,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>대표곡 : </span>
+              <span>대표곡</span>
               <Input
                 element="input"
                 id="song"
@@ -201,7 +201,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>생년월일 : </span>
+              <span>생년월일</span>
               <Input
                 element="input"
                 id="birth"
@@ -211,7 +211,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>설명 : </span>
+              <span>설명</span>
               <Input
                 element="textarea"
                 id="description"
@@ -222,7 +222,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Soundcloud : </span>
+              <span>Soundcloud</span>
               <Input
                 element="input"
                 id="soundcloud"
@@ -232,7 +232,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Instagram : </span>
+              <span>Instagram</span>
               <Input
                 element="input"
                 id="instagram"
@@ -242,7 +242,7 @@ const AddIndie = (props) => {
               />
             </div>
             <div className="addIndie-modal-form__input">
-              <span>Youtube : </span>
+              <span>Youtube</span>
               <Input
                 element="input"
                 id="youtube"
@@ -253,12 +253,7 @@ const AddIndie = (props) => {
             </div>
             <div className="addIndie-modal-form__button">
               <Button disabled={!formState.isValid}>추가</Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  props.onClose();
-                }}
-              >
+              <Button type="button" onClick={addIndieOkBtnHandler}>
                 닫기
               </Button>
             </div>

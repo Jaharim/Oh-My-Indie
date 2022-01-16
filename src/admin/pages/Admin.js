@@ -33,12 +33,12 @@ const Admin = (props) => {
   };
 
   const addIndieModalOpenHandler = (event) => {
-    /* event.preventDefault(); */
+    event.preventDefault();
     setAddBackdropStatus(true);
   };
 
   const addIndieModalCloseHandler = (event) => {
-    /* event.preventDefault(); */
+    event.preventDefault();
     setAddBackdropStatus(false);
   };
 

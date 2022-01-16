@@ -57,7 +57,7 @@ const DeleteContactMsg = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -90,7 +90,7 @@ const DeleteContactMsg = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

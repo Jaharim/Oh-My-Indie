@@ -140,6 +140,7 @@ const Signup = () => {
                 validators={[VALIDATOR_EMAIL()]}
                 errorText="Please enter a valid email address."
                 onInput={inputHandler}
+                placeholder={"example@example.com"}
               />
             </div>
             <div className="signup-form-input__container">
@@ -151,6 +152,7 @@ const Signup = () => {
                 validators={[VALIDATOR_MINLENGTH(5)]}
                 errorText="Please enter a valid password, at least 5 characters."
                 onInput={inputHandler}
+                placeholder={"5글자 이상"}
               />
             </div>
             <Button className="signup-Btn" disabled={!formState.isValid}>

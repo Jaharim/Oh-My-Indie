@@ -18,11 +18,13 @@
   width: 50%;
 }
 
-.detail-img {
+.detail-img img {
   width: 200px;
   height: 200px;
   border-radius: 10px;
-  margin-bottom: 5%;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+  background-attachment: initial;
 }
 
 .detail-favorite {
@@ -182,10 +184,8 @@
     margin-right: unset;
   }
 
-  .detail-img,
   .detail-img img {
     width: 150px;
     height: 150px;
-    margin-bottom: 5%;
   }
 }

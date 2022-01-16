@@ -74,7 +74,7 @@ const AddReply = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -112,7 +112,7 @@ const AddReply = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

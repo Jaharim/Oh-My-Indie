@@ -109,7 +109,7 @@ const Reply = (props) => {
   }, [auth.token, props.props.id]);
 
   return (
-    <div>
+    <React.Fragment>
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
@@ -172,7 +172,7 @@ const Reply = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

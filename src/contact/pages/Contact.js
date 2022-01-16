@@ -8,7 +8,6 @@ import ContactForm from "../components/ContactForm";
 import { AuthContext } from "../../shared/components/context/auth-context";
 
 import "./Contact.css";
-import Loading from "../../shared/components/UIElements/Loading";
 
 const Contact = (props) => {
   const history = useHistory();

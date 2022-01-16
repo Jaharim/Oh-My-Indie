@@ -27,3 +27,9 @@
   height: 100px;
   object-fit: cover;
 }
+
+@media (max-width: 815px) {
+  .image-input__form-button {
+    width: 160px;
+  }
+}

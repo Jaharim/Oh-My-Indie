@@ -21,7 +21,11 @@ const Loading = (props) => {
   return (
     <div className={firstDivClassName}>
       <div className={secondDivClassName}>
-        <img className={imgClassName} src={LoadingSpinner} />
+        <img
+          className={imgClassName}
+          alt="loadingSpinner"
+          src={LoadingSpinner}
+        />
       </div>
     </div>
   );

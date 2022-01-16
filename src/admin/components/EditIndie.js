@@ -155,7 +155,7 @@ const EditIndie = (props) => {
         <div className="editIndie-modal">
           <form className="editIndie-modal-form">
             <div className="editIndie-modal-form__input">
-              <span>등록번호 : </span>
+              <span>등록번호</span>
               <Input
                 element="input"
                 id="numberString"
@@ -166,7 +166,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>이름 : </span>
+              <span>이름</span>
               <Input
                 element="input"
                 id="name"
@@ -184,7 +184,7 @@ const EditIndie = (props) => {
               checkEditImg={checkEditImgHandler}
             />
             <div className="editIndie-modal-form__input">
-              <span>소속사 : </span>
+              <span>소속사</span>
               <Input
                 element="input"
                 id="company"
@@ -195,7 +195,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>대표곡 : </span>
+              <span>대표곡</span>
               <Input
                 element="input"
                 id="song"
@@ -206,7 +206,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>생년월일 : </span>
+              <span>생년월일</span>
               <Input
                 element="input"
                 id="birth"
@@ -217,7 +217,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>설명 : </span>
+              <span>설명</span>
               <Input
                 element="textarea"
                 id="description"
@@ -229,7 +229,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Soundcloud : </span>
+              <span>Soundcloud</span>
               <Input
                 element="input"
                 id="soundcloud"
@@ -240,7 +240,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Instagram : </span>
+              <span>Instagram</span>
               <Input
                 element="input"
                 id="instagram"
@@ -251,7 +251,7 @@ const EditIndie = (props) => {
               />
             </div>
             <div className="editIndie-modal-form__input">
-              <span>Youtube : </span>
+              <span>Youtube</span>
               <Input
                 element="input"
                 id="youtube"

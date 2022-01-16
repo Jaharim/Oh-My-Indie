@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.button:enabled {
+  color: black;
+}
+
 .search-Btn {
   margin: 0;
   padding: 0.5rem;
@@ -18,6 +22,7 @@
   transform: scale(1.04);
 }
 
+.to-signup-Btn,
 .signup-Btn,
 .login-Btn {
   text-align: center;

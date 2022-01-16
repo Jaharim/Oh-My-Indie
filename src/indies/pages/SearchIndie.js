@@ -6,7 +6,6 @@ import Input from "../../shared/components/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../shared/components/util/validators";
 import { useHistory } from "react-router";
 import RandomIndie from "../components/RandomIndie";
-import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/UIElements/Button";
 import { AuthContext } from "../../shared/components/context/auth-context";
 import ErrorModal from "../../shared/components/error/ErrorModal";
