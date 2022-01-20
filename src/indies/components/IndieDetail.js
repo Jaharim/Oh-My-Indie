@@ -110,6 +110,7 @@ const IndieDetail = (props) => {
           <div className="detail-container__left">
             <div className="detail-img">
               <img
+                className="detail-img-content"
                 src={`${process.env.REACT_APP_BACKEND_URL}/${indieDetail.image}`}
                 alt={indieDetail.name}
               />

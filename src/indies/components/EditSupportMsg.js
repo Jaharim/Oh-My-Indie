@@ -130,10 +130,11 @@ const EditSupportMsg = (props) => {
                 validators={[
                   VALIDATOR_REQUIRE(),
                   VALIDATOR_MINLENGTH(5),
-                  VALIDATOR_MAXLENGTH(10),
+                  VALIDATOR_MAXLENGTH(15),
                 ]}
                 value={`${props.props.title}`}
                 onInput={inputHandler}
+                placeholder="5글자 이상 (최대 15자)"
               />
             </div>
             <div className="support-message-textarea-form">
@@ -149,6 +150,7 @@ const EditSupportMsg = (props) => {
                 ]}
                 value={`${props.props.body}`}
                 onInput={inputHandler}
+                placeholder="5글자 이상 입력해주세요.(최대 150자)"
               />
             </div>
             <div className="support-message-button-form">

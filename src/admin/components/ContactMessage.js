@@ -66,7 +66,7 @@ const ContactMessage = (props) => {
   if (!isAdmin && props.replyStatus) {
     replyStatus = (
       <div className="message-replied__user" onClick={openReplyModalHandler}>
-        답변완료
+        답변완료 ( 답변보기 )
       </div>
     );
   } else if (!isAdmin) {

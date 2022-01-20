@@ -128,9 +128,9 @@ const AddSupportMsgModal = (props) => {
                 validators={[
                   VALIDATOR_REQUIRE(),
                   VALIDATOR_MINLENGTH(5),
-                  VALIDATOR_MAXLENGTH(10),
+                  VALIDATOR_MAXLENGTH(15),
                 ]}
-                placeholder="5글자 이상 (최대 10자)"
+                placeholder="5글자 이상 (최대 15자)"
                 onInput={inputHandler}
               />
             </div>

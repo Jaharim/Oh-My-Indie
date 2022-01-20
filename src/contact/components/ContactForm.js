@@ -105,9 +105,9 @@ const ContactForm = (props) => {
                 validators={[
                   VALIDATOR_REQUIRE(),
                   VALIDATOR_MINLENGTH(5),
-                  VALIDATOR_MAXLENGTH(10),
+                  VALIDATOR_MAXLENGTH(25),
                 ]}
-                placeholder="5글자 이상 (최대 10자)"
+                placeholder="5글자 이상 (최대 25자)"
                 onInput={titleInputHandler}
               />
             </div>

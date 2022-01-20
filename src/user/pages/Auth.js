@@ -96,6 +96,7 @@ const Auth = () => {
       const responseData = await response.json();
 
       if (!response.ok) {
+        setLoadingSpinner(false);
         throw new Error(responseData.message);
       }
       if (response.ok) {

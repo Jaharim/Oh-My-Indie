@@ -18,13 +18,17 @@
   width: 50%;
 }
 
-.detail-img img {
+.detail-img {
   width: 200px;
   height: 200px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-repeat: no-repeat;
-  background-attachment: initial;
+  background-attachment: fixed;
+}
+
+.detail-img-content {
+  width: 100%;
+  height: 100%;
 }
 
 .detail-favorite {
@@ -140,6 +144,7 @@
     width: 600px;
     height: 576px;
     top: 0;
+    background-attachment: initial;
   }
 
   .detail-container__body {
@@ -183,8 +188,7 @@
   .detail-sns__soundcloud {
     margin-right: unset;
   }
-
-  .detail-img img {
+  .detail-img {
     width: 150px;
     height: 150px;
   }
