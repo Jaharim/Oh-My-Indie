@@ -71,7 +71,7 @@ PW: test1
 
     - 틀린 비밀번호로 로그인 시도
    
-      |틀린 비밀번 입력|알림|
+      |틀린 비밀번호 입력|알림|
       |---|---|
       |![로그인페이지_비밀번호오류](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/73f6c7a4-c480-4130-b4c7-55d0a3ee7a2b)|![로그인페이지_비밀번호오류_알림](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/ca4e0b51-5c6e-446c-a3a5-82367b06e9e3)|
       <br />
@@ -96,13 +96,16 @@ PW: test1
       |---|---|
       |![회원가입페이지_닉네임중복](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/82103972-5dda-4211-a480-584c8349f821)|![회원가입페이지_닉네임중복_알림](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/879f543d-7e8c-4f4c-b115-4e7ae455d8cf)|
 
-
 <br />
+
+<!-- Top Button -->
+<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
+
 <br />
   
 ### 3) 유저
 
-- 메인페이지
+- 메인 페이지
 
   ![유저로그인](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/78b817e7-621b-48f7-8dce-127a813383f0)
 
@@ -112,8 +115,8 @@ PW: test1
 
 <br />
 
-- 마이 인디페이지  
-    - 메인페이지
+- 마이 인디 페이지  
+    - 메인 페이지
 
       ![마이인디페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/64d3d09a-2859-4539-8668-0d928714a511)
   
@@ -128,7 +131,7 @@ PW: test1
   <br />
   <br />
 
-    - 인디페이지
+    - 인디 페이지
 
       ![마이인디페이지_인디페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/fe8b98fe-a506-4589-97f4-016b1311e6ff)
   
@@ -142,6 +145,25 @@ PW: test1
 
       ![마이인디페이지_인디페이지_좋아요](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/fd758c84-14b1-4e21-86b0-670bb6bd2d7a)
   
+  <br />
+
+    - 인디 SNS
+
+      ![마이인디페이지 sns링크](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/068480af-746d-4a80-823e-0e16dac2c032) 각 버튼 클릭시 해당 SNS 페이지로 이동
+      <br />
+
+      1) Youtube
+         
+        ![마이인디페이지 sns링크_youtube](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/a6904cb0-cf56-4039-8fb4-386200db201b)
+
+      2) Instagram
+  
+        ![마이인디페이지 sns링크_instagram](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/95c4992a-f993-411a-b311-8b28e7bf71ba)
+
+      3) SoundCloud
+         
+          등록되지 않은 SNS는 메인 페이지로 이동
+
   <br />
 
     - 인디에게
@@ -181,7 +203,7 @@ PW: test1
 
 - 컨택트 페이지
 
-  - 메인페이지
+  - 메인 페이지
 
     ![컨택트페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/2fcebceb-c147-4712-97a3-8f64c7786228)
     <br />
@@ -194,6 +216,10 @@ PW: test1
        |![컨택트페이지_등록하기](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/34079548-b041-4af1-870e-df965c806030)|![컨택트페이지_등록하기_완료](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/dca7970b-f88a-41b5-98ea-a3e15fa218ea)|
        
 <br />
+
+<!-- Top Button -->
+<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
+
 <br />
 
 - 마이 페이지
@@ -246,12 +272,17 @@ PW: test1
          |삭제하기|삭제 완료|삭제 후|
          |---|---|---|
          |![마이페이지_컨택트메시지_삭제하기](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/7e5a5431-69ef-4a7e-9708-bfceca5f51dc)|![마이페이지_컨택트메시지_삭제하기_완료](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/95ea742b-0504-4427-aa2b-bd2bde049c7b)|![image](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/a450fd0e-2c3d-44b3-917d-650ad71d35e9)|
-         <br />
-	 <br />
+         
+<br />
+
+  <!-- Top Button -->
+<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
+
+<br />
 
 ### 4) 관리자
 
-- 메인페이지
+- 메인 페이지
 
   ![어드민_메인페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/5c6289c6-e994-4afe-a02b-f8e678ad67e9)
 
@@ -261,9 +292,9 @@ PW: test1
   <br />
   <br />
 
-- 마이 인디페이지
+- 마이 인디 페이지
   
-  - 어드민 마이 인디페이지
+  - 어드민 마이 인디 페이지
  
     ![어드민_마이인디페이지_인디에게](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/e482042d-22d7-4a6e-b7af-4dbf2d831ff9)
 
@@ -382,6 +413,10 @@ PW: test1
 	        |![어드민_어드민페이지_유저_컨택트메시지_답변완료_답변보기](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/c2f32519-9983-43e8-94e7-c483cdee5571)|![어드민_어드민페이지_유저_컨택트메시지_답변완료_답변수정가능](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/61feb0fb-bb6a-47c5-8ba8-e6a0dd0c6197)|![어드민_어드민페이지_유저_컨택트메시지_답변완료_삭제가능](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/d5e8dc02-ba49-4e3f-9fad-4b8da0da779c)|
 
 <br />
+
+<!-- Top Button -->
+<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
+
 <br />
  
 ### 5) 비로그인 시
@@ -400,27 +435,6 @@ PW: test1
   |![비로그인_마이인디접근](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/5fac5e6e-96df-4bdd-9f13-86d75dc2ff7f)|![비로그인_마이인디접근_알림](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/4e1ef461-2c2c-4ce9-8d4b-0641f4e915a6)|![로그인페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/ef16c50e-4e6b-432c-ba13-359339e37f01)|
 
   
-
-<!-- Top Button -->
-<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
-
-<br />
-
-## ✴️ **4. 핵심 코드**
-
-<!-- Top Button -->
-<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
-
-<br />
-
-## ✴️ **5. 리팩토링할 부분**
-
-<!-- Top Button -->
-<p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
-
-<br />
-
-## 📂 **6. 프로젝트 폴더 구조**
 
 <!-- Top Button -->
 <p style='background: black; width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-left: auto;'><a href="#top" style='color: white; '>▲</a></p>
