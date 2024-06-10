@@ -131,7 +131,7 @@ PW: test1
   <br />
   <br />
 
-    - 인디 페이지
+    - #### 인디 페이지
 
       ![마이인디페이지_인디페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/fe8b98fe-a506-4589-97f4-016b1311e6ff)
   
