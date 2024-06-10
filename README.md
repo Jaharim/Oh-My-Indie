@@ -115,7 +115,7 @@ PW: test1
 
 <br />
 
-- 마이 인디 페이지  
+- #### 마이 인디 페이지  
     - 메인 페이지
 
       ![마이인디페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/64d3d09a-2859-4539-8668-0d928714a511)
@@ -166,7 +166,7 @@ PW: test1
 
   <br />
 
-    - 인디에게
+    - #### 인디에게
 
       ![image](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/e110e5ca-c1a6-45a5-a354-418ad3bd0197) 버튼 클릭시 인디에게 페이지로 이동
       ![마이인디페이지_인디에게](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/be5ea567-3d2b-4258-ba8e-122cd607f11f)
@@ -222,7 +222,7 @@ PW: test1
 
 <br />
 
-- 마이 페이지
+- #### 마이 페이지
 
   - 메인 페이지
  
@@ -294,7 +294,7 @@ PW: test1
 
 - 마이 인디 페이지
   
-  - 어드민 마이 인디 페이지
+  - #### 어드민 마이 인디 페이지
  
     ![어드민_마이인디페이지_인디에게](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/e482042d-22d7-4a6e-b7af-4dbf2d831ff9)
 
@@ -319,7 +319,7 @@ PW: test1
 
     ![어드민_어드민페이지](https://github.com/Jaharim/Oh-My-Indie/assets/83650872/40d24125-6b2c-4dfb-9026-e77b1ca2eb8d)
 
-    - 인디 메뉴  
+    - #### 인디 메뉴  
 
       1) 인디 추가하기
          
@@ -341,7 +341,7 @@ PW: test1
          <br />
 	 <br />
 
-    - 유저 메뉴
+    - #### 유저 메뉴
    
       - 메인 페이지
      
