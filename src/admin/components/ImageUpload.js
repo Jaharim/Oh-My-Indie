@@ -1,12 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from 'react';
 
-import Button from "../../shared/components/UIElements/Button";
-
-import "./ImageUpload.css";
+import Button from '../../shared/components/UIElements/Button';
+//import previewIcon from '/icon-img.svg';
+import './ImageUpload.css';
 
 const ImageUpload = (props) => {
   const [file, setFile] = useState();
-  const [previewUrl, setPreviewUrl] = useState();
+  const [previewUrl, setPreviewUrl] = useState('/icon-img.svg');
   const [isValid, setIsValid] = useState(false);
 
   const filePickerRef = useRef();
@@ -47,22 +47,22 @@ const ImageUpload = (props) => {
   };
 
   return (
-    <div className="image-input__container">
+    <div className='image-input__container'>
       <input
         id={props.id}
         ref={filePickerRef}
-        style={{ display: "none" }}
-        type="file"
-        accept=".jpg,.png,.jpeg"
+        style={{ display: 'none' }}
+        type='file'
+        accept='.jpg,.png,.jpeg'
         onChange={pickedHandler}
       />
-      <div className="image-input__form">
-        <div className="image-input__form-img">
-          <img src={previewUrl} alt="미리보기" />
+      <div className='image-input__form'>
+        <div className='image-input__form-img'>
+          <img src={previewUrl} alt='미리보기' />
         </div>
         <Button
-          className="image-input__form-button"
-          type="button"
+          className='image-input__form-button'
+          type='button'
           onClick={pickImageHandler}
         >
           이미지 선택

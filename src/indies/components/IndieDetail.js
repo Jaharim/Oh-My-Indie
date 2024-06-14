@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../shared/components/context/auth-context";
-import ErrorModal from "../../shared/components/error/ErrorModal";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../shared/components/context/auth-context';
+import ErrorModal from '../../shared/components/error/ErrorModal';
 
-import "./IndieDetail.css";
+import './IndieDetail.css';
 
 const IndieDetail = (props) => {
   const auth = useContext(AuthContext);
@@ -11,15 +11,15 @@ const IndieDetail = (props) => {
   const [errorMsg, setErrrorMsg] = useState();
   const [likeClicked, setLikeClicked] = useState(false);
   const [indieDetail, setIndieDetail] = useState({
-    name: "",
-    image: "",
-    company: "",
-    song: "",
-    birth: "",
-    description: "",
-    youtube: "",
-    instagram: "",
-    soundcloud: "",
+    name: '',
+    image: '',
+    company: '',
+    song: '',
+    birth: '',
+    description: '',
+    youtube: '',
+    instagram: '',
+    soundcloud: '',
     like: 0,
     likeClicked: false,
   });
@@ -34,7 +34,7 @@ const IndieDetail = (props) => {
     setError(false);
   };
 
-  const storedData = JSON.parse(localStorage.getItem("userData"));
+  const storedData = JSON.parse(localStorage.getItem('userData'));
   useEffect(() => {
     const getSearchedIndieInformation = async () => {
       try {
@@ -105,99 +105,103 @@ const IndieDetail = (props) => {
       {error && (
         <ErrorModal errorMsg={errorMsg} onClose={errorModalCloseHandler} />
       )}
-      <div className="detail">
-        <div className="detail-container__body">
-          <div className="detail-container__left">
-            <div className="detail-img">
+      <div className='detail'>
+        <div className='detail-container__body'>
+          <div className='detail-container__left'>
+            <div className='detail-img'>
               <img
-                className="detail-img-content"
-                src={`${process.env.REACT_APP_BACKEND_URL}/${indieDetail.image}`}
+                className='detail-img-content'
+                src={
+                  indieDetail.image
+                    ? `${process.env.REACT_APP_BACKEND_URL}/${indieDetail.image}`
+                    : '/icon-img.svg'
+                }
                 alt={indieDetail.name}
               />
             </div>
-            <div className="detail-favorite">
+            <div className='detail-favorite'>
               <div
-                className="detail-like__container"
+                className='detail-like__container'
                 onClick={heartClickHandler}
               >
                 <div
-                  className="detail-like__image"
+                  className='detail-like__image'
                   style={
                     !indieDetail.likeClicked
-                      ? bringImageFromServer("heart")
-                      : bringImageFromServer("heart_active")
+                      ? bringImageFromServer('heart')
+                      : bringImageFromServer('heart_active')
                   }
                 />
                 <div
                   className={`${
                     !indieDetail.likeClicked
-                      ? "detail-like__number"
-                      : "detail-like__number-active"
+                      ? 'detail-like__number'
+                      : 'detail-like__number-active'
                   }`}
                 >
                   {indieDetail.like}
                 </div>
               </div>
-              <div className="detail-container__support">
+              <div className='detail-container__support'>
                 <Link
-                  className="detail-support"
+                  className='detail-support'
                   to={`/indie/${props.name}/support`}
-                  exact="true"
+                  exact='true'
                 >
                   Indie 에게,
                 </Link>
               </div>
             </div>
           </div>
-          <div className="detail-container__right">
-            <span className="detail-desc">
-              <div className="detail-desc__contents">
+          <div className='detail-container__right'>
+            <span className='detail-desc'>
+              <div className='detail-desc__contents'>
                 <p>소속사 : &nbsp;</p>
                 {indieDetail.company}
               </div>
               <br />
-              <div className="detail-desc__contents">
+              <div className='detail-desc__contents'>
                 <p>대표곡 : &nbsp;</p>
                 {indieDetail.song}
               </div>
               <br />
-              <div className="detail-desc__contents">
+              <div className='detail-desc__contents'>
                 <p>생일 : &nbsp;</p>
                 {indieDetail.birth}
               </div>
               <br />
               {indieDetail.description}
             </span>
-            <div className="detail-container__footer">
-              <div className="detail-container__sns">
+            <div className='detail-container__footer'>
+              <div className='detail-container__sns'>
                 <a
                   href={`${indieDetail.soundcloud}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <div
-                    className="detail-sns__soundcloud"
-                    style={bringImageFromServer("soundcloud")}
+                    className='detail-sns__soundcloud'
+                    style={bringImageFromServer('soundcloud')}
                   />
                 </a>
                 <a
                   href={`${indieDetail.instagram}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <div
-                    className="detail-sns__instagram"
-                    style={bringImageFromServer("instagram")}
+                    className='detail-sns__instagram'
+                    style={bringImageFromServer('instagram')}
                   />
                 </a>
                 <a
                   href={`${indieDetail.youtube}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <div
-                    className="detail-sns__youtube"
-                    style={bringImageFromServer("youtube")}
+                    className='detail-sns__youtube'
+                    style={bringImageFromServer('youtube')}
                   />
                 </a>
               </div>
