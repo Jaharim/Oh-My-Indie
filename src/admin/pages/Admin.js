@@ -1,35 +1,35 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router";
-import Backdrop from "../../shared/components/UIElements/Backdrop";
-import AddIndie from "../components/AddIndie";
-import SearchForDelete from "../components/SearchForDelete";
-import SearchForEdit from "../components/SearchForEdit";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import Backdrop from '../../shared/components/UIElements/Backdrop';
+import AddIndie from '../components/AddIndie';
+import SearchForDelete from '../components/SearchForDelete';
+import SearchForEdit from '../components/SearchForEdit';
 
-import "./Admin.css";
+import './Admin.css';
 
 const Admin = (props) => {
   let adminContent;
   const history = useHistory();
-  const [editIndieStatus, setEditIndieStatus] = useState("");
+  const [editIndieStatus, setEditIndieStatus] = useState('');
 
-  const [deleteIndieStatus, setDeleteIndieStatus] = useState("");
-  const [adminMode, setAdminMode] = useState("indie");
+  const [deleteIndieStatus, setDeleteIndieStatus] = useState('');
+  const [adminMode, setAdminMode] = useState('indie');
   const [addBackdropStatus, setAddBackdropStatus] = useState(false);
 
   const editInputFocusHandler = () => {
-    setEditIndieStatus("edit-indie-input-focused");
+    setEditIndieStatus('edit-indie-input-focused');
   };
 
   const editInputBlurHandler = () => {
-    setEditIndieStatus("");
+    setEditIndieStatus('');
   };
 
   const deleteInputFocusHandler = () => {
-    setDeleteIndieStatus("delete-indie-input-focused");
+    setDeleteIndieStatus('delete-indie-input-focused');
   };
 
   const deleteInputBlurHandler = () => {
-    setDeleteIndieStatus("");
+    setDeleteIndieStatus('');
   };
 
   const addIndieModalOpenHandler = (event) => {
@@ -43,36 +43,36 @@ const Admin = (props) => {
   };
 
   const addIndieHandler = (event) => {
-    console.log("good");
+    //console.log("good");
     setAddBackdropStatus(false);
   };
 
   const changeUserModeHandler = () => {
-    setAdminMode("user");
+    setAdminMode('user');
   };
 
   const changeIndieModeHandler = () => {
-    setAdminMode("indie");
+    setAdminMode('indie');
   };
 
   const openContactAdminModeHandler = () => {
-    history.push("/admin/contact");
+    history.push('/admin/contact');
   };
 
   const openSupportMsgAdminModeHandler = () => {
-    history.push("/admin/support");
+    history.push('/admin/support');
   };
 
   const openRepliedContactAdminModeHandler = () => {
-    history.push("/admin/contact/complete");
+    history.push('/admin/contact/complete');
   };
 
-  if (adminMode === "indie") {
+  if (adminMode === 'indie') {
     adminContent = (
       <React.Fragment>
-        <div className="admin-menu-addIndie__container">
+        <div className='admin-menu-addIndie__container'>
           <div
-            className="admin-menu-addIndie__text"
+            className='admin-menu-addIndie__text'
             onClick={addIndieModalOpenHandler}
           >
             Indie 추가
@@ -82,7 +82,7 @@ const Admin = (props) => {
           )}
           {addBackdropStatus && (
             <AddIndie
-              className="addIndie-modal"
+              className='addIndie-modal'
               onSubmit={addIndieHandler}
               onClose={addIndieModalCloseHandler}
             />
@@ -107,18 +107,18 @@ const Admin = (props) => {
   } else {
     adminContent = (
       <React.Fragment>
-        <div className="admin-menu-addIndie__container">
+        <div className='admin-menu-addIndie__container'>
           <div
-            className="admin-menu-addIndie__text"
+            className='admin-menu-addIndie__text'
             onClick={openSupportMsgAdminModeHandler}
           >
             Support 메시지 <br />
             <br /> 모아보기
           </div>
         </div>
-        <div className="admin-menu-addIndie__container">
+        <div className='admin-menu-addIndie__container'>
           <div
-            className="admin-menu-addIndie__text"
+            className='admin-menu-addIndie__text'
             onClick={openContactAdminModeHandler}
           >
             답변대기중인 Contact 메시지
@@ -127,9 +127,9 @@ const Admin = (props) => {
             모아보기
           </div>
         </div>
-        <div className="admin-menu-addIndie__container">
+        <div className='admin-menu-addIndie__container'>
           <div
-            className="admin-menu-addIndie__text"
+            className='admin-menu-addIndie__text'
             onClick={openRepliedContactAdminModeHandler}
           >
             답변완료한 Contact 메시지
@@ -144,18 +144,18 @@ const Admin = (props) => {
 
   return (
     <React.Fragment>
-      <div className="admin__container">
-        <div className="admin-menu__container">{adminContent}</div>
+      <div className='admin__container'>
+        <div className='admin-menu__container'>{adminContent}</div>
 
-        <div className="adminMode__container">
+        <div className='adminMode__container'>
           <div
-            className="adminMode-indie__button"
+            className='adminMode-indie__button'
             onClick={changeIndieModeHandler}
           >
             Indie
           </div>
           <div
-            className="adminMode-contact__button"
+            className='adminMode-contact__button'
             onClick={changeUserModeHandler}
           >
             User
