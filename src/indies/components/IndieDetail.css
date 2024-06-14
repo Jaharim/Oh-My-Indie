@@ -65,6 +65,7 @@
   border-radius: 15px;
   height: 100%;
   width: 45%;
+  cursor: pointer;
 }
 
 .detail-support {
@@ -90,6 +91,7 @@
   font-size: smaller;
   width: 40%;
   height: 100%;
+  cursor: pointer;
 }
 
 .detail-like__number-active {
@@ -125,7 +127,6 @@
 .detail-like__image-active {
   width: 25px;
   height: 25px;
-  cursor: pointer;
 }
 
 .detail-sns__youtube,
