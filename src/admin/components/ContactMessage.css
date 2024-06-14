@@ -27,6 +27,10 @@
   text-align: left;
 }
 
+.message-button__container {
+  display: flex;
+}
+
 .message-button__reply,
 .message-button__delete {
   width: 18px;
