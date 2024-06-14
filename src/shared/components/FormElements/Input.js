@@ -1,16 +1,16 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from 'react';
 
-import { validate } from "../util/validators";
+import { validate } from '../util/validators';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
-    case "CHANGE":
+    case 'CHANGE':
       return {
         ...state,
         value: action.val,
         isValid: validate(action.val, action.validators),
       };
-    case "TOUCH":
+    case 'TOUCH':
       return {
         ...state,
         isTouched: true,
@@ -24,8 +24,8 @@ const inputReducer = (state, action) => {
 };
 
 const Input = (props) => {
-  const inputVal = props.value ? props.value : "";
-  const preValid = inputVal !== "" ? true : false;
+  const inputVal = props.value ? props.value : '';
+  const preValid = inputVal !== '' ? true : false;
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: inputVal,
     isTouched: false,
@@ -41,7 +41,7 @@ const Input = (props) => {
 
   const changeHandler = (event) => {
     dispatch({
-      type: "CHANGE",
+      type: 'CHANGE',
       val: event.target.value,
       validators: props.validators,
     });
@@ -49,18 +49,26 @@ const Input = (props) => {
 
   const touchHandler = () => {
     dispatch({
-      type: "TOUCH",
+      type: 'TOUCH',
     });
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      props.onKeyDown(e);
+    }
+  };
+
   const element =
-    props.element === "input" ? (
+    props.element === 'input' ? (
       <input
         id={props.id}
         type={props.type}
         placeholder={props.placeholder}
         onChange={changeHandler}
         onBlur={touchHandler}
+        onKeyDown={handleKeyPress}
         value={inputState.value}
       />
     ) : (
